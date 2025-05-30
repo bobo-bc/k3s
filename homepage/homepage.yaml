@@ -75,6 +75,13 @@ spec:
         - name: config
           persistentVolumeClaim:
             claimName: homepage-config
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: homepage
+  namespace: home
+
 # ClusterRole
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
@@ -99,12 +106,7 @@ subjects:
     name: homepage
     namespace: home
 
----
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: homepage
-  namespace: home
+
 ---
 apiVersion: v1
 kind: Service
