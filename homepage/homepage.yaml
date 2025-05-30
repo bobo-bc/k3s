@@ -17,24 +17,6 @@ spec:
       storage: 1Gi
 
 ---
-apiVersion: v1
-kind: Service
-metadata:
-  name: homepage
-  namespace: home
-  labels:
-    app: homepage
-spec:
-  selector:
-    app: homepage
-  type: LoadBalancer
-  loadBalancerIP: 10.0.0.35
-  ports:
-    - port: 80
-      targetPort: 3000
-      protocol: TCP
-
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -52,18 +34,6 @@ spec:
       labels:
         app: homepage
     spec:
-      initContainers:
-        - name: git-sync
-          image: alpine/git
-          command:
-            - /bin/sh
-            - -c
-            - |
-              git clone https://github.com/bobo-bc/k3s /tmp/git && \
-              cp -r /tmp/git/homepage-config/* /config/
-          volumeMounts:
-            - name: config
-              mountPath: /config
       containers:
         - name: homepage
           image: ghcr.io/gethomepage/homepage:latest
@@ -75,7 +45,46 @@ spec:
           env:
             - name: HOMEPAGE_ALLOWED_HOSTS
               value: "*"
+      initContainers:
+        - name: git-clone
+          image: alpine/git
+          command:
+            - /bin/sh
+            - -c
+            - |
+              git config --global credential.helper store && \
+              git clone https://$(GIT_USERNAME):$(GIT_TOKEN)@github.com/bobo-bc/k3s /config
+          env:
+            - name: GIT_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: git-credentials
+                  key: username
+            - name: GIT_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: git-credentials
+                  key: token
+          volumeMounts:
+            - name: config
+              mountPath: /config
       volumes:
         - name: config
           persistentVolumeClaim:
             claimName: homepage-config
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: homepage
+  namespace: home
+spec:
+  selector:
+    app: homepage
+  type: LoadBalancer
+  loadBalancerIP: 10.0.0.35
+  ports:
+    - port: 80
+      targetPort: 3000
+      protocol: TCP
