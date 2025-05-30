@@ -34,7 +34,7 @@ spec:
       labels:
         app: homepage
     spec:
-    serviceAccountName: homepage
+      serviceAccountName: homepage
       containers:
         - name: homepage
           image: ghcr.io/gethomepage/homepage:latest
