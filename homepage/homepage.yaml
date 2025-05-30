@@ -45,6 +45,8 @@ spec:
           env:
             - name: HOMEPAGE_ALLOWED_HOSTS
               value: "*"
+           - name: HOMEPAGE_KUBERNETES_MODE
+              value: "cluster"
       initContainers:
         - name: git-clone
           image: alpine/git
