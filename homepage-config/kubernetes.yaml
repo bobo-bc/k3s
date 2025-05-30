@@ -1,0 +1,4 @@
+kubernetes:
+  mode: cluster
+  serviceAccount: true
+
