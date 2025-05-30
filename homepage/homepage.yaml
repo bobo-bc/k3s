@@ -1,14 +1,14 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: homepage
+  name: home
 
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: homepage-config
-  namespace: homepage
+  namespace: home
 spec:
   accessModes:
     - ReadWriteOnce
@@ -21,7 +21,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: homepage
-  namespace: homepage
+  namespace: home
 spec:
   replicas: 1
   selector:
@@ -53,7 +53,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: homepage
-  namespace: homepage
+  namespace: home
 spec:
   type: LoadBalancer
   loadBalancerIP: 10.0.0.35  # Optional: Use a static MetalLB IP
