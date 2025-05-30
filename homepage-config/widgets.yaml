@@ -3,12 +3,11 @@
     text_size: xl
     format:
       timeStyle: short
-
 - kubernetes:
     cluster:
-      cpu: true
-      memory: true
-    namespaces:
-      - home
-      - default
-    resources: true
+      show: true
+    nodes:
+      show: true
+    resources:
+      show: true
+    kubeconfig: /app/config/kubeconfig.yaml  # Optional if running in-cluster
