@@ -45,7 +45,7 @@ spec:
           env:
             - name: HOMEPAGE_ALLOWED_HOSTS
               value: "*"
-           - name: HOMEPAGE_KUBERNETES_MODE
+            - name: HOMEPAGE_KUBERNETES_MODE
               value: "cluster"
       initContainers:
         - name: git-clone
@@ -97,6 +97,13 @@ subjects:
   - kind: ServiceAccount
     name: homepage
     namespace: home
+
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: homepage
+  namespace: home
 ---
 apiVersion: v1
 kind: Service
