@@ -17,11 +17,31 @@ spec:
       storage: 1Gi
 
 ---
+apiVersion: v1
+kind: Service
+metadata:
+  name: homepage
+  namespace: home
+  labels:
+    app: homepage
+spec:
+  selector:
+    app: homepage
+  type: LoadBalancer
+  loadBalancerIP: 10.0.0.35
+  ports:
+    - port: 80
+      targetPort: 3000
+      protocol: TCP
+
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: homepage
   namespace: home
+  labels:
+    app: homepage
 spec:
   replicas: 1
   selector:
@@ -32,6 +52,18 @@ spec:
       labels:
         app: homepage
     spec:
+      initContainers:
+        - name: git-sync
+          image: alpine/git
+          command:
+            - /bin/sh
+            - -c
+            - |
+              git clone https://github.com/bobo-bc/k3s /tmp/git && \
+              cp -r /tmp/git/homepage-config/* /config/
+          volumeMounts:
+            - name: config
+              mountPath: /config
       containers:
         - name: homepage
           image: ghcr.io/gethomepage/homepage:latest
@@ -47,19 +79,3 @@ spec:
         - name: config
           persistentVolumeClaim:
             claimName: homepage-config
-
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: homepage
-  namespace: home
-spec:
-  type: LoadBalancer
-  loadBalancerIP: 10.0.0.35  # Optional: Use a static MetalLB IP
-  selector:
-    app: homepage
-  ports:
-    - protocol: TCP
-      port: 80
-      targetPort: 3000
