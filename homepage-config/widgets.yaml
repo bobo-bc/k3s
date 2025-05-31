@@ -1,8 +1,3 @@
-# widgets.yaml
-- datetime:
-    text_size: xl
-    format:
-      timeStyle: short
 - kubernetes:
     cluster:
       show: true
@@ -10,4 +5,5 @@
       show: true
     resources:
       show: true
-    kubeconfig: /app/config/kubeconfig.yaml  # Optional if running in-cluster
+    namespaceSelector:
+      any: true
