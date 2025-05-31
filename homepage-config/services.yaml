@@ -18,7 +18,6 @@
     - drawio:
         icon: draw-io.svg
         href: http://10.0.0.36
-        ping: http://10.0.0.36
         description: Visio type drawing tool
         namespace: tools # The kubernetes namespace the app resides in
         app: drawio # The name of the deployed app
@@ -26,14 +25,12 @@
     - plex:
         icon: plex.png
         href: http://10.0.0.10:32400/web/
-        ping: http://10.0.0.10
         description: Media Viewer
         app: plex # The name of the deployed app
 
     - portainer:
         icon: portainer.png
         href: http://10.0.0.28:9000/
-        ping: http://10.0.0.28
         description: Kubernetes viewer
     #    namespace: media # The kubernetes namespace the app resides in
         app: portainer # The name of the deployed app
@@ -41,7 +38,6 @@
     - grafana:
         icon: grafana.png
         href: http://10.0.0.40
-        ping: http://10.0.0.40
         description: monitoring tool
    #     namespace: monitoring # The kubernetes namespace the app resides in
         app: monitoring-grafana # The name of the deployed app
@@ -53,7 +49,6 @@
     - sonarr:
         icon: sonarr.png
         href: http://10.0.0.27
-        ping: http://10.0.0.27
         description: TV shows manager
     #    namespace: media # The kubernetes namespace the app resides in
         app: sonarr # The name of the deployed app
@@ -61,7 +56,6 @@
     - radarr:
         icon: radarr.png
         href: http://10.0.0.29
-        ping: http://10.0.0.29
         description: Movie manager
      #   namespace: media # The kubernetes namespace the app resides in
         app: radarr # The name of the deployed app
@@ -69,7 +63,6 @@
     - lidarr:
         icon: lidarr.png
         href: http://10.0.0.30
-        ping: http://10.0.0.30
         description: Music manager
   #      namespace: media # The kubernetes namespace the app resides in
         app: lidarr # The name of the deployed app
