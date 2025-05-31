@@ -1,4 +1,6 @@
-kubernetes:
-  mode: cluster
-  serviceAccount: true
-
+- kubernetes:
+    cluster:
+      url: https://kubernetes.default.svc
+      token: /var/run/secrets/kubernetes.io/serviceaccount/token
+      namespace: home
+      verify_ssl: false
