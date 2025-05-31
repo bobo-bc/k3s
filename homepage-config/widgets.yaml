@@ -1,9 +1,12 @@
-- kubernetes:
-    cluster:
-      show: true
-    nodes:
-      show: true
-    resources:
-      show: true
-    namespaceSelector:
-      any: true
+- resources:
+    cpu: true
+    memory: true
+    disk: /disk/mount/path
+    cputemp: true
+    tempmin: 0 # optional, minimum cpu temp
+    tempmax: 100 # optional, maximum cpu temp
+    uptime: true
+    units: imperial # only used by cpu temp, options: 'imperial' or 'metric'
+    refresh: 3000 # optional, in ms
+    diskUnits: bytes # optional, bytes (default) or bbytes. Only applies to disk
+    network: true # optional, uses 'default' if true or specify a network interface name
