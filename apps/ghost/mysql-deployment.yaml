@@ -1,0 +1,103 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ghost-mysql
+  namespace: mysql
+  labels:
+    app: ghost-mysql
+spec:
+  ports:
+    - port: 3306
+      name: mysql
+  clusterIP: None
+  selector:
+    app: ghost-mysql
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: ghost-mysql
+  namespace: mysql
+spec:
+  serviceName: ghost-mysql
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ghost-mysql
+  template:
+    metadata:
+      labels:
+        app: ghost-mysql
+    spec:
+      securityContext:
+        runAsUser: 1001
+        runAsGroup: 1001
+        fsGroup: 1001
+        fsGroupChangePolicy: "Always"
+      volumes:
+        - name: tmp
+          emptyDir: {}
+        - name: logs
+          emptyDir: {}
+        - name: conf
+          emptyDir: {}
+        - name: shared-dir
+          emptyDir: {}
+      containers:
+        - name: mysql
+          image: docker.io/bitnami/mysql:8.4.5-debian-12-r0
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: ghost-mysql-secret
+                  key: mysql-root-password
+            - name: MYSQL_USER
+              value: ghost
+            - name: MYSQL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: ghost-mysql-secret
+                  key: mysql-password
+            - name: MYSQL_DATABASE
+              value: ghost
+          ports:
+            - containerPort: 3306
+              name: mysql
+          volumeMounts:
+            - name: mysql8-data
+              mountPath: /bitnami/mysql
+            - name: shared-dir
+              mountPath: /opt/bitnami/mysql/tmp
+              subPath: tmp
+            - name: shared-dir
+              mountPath: /opt/bitnami/mysql/logs
+              subPath: logs
+            - name: shared-dir
+              mountPath: /opt/bitnami/mysql/conf
+              subPath: conf
+          resources:
+            requests:
+              memory: "512Mi"
+              cpu: "500m"
+            limits:
+              memory: "768Mi"
+              cpu: "750m"
+          securityContext:
+            runAsUser: 1001
+            runAsGroup: 1001
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - ALL
+  volumeClaimTemplates:
+    - metadata:
+        name: mysql8-data
+      spec:
+        accessModes: [ "ReadWriteOnce" ]
+        storageClassName: longhorn
+        resources:
+          requests:
+            storage: 5Gi
+
