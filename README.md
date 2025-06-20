@@ -1,26 +1,45 @@
-**k3s Homelab**
+# k3s Homelab
 
+This repo documents my self-hosted homelab running a lightweight Kubernetes cluster using **K3s** across 3 Ubuntu Server nodes.
 
-This repo documents my self-hosted homelab running a lightweight Kubernetes cluster using K3s across 3 Ubuntu Server nodes.
+---
 
-Key Components
-	•	MetalLB is used to assign static IPs from a predefined pool to each deployed app.
-	•	Longhorn handles persistent storage for application config files (stored locally on each node).
-	•	NFS is used for shared media storage (e.g., for apps like Sonarr, Radarr, Jellyfin).
-	•	YAML-first approach: I manage apps using raw YAML manifests instead of Helm for better control, transparency, and easier troubleshooting.
-	•	ChatGPT has been a major help in generating and refining these YAML manifests and resolving Kubernetes issues quickly.
-	•	I use a Linux VM (jumpbox) as my main point of interaction with the cluster, managing everything via kubectl.
+## Key Components
 
-Structure
+- **MetalLB**  
+  Assigns static IPs from a predefined pool to each deployed app.
 
-Each app is generally deployed using two main YAML files:
-	1.	PersistentVolumeClaim (PVC): Defines storage for config or data.
-	2.	App Deployment: Contains:
-	•	The container spec and environment variables
-	•	Volume mounts (including NFS if needed)
-	•	Service definition (LoadBalancer with a MetalLB IP)
-	•	Security context or init containers if required
+- **Longhorn**  
+  Handles persistent storage for application config files, stored locally on each node.
 
-⸻
+- **NFS**  
+  Used for shared media storage — for example, Sonarr, Radarr, and Jellyfin.
 
-Let me know if you want help organizing the repo into folders or adding examples with links.
+- **YAML-First Approach**  
+  I manage apps using raw YAML manifests (instead of Helm) for better control, transparency, and easier troubleshooting.
+
+- **ChatGPT**  
+  A major help in generating and refining these YAML manifests and resolving Kubernetes issues quickly.
+
+- **Jumpbox**  
+  I use a Linux VM as a jumpbox to interact with the cluster using `kubectl`.
+
+---
+
+## Structure
+
+Each app is typically deployed with two main YAML files:
+
+1. **PersistentVolumeClaim (PVC)**  
+   Defines storage for config or application data.
+
+2. **App Deployment YAML**  
+   Includes:
+   - The container image and environment variables
+   - Volume mounts (including NFS if applicable)
+   - A Kubernetes `Service` (usually `LoadBalancer` with a static MetalLB IP)
+   - Security context or `initContainers` if needed (e.g., to fix permissions)
+
+---
+
+Let me know if you want help breaking this into folders (`/apps/sonarr/`, `/storage/`, etc.), adding example manifests, or linking to deployed services.
