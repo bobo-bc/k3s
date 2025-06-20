@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: kube-cleanup-operator
-          image: ghcr.io/stakater/kube-cleanup-operator:0.2.0
+          image: quay.io/stakater/kube-cleanup-operator:latest
           imagePullPolicy: Always
           args:
             - -keep-successful=24
