@@ -6,3 +6,4 @@
   Use your jumpbox and run the following command
 
   ** kubectl create namespace media
+  
