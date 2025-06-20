@@ -57,7 +57,7 @@ spec:
       serviceAccountName: kube-cleanup-operator
       containers:
         - name: kube-cleanup-operator
-          image: stakater/kube-cleanup-operator:0.2.0
+          image: quay.io/lwolf/kube-cleanup-operator
           imagePullPolicy: IfNotPresent
           args:
             - --keep-successful-jobs=24h
