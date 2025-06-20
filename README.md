@@ -39,7 +39,3 @@ Each app is typically deployed with two main YAML files:
    - Volume mounts (including NFS if applicable)
    - A Kubernetes `Service` (usually `LoadBalancer` with a static MetalLB IP)
    - Security context or `initContainers` if needed (e.g., to fix permissions)
-
----
-
-Let me know if you want help breaking this into folders (`/apps/sonarr/`, `/storage/`, etc.), adding example manifests, or linking to deployed services.
