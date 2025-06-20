@@ -26,7 +26,7 @@ spec:
               mountPath: /config
       containers:
         - name: readarr
-          image: linuxserver/readarr:latest
+          image: linuxserver/readarr:develop
           imagePullPolicy: Always
           env:
             - name: PUID
