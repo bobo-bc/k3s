@@ -1,5 +1,6 @@
 **k3s Homelab**
 
+
 This repo documents my self-hosted homelab running a lightweight Kubernetes cluster using K3s across 3 Ubuntu Server nodes.
 
 Key Components
