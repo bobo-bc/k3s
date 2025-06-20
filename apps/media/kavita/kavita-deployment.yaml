@@ -46,7 +46,7 @@ spec:
         - name: media
           nfs:
             server: 10.0.0.3
-            path: /mnt/tank/data/books
+            path: /mnt/tank/data//data/books
 ---
 apiVersion: v1
 kind: Service
