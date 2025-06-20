@@ -5,5 +5,6 @@
 - **to create a name sace**  
   Use your jumpbox and run the following command
 
-  ** kubectl create namespace media
+  **
+  kubectl create namespace media
   
