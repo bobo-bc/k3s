@@ -1,0 +1,74 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: kube-cleanup
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: kube-cleanup-operator
+  namespace: kube-cleanup
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: kube-cleanup-operator
+rules:
+  - apiGroups: [""]
+    resources: ["pods"]
+    verbs: ["get", "list", "delete"]
+  - apiGroups: ["batch"]
+    resources: ["jobs"]
+    verbs: ["get", "list", "delete"]
+  - apiGroups: [""]
+    resources: ["persistentvolumeclaims"]
+    verbs: ["get", "list", "delete"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: kube-cleanup-operator
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: kube-cleanup-operator
+subjects:
+  - kind: ServiceAccount
+    name: kube-cleanup-operator
+    namespace: kube-cleanup
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kube-cleanup-operator
+  namespace: kube-cleanup
+  labels:
+    app: kube-cleanup-operator
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kube-cleanup-operator
+  template:
+    metadata:
+      labels:
+        app: kube-cleanup-operator
+    spec:
+      serviceAccountName: kube-cleanup-operator
+      containers:
+        - name: kube-cleanup-operator
+          image: stakater/kube-cleanup-operator:0.2.0
+          imagePullPolicy: IfNotPresent
+          args:
+            - --keep-successful-jobs=24h
+            - --keep-failed-jobs=72h
+            - --keep-completed-pods=48h
+            - --keep-orphaned-pvcs=168h
+            - --delete-pvcs
+          resources:
+            requests:
+              cpu: 25m
+              memory: 32Mi
+            limits:
+              cpu: 100m
+              memory: 64Mi
