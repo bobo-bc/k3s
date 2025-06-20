@@ -1,4 +1,4 @@
-uth:
+auth:
   rootPassword: <put_your_password_here>
   database: ghost
   username: ghost
