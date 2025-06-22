@@ -34,7 +34,7 @@ spec:
             - name: TZ
               value: America/Vancouver
             - name: WEBPASSWORD
-              value: changeme123   # 🔒 Set your admin password
+              value: Hurts2p33   # 🔒 Set your admin password
           ports:
             - containerPort: 80
               name: web
@@ -69,7 +69,7 @@ spec:
   selector:
     app: pihole
   type: LoadBalancer
-  loadBalancerIP: 10.0.0.34
+  loadBalancerIP: 10.0.0.38
   ports:
     - name: web
       port: 80
