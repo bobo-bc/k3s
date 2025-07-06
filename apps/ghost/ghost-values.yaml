@@ -1,0 +1,30 @@
+service:
+  type: LoadBalancer
+  loadBalancerIP: 10.0.0.30
+  port: 80
+
+ghostBlog:
+  url: http://stevenfmeyer.me
+
+persistence:
+  enabled: true
+  existingClaim: ""
+  storageClass: "longhorn"  # or "" to use default
+  accessMode: ReadWriteOnce
+  size: 1Gi
+
+mysql:
+  enabled: true
+  auth:
+    rootPassword: ghostroot
+    username: ghost
+    password: ghostpass
+    database: ghostdb
+
+ingress:
+  enabled: false
+
+resources:
+  requests:
+    memory: 512Mi
+    cpu: 250m
