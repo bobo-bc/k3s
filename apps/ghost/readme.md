@@ -3,8 +3,9 @@ the steps are
 1. kubectl create namespace ghost
 2. create a ghost-values.yaml file
 3.get helm chart:
-helm repo add bitnami https://charts.bitnami.com/bitnami  
-helm repo update
+
+  helm repo add bitnami https://charts.bitnami.com/bitnami  
+  helm repo update
 
 4. deploy via helm chart: helm install ghost bitnami/ghost -n ghost -f ghost-values.yaml
 
