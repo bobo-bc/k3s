@@ -8,7 +8,7 @@ the steps are
   helm repo update
 
 4. deploy via helm chart:
-  helm install ghost bitnami/ghost -n ghost -f ghost-values.yaml
+     helm install ghost bitnami/ghost -n ghost -f ghost-values.yaml
 
 6. follow the command line instructions to get the default username and password to login for the first time
 
