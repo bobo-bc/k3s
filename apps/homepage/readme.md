@@ -4,13 +4,8 @@ getHomepage is awesome, I love the customizations. Mananging the various config 
 Do not bother with a persistent volume claim. stay with a config map. 
 Create a config.yaml file to set up your dashboard in a flat file. 
 
-to deploy via helm,  
-helm repo add jameswynn https://jameswynn.github.io/helm-charts  
-helm repo update
-
-then  
-helm upgrade --install homepage jameswynn/homepage \   
-  -n homepage -f homepage-values.yaml
+to deploy create a homepage.yaml file with all the requirements, 
+ To make config changes to design your dashboard build a config.yaml file (watch the spacing)
    
 when done making changes,   
 kubectl apply -f config.yaml
