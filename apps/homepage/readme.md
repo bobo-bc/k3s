@@ -10,5 +10,7 @@ to deploy create a homepage.yaml file with all the requirements,
 when done making changes,   
 kubectl apply -f config.yaml
 
+you will also need to redeploy the pod....which I do in portainer nice and viaualy easy.
+
 
 
