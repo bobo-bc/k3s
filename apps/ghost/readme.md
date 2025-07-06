@@ -6,5 +6,5 @@ the steps are
 
 4. follow the command line instructions to get the default username and password to login for the first time
 
-1. echo Email:    user@example.com
-2. echo Password: $(kubectl get secret --namespace ghost ghost -o jsonpath="{.data.ghost-password}" | base64 -d)
+echo Email:    user@example.com  
+  echo Password: $(kubectl get secret --namespace ghost ghost -o jsonpath="{.data.ghost-password}" | base64 -d)
