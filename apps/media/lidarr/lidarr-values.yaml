@@ -19,7 +19,7 @@ service:
     ports:
       http:
         port: 80
-        targetPort: 7878
+        targetPort: 8686
 persistence:
   config:
     enabled: true
