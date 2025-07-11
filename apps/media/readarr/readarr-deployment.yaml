@@ -1,3 +1,10 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: media
+
+---
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -15,62 +22,54 @@ spec:
       labels:
         app: readarr
     spec:
-      securityContext:
-        fsGroup: 1000
-      initContainers:
-        - name: fix-permissions
-          image: busybox
-          command: ["sh", "-c", "chown -R 1000:1000 /config"]
-          volumeMounts:
-            - name: config
-              mountPath: /config
       containers:
-        - name: readarr
-          image: linuxserver/readarr:develop
-          imagePullPolicy: Always
-          env:
-            - name: PUID
-              value: "1000"
-            - name: PGID
-              value: "1000"
-            - name: TZ
-              value: "America/Vancouver"
-          ports:
-            - containerPort: 8787
-              protocol: TCP
-          volumeMounts:
-            - name: config
-              mountPath: /config
-            - name: media
-              mountPath: /data/movies
-            - name: downloads
-              mountPath: /torrents/completed/books
-      volumes:
+      - name: reeadarr
+        image: linuxserver/readarr:latest
+        ports:
+        - containerPort: 8787
+          name: http
+        env:
+        - name: PUID
+          value: "1000"
+        - name: PGID
+          value: "1000"
+        - name: TZ
+          value: "America/Vancouver"
+        volumeMounts:
         - name: config
-          persistentVolumeClaim:
-            claimName: readarr-config
-        - name: media
-          nfs:
-            server: 10.0.0.3
-            path: /mnt/tank/data/data/books
-        - name: downloads
-          nfs:
-            server: 10.0.0.3
-            path: /mnt/tank/data/torrents/completed/books
+          mountPath: /config
+        - name: books
+          mountPath: /books
+          readOnly: false
+        - name: data
+          mountPath: /downloads
+          readOnly: true
+      volumes:
+      - name: config
+        persistentVolumeClaim:
+          claimName: longhorn-pvc-lazylibrarian-config
+      - name: books
+        persistentVolumeClaim:
+          claimName: nfs-pvc-books
+      - name: data
+        persistentVolumeClaim:
+          claimName: nfs-pvc-torrents
+
 ---
+
 apiVersion: v1
 kind: Service
 metadata:
   name: readarr
   namespace: media
-  annotations:
-    metallb.universe.tf/ip-allocated-from-pool: home-pool
+  labels:
+    app: readarr
 spec:
+  type: LoadBalancer
+  loadBalancerIP: 10.0.0.32
   selector:
     app: readarr
-  type: LoadBalancer
-  loadBalancerIP: 10.0.0.31
   ports:
-    - port: 80
-      targetPort: 8787
-      protocol: TCP
+  - protocol: TCP
+    port: 80
+    targetPort: 8787
