@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lazylibrarian
+  namespace: media
+  labels:
+    app: lazylibrarian
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: lazylibrarian
+  template:
+    metadata:
+      labels:
+        app: lazylibrarian
+    spec:
+      securityContext:
+        fsGroup: 1000
+      initContainers:
+        - name: fix-permissions
+          image: busybox
+          command: ["sh", "-c", "chown -R 1000:1000 /kavita/config"]
+          volumeMounts:
+            - name: config
+              mountPath: /lazylibrarian/config
+      containers:
+        - name: lazylibrarian
+          image: lscr.io/linuxserver/lazylibrarian:latest
+          imagePullPolicy: Always
+          env:
+            - name: TZ
+              value: "America/Vancouver"
+          ports:
+            - containerPort: 5299
+              protocol: TCP
+          volumeMounts:
+            - name: config
+              mountPath: /lazylibrarian/config
+            - name: books
+              mountPath: /books
+      volumes:
+        - name: config
+          persistentVolumeClaim:
+            claimName: lazylibrarian-config
+        - name: books
+          persistentVolumeClaim:
+            claimName: nfs-pvc-books
+            
