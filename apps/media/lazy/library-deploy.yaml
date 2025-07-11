@@ -24,6 +24,7 @@ spec:
           volumeMounts:
             - name: config
               mountPath: /lazylibrarian/config
+
       containers:
         - name: lazylibrarian
           image: lscr.io/linuxserver/lazylibrarian:latest
@@ -39,6 +40,8 @@ spec:
               mountPath: /lazylibrarian/config
             - name: books
               mountPath: /books
+            - name: downloads
+              mountPath: /
       volumes:
         - name: config
           persistentVolumeClaim:
@@ -46,4 +49,7 @@ spec:
         - name: books
           persistentVolumeClaim:
             claimName: nfs-pvc-books
+        - name: downloads
+          persistentVolumeClaim:
+            claimName: nfs-pvc-torrents
             
