@@ -1,3 +1,10 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: media
+
+---
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -15,58 +22,54 @@ spec:
       labels:
         app: lazylibrarian
     spec:
-      securityContext:
-        fsGroup: 1000
-      initContainers:
-        - name: fix-permissions
-          image: busybox
-          command: ["sh", "-c", "chown -R 1000:1000 /kavita/config"]
-          volumeMounts:
-            - name: config
-              mountPath: /lazylibrarian/config
-
       containers:
-        - name: lazylibrarian
-          image: lscr.io/linuxserver/lazylibrarian:latest
-          imagePullPolicy: Always
-          env:
-            - name: TZ
-              value: "America/Vancouver"
-          ports:
-            - containerPort: 5299
-              protocol: TCP
-          volumeMounts:
-            - name: config
-              mountPath: /lazylibrarian/config
-            - name: books
-              mountPath: /books
-            - name: downloads
-              mountPath: /
-      volumes:
+      - name: lazylibrarian
+        image: linuxserver/lazylibrarian:latest
+        ports:
+        - containerPort: 5299
+          name: http
+        env:
+        - name: PUID
+          value: "1000"
+        - name: PGID
+          value: "1000"
+        - name: TZ
+          value: "America/Vancouver"
+        volumeMounts:
         - name: config
-          persistentVolumeClaim:
-            claimName: lazylibrarian-config
+          mountPath: /config
         - name: books
-          persistentVolumeClaim:
-            claimName: nfs-pvc-books
+          mountPath: /books
+          readOnly: false
         - name: downloads
-          persistentVolumeClaim:
-            claimName: nfs-pvc-torrents
+          mountPath: /downloads
+          readOnly: true
+      volumes:
+      - name: config
+        persistentVolumeClaim:
+          claimName: lazylibrarian-config
+               - name: books
+        persistentVolumeClaim:
+          claimName: nfs-pvc-books
+      - name: downloads
+        persistentVolumeClaim:
+          claimName: nfs-pvc-torrents
+
 ---
+
 apiVersion: v1
 kind: Service
 metadata:
   name: lazylibrarian
   namespace: media
-  annotations:
-    metallb.universe.tf/ip-allocated-from-pool: home-pool
-spec:
-  selector:
+  labels:
     app: lazylibrarian
+spec:
   type: LoadBalancer
   loadBalancerIP: 10.0.0.26
+  selector:
+    app: lazylibrarian
   ports:
-    - port: 80
-      targetPort: 5299
-      protocol: TCP
-            
+  - protocol: TCP
+    port: 80
+    targetPort: 5299
