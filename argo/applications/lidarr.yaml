@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/bobo-bc/k3s
     targetRevision: HEAD
-    path: argocd/apps/lidarr
+    path: argo/apps/lidarr
     directory:
       recurse: true
   destination:
