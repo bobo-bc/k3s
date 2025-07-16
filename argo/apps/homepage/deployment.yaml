@@ -32,7 +32,7 @@ spec:
               mountPath: /app/config/logs
       volumes:
         - name: homepage-config
-          persistentVolumeClaim:
-            claimName: homepage-config
+          configMap:
+            name: homepage-config
         - name: logs
           emptyDir: {}
