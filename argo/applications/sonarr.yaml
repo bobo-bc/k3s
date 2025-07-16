@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/bobo-bc/k3s
     targetRevision: HEAD
-    path: /argo/apps/sonarr
+    path: argo/apps/sonarr
     directory:
       recurse: true
   destination:
