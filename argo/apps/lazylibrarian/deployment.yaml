@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lazylibrarian
+  namespace: media
+  labels:
+    app: lazylibrarian
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: lazylibrarian
+  template:
+    metadata:
+      labels:
+        app: lazylibrarian
+    spec:
+      containers:
+        - name: lazylibrarian
+          image: linuxserver/lazylibrarian:latest
+          imagePullPolicy: Always
+          env:
+            - name: PUID
+              value: "1000"
+            - name: PGID
+              value: "1000"
+            - name: TZ
+              value: America/Vancouver
+          ports:
+            - containerPort: 5299
+              name: http
+          volumeMounts:
+            - name: config
+              mountPath: /config
+            - name: books
+              mountPath: /books
+            - name: downloads
+              mountPath: /downloads
+              readOnly: true
+      volumes:
+        - name: config
+          persistentVolumeClaim:
+            claimName: lazylibrarian-config
+        - name: books
+          persistentVolumeClaim:
+            claimName: nfs-pvc-books
+        - name: downloads
+          persistentVolumeClaim:
+            claimName: nfs-pvc-torrents
