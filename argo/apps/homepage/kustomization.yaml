@@ -9,14 +9,4 @@ resources:
   - clusterRole.yaml
   - deployment.yaml
   - service.yaml
-
-configMapGenerator:
-  - name: homepage
-    files:
-      - config/settings.yaml
-      - config/services.yaml
-      - config/bookmarks.yaml
-      - config/widgets.yaml
-      - config/kubernetes.yaml
-generatorOptions:
-  disableNameSuffixHash: true
+  - ConfigMap.yaml
