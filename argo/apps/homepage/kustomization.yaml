@@ -13,10 +13,10 @@ resources:
 configMapGenerator:
   - name: homepage
     files:
-      - settings.yaml=config/settings.yaml
-      - services.yaml=config/services.yaml
-      - bookmarks.yaml=config/bookmarks.yaml
-      - widgets.yaml=config/widgets.yaml
-      - kubernetes.yaml=config/kubernetes.yaml
+      - config/settings.yaml
+      - config/services.yaml
+      - config/bookmarks.yaml
+      - config/widgets.yaml
+      - config/kubernetes.yaml
 generatorOptions:
   disableNameSuffixHash: true
