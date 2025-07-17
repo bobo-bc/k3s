@@ -9,3 +9,4 @@ resources:
   - clusterRole.yaml
   - deployment.yaml
   - service.yaml
+  - ConfigMap.yaml
