@@ -4,7 +4,6 @@ namespace: homepage
 
 resources:
   - deployment.yaml
-  - service.yaml
 
 configMapGenerator:
   - name: homepage-config
