@@ -28,7 +28,7 @@ spec:
           imagePullPolicy: Always
           env:
             - name: HOMEPAGE_ALLOWED_HOSTS
-              value: homepage.lan,homepage,10.0.0.22 # required, may need port. See gethomepage.dev/installation/#homepage_allowed_hosts
+              value: "*" # required, may need port. See gethomepage.dev/installation/#homepage_allowed_hosts
           ports:
             - name: http
               containerPort: 3000
