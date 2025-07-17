@@ -35,7 +35,7 @@ spec:
               protocol: TCP
           volumeMounts:
             - name: homepage-config
-              mountPath: /app/config          
+              mountPath: /config          
       volumes:
         - name: homepage-config
           configMap:
