@@ -1,0 +1,35 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/configs/settings/
+
+title: Bobo Homepage
+background:
+  image: https://unsplash.com/photos/a-mountain-range-with-a-lake-in-the-foreground-T_Qe4QlMIvQ
+  blur: sm # sm, md, xl... see https://tailwindcss.com/docs/backdrop-blur
+  saturate: 100 # 0, 50, 100... see https://tailwindcss.com/docs/backdrop-saturate
+  brightness: 50 # 0, 50, 75... see https://tailwindcss.com/docs/backdrop-brightness
+  opacity: 100 # 0-100
+theme: dark
+color: slate
+statusStyle: "basic"
+hideVersion: true
+layout:
+  Media:
+    columns: 3
+    style: row
+    icon: mdi-folder-multiple-image
+  Apps:
+    columns: 5
+    style: row
+    icon: mdi-folder-multiple-image
+  Servarr:
+    columns: 5
+    style: row
+    icon: mdi-folder-multiple-image
+  Host:
+    columns: 5
+    style: row
+    icon: mdi-folder-multiple-image
+providers:
+  longhorn:
+    url: http://10.0.0.20
