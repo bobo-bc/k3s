@@ -1,6 +1,33 @@
 ---
 # For configuration options and examples, please see:
 # https://gethomepage.dev/latest/configs/services
+- Infra: 
+    - Proxmox:
+        icon: proxmox.png
+        href: https://10.0.0.5:8006
+        ping: https://10.0.0.5:8006
+        description: proxmox host
+        widget:
+          type: proxmox
+          url: https://10.0.0.5:8006
+          username: api1@pam!homepage
+          password: 6e301f48-ad45-4d4e-8e15-d1ebecc577c6
+          node: george # optional
+
+    - TrueNAS:
+       icon: truenas-scale.png
+       href: https://10.0.0.3/
+       ping : https:/10.0.0.3
+       description: NAS management gui
+       widget:
+         type: truenas
+         url: http://10.0.0.3
+         username: truenas_admin # not required if using api key
+         password: Hurts2p33 # not required if using api key
+        # key: yourtruenasapikey # not required if using username / password
+         enablePools: true # optional, defaults to false
+         nasType: scale # defaults to scale, must be set to 'core' if using enablePools with TrueNAS Core
+
 - Apps:
     - HomeAssistant:
         icon: home-assistant.png
@@ -91,19 +118,6 @@
        namespace: media
        app: transmission-vpn
 - Host:
-    - TrueNAS:
-       icon: truenas-scale.png
-       href: https://10.0.0.3/
-       ping : https:/10.0.0.3
-       description: NAS management gui
-       widget:
-         type: truenas
-         url: http://10.0.0.3
-         username: truenas_admin # not required if using api key
-         password: Hurts2p33 # not required if using api key
-        # key: yourtruenasapikey # not required if using username / password
-         enablePools: true # optional, defaults to false
-         nasType: scale # defaults to scale, must be set to 'core' if using enablePools with TrueNAS Core
 
     - PiHole:
         icon: pi-hole-unbound.png
@@ -125,6 +139,7 @@
         description: Kubernetes viewer
         namespace: portainer 
         app: portainer 
+  
     - longhorn:
        icon: longhorn.png
        href: http://10.0.0.21
@@ -138,14 +153,4 @@
         ping: https://10.0.9:8007/
         description: backup server
 
-    - Proxmox:
-        icon: proxmox.png
-        href: https://10.0.0.5:8006
-        ping: https://10.0.0.5:8006
-        description: proxmox host
-        widget:
-          type: proxmox
-          url: https://10.0.0.5:8006
-          username: api1@pam!homepage
-          password: 6e301f48-ad45-4d4e-8e15-d1ebecc577c6
-          node: george # optional
+   
