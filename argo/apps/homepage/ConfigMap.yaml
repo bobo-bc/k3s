@@ -10,55 +10,55 @@ data:
     mode: cluster
  # settings.yaml: ""
   settings.yaml: |
-      - Apps:
-        - HomeAssistant:
-            icon: home-assistant.png
-            href: http://10.0.0.7:8123
-            ping: http://10.0.0.7:8123
-            description: home automation
-        - Wordpress:
-            icon: wordpress.png
-            href: https://stevenfmeyer.me
-            description: my blog
-            namespace: media # The kubernetes namespace the app resides in
-            app: wordpress # The name of the deployed app
-        - drawio:
-            icon: draw-io.svg
-            href: http://10.0.0.31
-            description: Visio type drawing tool
-            namespace: tools # The kubernetes namespace the app resides in
-            app: drawio # The name of the deployed app
-        - plex:
-            icon: plex.png
-            href: http://10.0.0.10:32400/web/
-            description: Media Viewer
-            app: plex # The name of the deployed app
-        - portainer:
-            icon: portainer.png
-            href: http://10.0.0.22:9000/
-            description: Kubernetes viewer
+    - Apps:
+       - HomeAssistant:
+          icon: home-assistant.png
+          href: http://10.0.0.7:8123
+          ping: http://10.0.0.7:8123
+          description: home automation
+      - Wordpress:
+          icon: wordpress.png
+          href: https://stevenfmeyer.me
+          description: my blog
+          namespace: media # The kubernetes namespace the app resides in
+          app: wordpress # The name of the deployed app
+     - drawio:
+          icon: draw-io.svg
+          href: http://10.0.0.31
+          description: Visio type drawing tool
+          namespace: tools # The kubernetes namespace the app resides in
+          app: drawio # The name of the deployed app
+      - plex:
+          icon: plex.png
+          href: http://10.0.0.10:32400/web/
+          description: Media Viewer
+          app: plex # The name of the deployed app
+      - portainer:
+          icon: portainer.png
+          href: http://10.0.0.22:9000/
+          description: Kubernetes viewer
      #    namespace: media # The kubernetes namespace the app resides in
-            app: portainer # The name of the deployed app
+          app: portainer # The name of the deployed app
     - Servarr:
-        - sonarr:
-            icon: sonarr.png
-            href: http://10.0.0.23
-            description: TV shows manager
+       - sonarr:
+          icon: sonarr.png
+          href: http://10.0.0.23
+          description: TV shows manager
     #        namespace: media # The kubernetes namespace the app resides in
-            app: sonarr # The name of the deployed app
+          app: sonarr # The name of the deployed app
 
-        - radarr:
-            icon: radarr.png
-            href: http://10.0.0.24
-            description: Movie manager
-      #   namespace: media # The kubernetes namespace the app resides in
-            app: radarr # The name of the deployed app
-        - lidarr:
-            icon: lidarr.png
-            href: http://10.0.0.25
-            description: Music manager
-  #          namespace: media # The kubernetes namespace the app resides in
-            app: lidarr # The name of the deployed app
+       - radarr:
+          icon: radarr.png
+          href: http://10.0.0.24
+          description: Movie manager
+      #  namespace: media # The kubernetes namespace the app resides in
+          app: radarr # The name of the deployed app
+       - lidarr:
+          icon: lidarr.png
+          href: http://10.0.0.25
+          description: Music manager
+  #        namespace: media # The kubernetes namespace the app resides in
+          app: lidarr # The name of the deployed app
   #  providers:
   #    longhorn:
   #      url: https://longhorn.my.network
