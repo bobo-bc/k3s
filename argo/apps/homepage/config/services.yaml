@@ -38,8 +38,8 @@
         icon: it-tools.png
         href: http://10.0.0.32
         description: bundle of handy tech tools
-        namespace: it-tools 
-        app: tools
+        namespace: tools 
+        app: it-tools
 
 - Servarr:
     - sonarr:
