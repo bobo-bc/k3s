@@ -46,12 +46,12 @@
 
 
 - Servarr:
-    - sonarr:
-        icon: sonarr.png
-        href: http://10.0.0.27
-        description: TV shows manager
+   # - sonarr:
+        #icon: sonarr.png
+        #href: http://10.0.0.27
+        #description: TV shows manager
     #    namespace: media # The kubernetes namespace the app resides in
-        app: sonarr # The name of the deployed app
+        #app: sonarr # The name of the deployed app
 
     - radarr:
         icon: radarr.png
