@@ -12,3 +12,5 @@ data:
     - name: Test
       icon: mdi:home
       url: http://localhost
+ kubernetes.yaml: |
+    - mode: cluster
