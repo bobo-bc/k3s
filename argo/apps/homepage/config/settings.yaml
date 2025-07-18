@@ -14,7 +14,7 @@ color: slate
 statusStyle: "dot"
 hideVersion: true
 disableUpdateCheck: true
-headerStyle: boxedWidgets
+headerStyle: boxed
 layout:
   Media:
     columns: 3
