@@ -16,7 +16,7 @@ hideVersion: true
 disableUpdateCheck: true
 headerStyle: boxed
 layout:
-  infra: 
+  Infra: 
     column: 3
     style: row
     icon: mdi-folder-multiple-image
