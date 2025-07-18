@@ -3,17 +3,23 @@ kind: Deployment
 metadata:
   name: it-tools
   namespace: tools
+  annotations:
+    argocd.argoproj.io/tracking-id: it-tools:apps/Deployment:tools/it-tools
   labels:
-    app: it-tools
+    app.kubernetes.io/name: it-tools
+    app.kubernetes.io/instance: it-tools
+    app.kubernetes.io/part-of: homepage
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: it-tools
+      app.kubernetes.io/name: it-tools
+      app.kubernetes.io/instance: it-tools
   template:
     metadata:
       labels:
-        app: it-tools
+        app.kubernetes.io/name: it-tools
+        app.kubernetes.io/instance: it-tools
     spec:
       securityContext:
         fsGroup: 1000
