@@ -44,7 +44,7 @@ data:
           icon: sonarr.png
           href: http://10.0.0.23
           description: TV shows manager
-    #        namespace: media # The kubernetes namespace the app resides in
+          namespace: media # The kubernetes namespace the app resides in
           app: sonarr # The name of the deployed app
 
        - radarr:
