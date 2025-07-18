@@ -5,7 +5,6 @@ namespace: homepage
 
 resources:
   - serviceaccount.yaml
-  - secret.yaml
   - clusterRole.yaml
   - deployment.yaml
   - service.yaml
