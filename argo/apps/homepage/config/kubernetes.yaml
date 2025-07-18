@@ -1,1 +1,4 @@
 mode: cluster
+serviceAccount: homepage
+namespace_selector:
+  - media
