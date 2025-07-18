@@ -80,10 +80,10 @@
 
     - transmission:
        icon: transmission.png
-       href: http://10.0.0.38/
+       href: http://10.0.0.28/
        description: downloader
        namespace: media
-       app: Transmission
+       app: transmission
 
 - Host:
     - Proxmox:
