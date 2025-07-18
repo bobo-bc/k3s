@@ -29,7 +29,8 @@ spec:
               protocol: TCP
           volumeMounts:
             - name: homepage-config
-              mountPath: /app/config 
+              mountPath: /app/config
+              readOnly: true
             - name: logs
               mountPath: /app/config/logs
       volumes:
