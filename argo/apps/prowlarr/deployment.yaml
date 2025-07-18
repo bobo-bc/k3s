@@ -13,7 +13,7 @@ spec:
   template:
     metadata:
       labels:
-        app: prowlarr
+      app.kubernetes.io/name: prowlarr
     spec:
       securityContext:
         fsGroup: 1000
