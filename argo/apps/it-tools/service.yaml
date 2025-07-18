@@ -9,7 +9,7 @@ metadata:
     homepage/namespace: "tools"
     homepage/url: "http://10.0.0.32"
     homepage/icon: "terminal"
-    homepage/group: "Tools"
+    homepage/group: "tools"
     homepage/statusStyle: "dot"
     metallb.io/ip-allocated-from-pool: default-address-pool
   labels:
