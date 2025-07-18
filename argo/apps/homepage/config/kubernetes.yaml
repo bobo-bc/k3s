@@ -1,4 +1,10 @@
-mode: cluster
-serviceAccount: homepage
-namespace_selector:
-  - media
+kubernetes:
+  mode: cluster
+  serviceAccount: homepage
+  namespace_selector:
+    - media
+    - homepage
+    - kube-system  # optional, if you want dashboard or metrics
+    - tools
+    - default
+    - homepage
