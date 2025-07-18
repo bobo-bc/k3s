@@ -4,7 +4,6 @@ kubernetes:
   namespace_selector:
     - media
     - homepage
-    - kube-system  # optional, if you want dashboard or metrics
     - tools
     - default
     - homepage
