@@ -15,6 +15,7 @@ statusStyle: "dot"
 hideVersion: true
 disableUpdateCheck: true
 headerStyle: boxed
+useEqualHeights: true
 layout:
   Infra: 
     column: 3
