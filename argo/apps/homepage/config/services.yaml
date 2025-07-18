@@ -12,15 +12,15 @@
         icon: ghost-light.png
         href: https://stevenfmeyer.me
         description: my blog
-        namespace: default # The kubernetes namespace the app resides in
-        app: ghost # The name of the deployed app
+        namespace: default 
+        app: ghost 
 
-    - drawio:
-        icon: draw-io.svg
-        href: http://10.0.0.36
-        description: Visio type drawing tool
-        namespace: tools # The kubernetes namespace the app resides in
-        app: drawio # The name of the deployed app
+    - Wiki
+        icon: wikijs.png
+        href: wiki.stevenfemeyer.me
+        description: technical notes
+        namespace: media
+        app: wikijs
 
     - plex:
         icon: plex.png
@@ -32,51 +32,64 @@
         icon: portainer.png
         href: http://10.0.0.21:9000/
         description: Kubernetes viewer
-        namespace: portainer # The kubernetes namespace the app resides in
-        app: portainer # The name of the deployed app
+        namespace: portainer 
+        app: portainer 
+
+    - drawio:
+        icon: draw-io.svg
+        href: http://10.0.0.31
+        description: Visio type drawing tool
+        namespace: tools 
+        app: drawio 
+    - it-tools:
+        icon: it-tools.png
+        href: http://10.0.0.32
+        description: bundle of handy tech tools
+        namespace: it-tools 
+        app: tools 
 
 - Servarr:
     - sonarr:
         icon: sonarr.png
         href: http://10.0.0.23
         description: TV shows manager
-        namespace: media # The kubernetes namespace the app resides in
-        app: sonarr # The name of the deployed app
+        namespace: media 
+        app: sonarr 
 
     - radarr:
         icon: radarr.png
         href: http://10.0.0.24
         description: Movie manager
-        namespace: media # The kubernetes namespace the app resides in
-        app: radarr # The name of the deployed app
+        namespace: media 
+        app: radarr 
 
     - lidarr:
         icon: lidarr.png
         href: http://10.0.0.25
         description: Music manager
-        namespace: media # The kubernetes namespace the app resides in
-        app: lidarr # The name of the deployed app
+        namespace: media 
+        app: lidarr 
 
     - lazyLibrarian:
         icon: lazylibrarian.png
         href: http://10.0.0.26
         description: books manager
-        namespace: media # The kubernetes namespace the app resides in
-        app: lazylibrarian # The name of the deployed app
+        namespace: media 
+        app: lazylibrarian 
 
     - kavita:
         icon: kavita.png
         href: http://10.0.0.29
         description: Online book reader
-        namespace: media # The kubernetes namespace the app resides in
-        app: kavita # The name of the deployed app
+        namespace: media 
+        app: kavita 
 
     - prowlarr:
         icon: prowlarr.png
         href: http://10.0.0.27
         description: Index server
-        namespace: media # The kubernetes namespace the app resides in
-        app: prowlarr # The name of the deployed app
+        namespace: media 
+        app: prowlarr 
 
     - transmission:
        icon: transmission.png
@@ -103,8 +116,8 @@
         ping: https://10.0.9:8007/
         description: backup server
 
-    - NAS:
-       icon: webmin.png
+    - TrueNAS:
+       icon: TrueNas-scale.png
        href: https://10.0.0.3/
        ping : https:/10.0.0.3
        description: NAS management gui
