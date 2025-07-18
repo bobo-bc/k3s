@@ -5,15 +5,21 @@ metadata:
   namespace: media
   labels:
     app.kubernetes.io/name: prowlarr
+    app.kubernetes.io/instance: prowlarr
 spec:
   replicas: 1
+  strategy:
+    type: Recreate
   selector:
     matchLabels:
       app.kubernetes.io/name: prowlarr
+      app.kubernetes.io/instance: prowlarr
   template:
     metadata:
       labels:
         app.kubernetes.io/name: prowlarr
+        app.kubernetes.io/instance: prowlarr
+        app.kubernetes.io/part-of: homepage
     spec:
       securityContext:
         fsGroup: 1000
