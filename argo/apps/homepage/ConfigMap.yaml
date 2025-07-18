@@ -8,8 +8,8 @@ metadata:
 data:
   kubernetes.yaml: |
     mode: cluster
- # settings.yaml: ""
-  settings.yaml: |
+  settings.yaml: ""
+ # settings.yaml: |
     - Apps:
        - HomeAssistant:
           icon: home-assistant.png
