@@ -13,6 +13,7 @@ configMapGenerator:
   - name: homepage
     namespace: homepage
     files:
+      - kubernetes.yaml=config/kubernetes.yaml
       - settings.yaml=config/settings.yaml
       - services.yaml=config/services.yaml
       - widgets.yaml=config/widgets.yaml
