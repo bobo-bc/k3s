@@ -36,7 +36,7 @@ spec:
               mountPath: /kavita/config
       containers:
         - name: kavita
-          image: jvmilazz0/kavita:latest
+          image: ghcr.io/corentinth/it-tools:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 5000
