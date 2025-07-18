@@ -125,7 +125,7 @@
         namespace: portainer 
         app: portainer 
     - ArgoCD:
-        icon: argocd.png
+        icon: argo-cd.png
         href: http://10.0.0.34/
         decription: deployment tool
           
