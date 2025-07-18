@@ -8,9 +8,6 @@ metadata:
 data:
   kubernetes.yaml: |
     mode: cluster
-    serviceAccount:
-      create: true
-      name: homepage
     discovery:
       enabled: true
 #  settings.yaml: ""
