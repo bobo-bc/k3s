@@ -8,7 +8,7 @@ metadata:
     homepage/description: "TV Show Downloader"
     homepage/group: "Media"
     homepage/icon: "sonarr"
-    homepage/url: 
+    homepage/url: http://sonarr.lan/
     metallb.io/ip-allocated-from-pool: default-address-pool
 spec:
   type: LoadBalancer
