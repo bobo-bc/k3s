@@ -6,7 +6,12 @@ metadata:
   labels:
     app: prowlarr
   annotations:
-    metallb.universe.tf/ip-allocated-from-pool: home-pool
+    homepage/name: "Rrowlarr"
+    homepage/group: "Media"
+    homepage/url: "http://prowlarr.lan"
+    homepage/icon: "prowlarr"
+    homepage/namespace: "media"
+    homepage/statusStyle: "dot"
 spec:
   type: LoadBalancer
   loadBalancerIP: 10.0.0.27
