@@ -125,9 +125,9 @@
 
     - PiHole:
         icon: pi-hole-unbound.png
-        ping: http://pihole.lan/admin
         href: http://pihole.lan/admin
         namespace: tools
+        app: pihole
         description: dns management
         
     - PiHole2:
