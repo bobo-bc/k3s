@@ -7,20 +7,19 @@
         href: http://10.0.0.7:8123
         ping: http://10.0.0.7:8123
         description: home automation
-
+        
     - Ghost Blog:
         icon: ghost-light.png
         href: https://stevenfmeyer.me
         description: my blog
-        namespace: default 
-        app: ghost 
+        ping: https:stevenfmeyer.me
 
     - Wiki:
         icon: wikijs.png
         href: https://wiki.stevenfemeyer.me
         description: technical notes
-        namespace: media
-        app: wikijs
+        ping: wiki.stevenfmeyer.me
+    
 
     - plex:
         icon: plex.png
@@ -40,13 +39,14 @@
         href: http://10.0.0.31
         description: Visio type drawing tool
         namespace: tools 
-        app: drawio 
+        app: drawio
+        
     - it-tools:
         icon: it-tools.png
         href: http://10.0.0.32
         description: bundle of handy tech tools
         namespace: it-tools 
-        app: tools 
+        app: tools
 
 - Servarr:
     - sonarr:
@@ -110,6 +110,7 @@
           username: api1@pam!homepage
           password: 6e301f48-ad45-4d4e-8e15-d1ebecc577c6
           node: george # optional
+          
     - Proxmox backup:
         icon: proxmox.png
         href: https://10.0.9:8007/
@@ -128,6 +129,7 @@
         href: http://pihole.lan/admin
         namespace: tools
         description: dns management
+        
     - PiHole2:
         icon: pi-hole.png
         ping: http://10.0.0.4/admin
