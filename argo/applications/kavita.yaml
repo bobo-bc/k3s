@@ -2,11 +2,11 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: kavita
-  namespace: media
+  namespace: argocd
 spec:
   project: default
   source:
-    repoURL: https://github.com/your-username/your-gitops-repo
+    repoURL: https://github.com/bobo-bc/k3s
     targetRevision: HEAD
     path: argo/apps/kavita
   destination:
