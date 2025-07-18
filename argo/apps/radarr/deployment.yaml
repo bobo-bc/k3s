@@ -12,7 +12,6 @@ spec:
   selector:
     matchLabels:
       app.kubernetes.io/name: radarr
-      app.kubernetes.io/instance: radarr
   template:
     metadata:
       labels:
