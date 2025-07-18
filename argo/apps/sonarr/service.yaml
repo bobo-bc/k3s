@@ -12,7 +12,6 @@ metadata:
     gethomepage.dev/widget.type: "emby"
     gethomepage.dev/widget.url: "https://emby.example.com"
     gethomepage.dev/pod-selector: ""
-    gethomepage.dev/weight: 10 # optional
     gethomepage.dev/instance: "public" # optional
     homepage/name: "Sonarr"
     homepage/description: "TV Show Downloader"
