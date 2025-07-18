@@ -20,13 +20,6 @@ spec:
         app.kubernetes.io/name: sonarr
         app.kubernetes.io/instance: sonarr
         app.kubernetes.io/part-of: homepage
-      annotations:
-        gethomepage.dev/enabled: "true"
-        gethomepage.dev/group: Media
-        gethomepage.dev/icon: sonarr.png
-        gethomepage.dev/name: Sonarr
-        gethomepage.dev/url: http://sonarr.lan
-        gethomepage.dev/description: TV show manager
     spec:
       containers:
         - name: sonarr
