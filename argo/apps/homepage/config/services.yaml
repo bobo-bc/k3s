@@ -8,12 +8,12 @@
         ping: http://10.0.0.7:8123
         description: home automation
 
-    - Wordpress:
-        icon: wordpress.png
+    - Ghost Blog:
+        icon: ghost-light.png
         href: https://stevenfmeyer.me
         description: my blog
         namespace: media # The kubernetes namespace the app resides in
-        app: wordpress # The name of the deployed app
+        app: ghost # The name of the deployed app
 
     - drawio:
         icon: draw-io.svg
