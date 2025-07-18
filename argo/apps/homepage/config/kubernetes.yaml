@@ -1,15 +1,14 @@
-kubernetes:
-  mode: cluster
-  serviceAccount: homepage
-  namespace_selector:
-    - media
-    - homepage
-    - tools
-    - default
-    - homepage
-    - argocd
-    - default
-    - ghost
-    - longhorn-systems
-    - metallb-system
+mode: cluster
+serviceAccount: homepage
+namespace_selector:
+  - media
+  - homepage
+  - tools
+  - default
+  - homepage
+  - argocd
+  - default
+  - ghost
+  - longhorn-systems
+  - metallb-system
     
