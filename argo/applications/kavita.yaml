@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: kavita
-  namespace: argocd
+  namespace: media
 spec:
   project: default
   source:
