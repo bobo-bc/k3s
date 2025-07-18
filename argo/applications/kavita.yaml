@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/your-username/your-gitops-repo
     targetRevision: HEAD
-    path: kavita
+    path: argo/apps/kavita
   destination:
     server: https://kubernetes.default.svc
     namespace: media
