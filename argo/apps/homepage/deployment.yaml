@@ -6,10 +6,7 @@ metadata:
   labels:
     app.kubernetes.io/name: homepage
 spec:
-  revisionHistoryLimit: 3
   replicas: 1
-  strategy:
-    type: RollingUpdate
   selector:
     matchLabels:
       app.kubernetes.io/name: homepage
@@ -19,16 +16,13 @@ spec:
         app.kubernetes.io/name: homepage
     spec:
       serviceAccountName: homepage
-      automountServiceAccountToken: true
-      dnsPolicy: ClusterFirst
-      enableServiceLinks: true
       containers:
         - name: homepage
           image: "ghcr.io/gethomepage/homepage:latest"
           imagePullPolicy: Always
           env:
             - name: HOMEPAGE_ALLOWED_HOSTS
-              value: "*" # required, may need port. See gethomepage.dev/installation/#homepage_allowed_hosts
+              value: "*" 
           ports:
             - name: http
               containerPort: 3000
