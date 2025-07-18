@@ -5,6 +5,11 @@ metadata:
   namespace: media
   annotations:
     metallb.io/ip-allocated-from-pool: default-address-pool
+    homepage/name: "Radarr"
+    homepage/group: "Media"
+    homepage/url: "http://10.0.0.27:7878"
+    homepage/icon: "radarr"
+    homepage/namespace: "media"
 spec:
   type: LoadBalancer
   loadBalancerIP: 10.0.0.24
