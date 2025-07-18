@@ -1,123 +1,138 @@
 ---
 # For configuration options and examples, please see:
-# https://gethomepage.dev/configs/settings/
-
-title: Bobo Homepage
-background:
-  image: https://unsplash.com/photos/a-mountain-range-with-a-lake-in-the-foreground-T_Qe4QlMIvQ
-  blur: sm # sm, md, xl... see https://tailwindcss.com/docs/backdrop-blur
-  saturate: 100 # 0, 50, 100... see https://tailwindcss.com/docs/backdrop-saturate
-  brightness: 50 # 0, 50, 75... see https://tailwindcss.com/docs/backdrop-brightness
-  opacity: 100 # 0-100
-theme: dark
-color: slate
-statusStyle: "basic"
-hideVersion: true
-layout:
-  Media:
-    columns: 3
-    style: row
-    icon: mdi-folder-multiple-image
-  Apps:
-    columns: 5
-    style: row
-    icon: mdi-folder-multiple-image
-  Servarr:
-    columns: 5
-    style: row
-    icon: mdi-folder-multiple-image
-  Host:
-    columns: 5
-    style: row
-    icon: mdi-folder-multiple-image
-providers:
-  longhorn:
-    url: http://10.0.0.20
-/app/config # cat services.yaml 
----
-# For configuration options and examples, please see:
-# https://gethomepage.dev/configs/services/
-
+# https://gethomepage.dev/latest/configs/services
 - Apps:
-   - HomeAssistant:
+    - HomeAssistant:
         icon: home-assistant.png
         href: http://10.0.0.7:8123
+        ping: http://10.0.0.7:8123
         description: home automation
-   - Ghost Blog:
-        icon: ghost-light.png
+
+    - Wordpress:
+        icon: wordpress.png
         href: https://stevenfmeyer.me
         description: my blog
         namespace: media # The kubernetes namespace the app resides in
-   - Drawio:
+        app: wordpress # The name of the deployed app
+
+    - drawio:
         icon: draw-io.svg
-        href: http://drawio.lan
+        href: http://10.0.0.36
         description: Visio type drawing tool
         namespace: tools # The kubernetes namespace the app resides in
-   - Plex:
+        app: drawio # The name of the deployed app
+
+    - plex:
         icon: plex.png
-        href: http://plex.lan:32400/web/
+        href: http://10.0.0.10:32400/web/
         description: Media Viewer
-   - Portainer:
+        app: plex # The name of the deployed app
+
+    - portainer:
         icon: portainer.png
-        href: http://10.0.0.20:9000/
+        href: http://10.0.0.28:9000/
         description: Kubernetes viewer
+    #    namespace: media # The kubernetes namespace the app resides in
+        app: portainer # The name of the deployed app
+
+    - grafana:
+        icon: grafana.png
+        href: http://10.0.0.40
+        description: monitoring tool
+   #     namespace: monitoring # The kubernetes namespace the app resides in
+        app: monitoring-grafana # The name of the deployed app
+
+
+
+
 - Servarr:
-    - Sonarr:
+    - sonarr:
         icon: sonarr.png
-        href: http://sonarr.lan/
+        href: http://10.0.0.27
         description: TV shows manager
-    - Radarr:
-       icon: radarr.png
-       href: http://radarr.lan/
-       description: Movie manager
-    - Lidarr:
-       icon: lidarr.png
-       href: http://lidarr.lan/
-       description: Music manager
-    - LazyLibrarian:
-       icon: lazylibrarian.png
-       href: http://library.lan/
-       description: books manager
-    - Kavita:
+    #    namespace: media # The kubernetes namespace the app resides in
+        app: sonarr # The name of the deployed app
+
+    - radarr:
+        icon: radarr.png
+        href: http://10.0.0.29
+        description: Movie manager
+     #   namespace: media # The kubernetes namespace the app resides in
+        app: radarr # The name of the deployed app
+
+    - lidarr:
+        icon: lidarr.png
+        href: http://10.0.0.30
+        description: Music manager
+  #      namespace: media # The kubernetes namespace the app resides in
+        app: lidarr # The name of the deployed app
+
+    - readarr:
+        icon: readarr.png
+        href: http://10.0.0.31
+        description: books manager
+ #       namespace: media # The kubernetes namespace the app resides in
+        app: readarr # The name of the deployed app
+
+    - kavita:
         icon: kavita.png
-        href: http://kavita.lan/
+        href: http://10.0.0.37
         description: Online book reader
-    - Prowlarr:
+#        namespace: media # The kubernetes namespace the app resides in
+        app: kavita # The name of the deployed app
+
+    - prowlarr:
         icon: prowlarr.png
-        href: http://prowlarr.lan/
+        href: http://10.0.0.32
         description: Index server
-    - Transmission:
-        icon: transmission.png
-        href: http://transmission.lan/
-        description: downloader
+#        namespace: media # The kubernetes namespace the app resides in
+        app: prowlarr # The name of the deployed app
+
+    - transmission:
+       icon: transmission.png
+       href: http://10.0.0.33/
+       description: downloader
+ #      namespace: media
+       app: Transmission
+
 - Host:
     - Proxmox:
         icon: proxmox.png
-        href: https://proxmox.lan:8006/
+        href: https://10.0.0.5:8006
+        ping: https://10.0.0.5:8006
         description: proxmox host
-           # widget:
-             # type: proxmox
-             # url: https://proxmox.lan:8006/
-             # username: api1@pam!homepage
-             # password: 6e301f48-ad45-4d4e-8e15-d1ebecc577c6
-             # node: george # optional
+        widget:
+          type: proxmox
+          url: https://10.0.0.5:8006
+          username: api1@pam!homepage
+          password: 6e301f48-ad45-4d4e-8e15-d1ebecc577c6
+          node: george # optional
     - Proxmox backup:
         icon: proxmox.png
         href: https://10.0.9:8007/
+        ping: https://10.0.9:8007/
         description: backup server
+
     - NAS:
-        icon: truenas-scale.png
-        href: https://nas.lan/
-        description: NAS management gui
+       icon: webmin.png
+       href: https://10.0.0.3/
+       ping : https:/10.0.0.3
+       description: NAS management gui
+
     - PiHole:
-        icon: pi-hole-unbound.png
-        href: http://pihole.lan/admin
+        icon: pi-hole.png
+        ping: http://10.0.0.4/admin
+        href: http://10.0.0.4/admin
         description: dns management
-    - PiHole2:                                                         
-        icon: pi-hole-unbound.png                                     
-        href: http://pihole2.lan/admin                                  
-        description: dns management
+#        widget:
+#          type: pihole
+#          url: http://10.0.0.4
+#          version: 5 # required if running v6 or higher, defaults to 5
+#          key: 197c257b0324c3cb6039773708c67f45bcc0d12ca96e6a7e57bb33e19a197da>
+
     - longhorn:
-        icon: longhorn.png
-        href: http://longhorn.lan/
-        description: Persistent Volume viewer
+       icon: longhorn.png
+       href: http://10.0.0.26/
+       description: Persistent Volume viewer
+       namespace: media
+       app: Longhorn
