@@ -17,7 +17,7 @@ disableUpdateCheck: true
 headerStyle: boxed
 layout:
   infra: 
-    column: 2
+    column: 3
     style: row
     icon: mdi-folder-multiple-image
   Apps:
