@@ -20,15 +20,6 @@
     cpu: false
     memory: false
        # network: default
-- longhorn:
-    # Show the expanded view
-    expanded: true
-    # Shows a node representing the aggregate values
-    total: true
-    # Shows the node names as labels
-    labels: true
-    # Show the nodes
-    nodes: true
 - search:
     provider: google
     target: _blank
