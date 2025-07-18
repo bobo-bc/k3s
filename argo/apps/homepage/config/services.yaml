@@ -138,7 +138,7 @@
 
     - longhorn:
        icon: longhorn.png
-       href: http://10.0.0.20/
+       href: http://10.0.0.21
        description: Persistent Volume viewer
        namespace: longhorn-system
-       app: Longhorn
+       app: longhorn
