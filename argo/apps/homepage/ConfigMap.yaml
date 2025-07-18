@@ -1,16 +1,14 @@
-piVersion: v1
+apiVersion: v1
 kind: ConfigMap
 metadata:
   name: homepage
   namespace: homepage
 data:
-  settings.yaml: |-
-    # your settings.yaml content here
-  services.yaml: |-
-    # your services.yaml content here
-  widgets.yaml: |-
-    # your widgets.yaml content here
-  bookmarks.yaml: |-
-    # your bookmarks.yaml content here
-  kubernetes.yaml: |-
-    mode: cluster
+  settings.yaml: |
+    title: Minimal Homepage
+    layout:
+      - main
+  services.yaml: |
+    - name: Test
+      icon: mdi:home
+      url: http://localhost
