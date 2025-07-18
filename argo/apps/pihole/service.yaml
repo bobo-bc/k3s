@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: pihole
+  namespace: tools
+  annotations:
+    metallb.universe.tf/ip-allocated-from-pool: home-pool
+spec:
+  type: LoadBalancer
+  loadBalancerIP: 10.0.0.33
+  selector:
+    app.kubernetes.io/name: pihole
+    app.kubernetes.io/instance: pihole
+  ports:
+    - name: web
+      port: 80
+      targetPort: 80
+      protocol: TCP
+    - name: dns-tcp
+      port: 53
+      targetPort: 53
+      protocol: TCP
+    - name: dns-udp
+      port: 53
+      targetPort: 53
+      protocol: UDP
