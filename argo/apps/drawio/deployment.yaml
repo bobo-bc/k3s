@@ -4,16 +4,22 @@ metadata:
   name: drawio
   namespace: tools
   labels:
-    app: drawio
+    app.kubernetes.io/name: drawio
+    app.kubernetes.io/instance: drawio
+    app.kubernetes.io/part-of: homepage
+  annotations:
+    argocd.argoproj.io/tracking-id: drawio:apps/Deployment:tools/drawio
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: drawio
+      app.kubernetes.io/name: drawio
+      app.kubernetes.io/instance: drawio
   template:
     metadata:
       labels:
-        app: drawio
+        app.kubernetes.io/name: drawio
+        app.kubernetes.io/instance: drawio
     spec:
       containers:
         - name: drawio
@@ -22,8 +28,8 @@ spec:
           ports:
             - containerPort: 8080
           volumeMounts:
-            - name: drawio-storage
-              mountPath: /data
+            - mountPath: /data
+              name: drawio-storage
       volumes:
         - name: drawio-storage
           persistentVolumeClaim:
