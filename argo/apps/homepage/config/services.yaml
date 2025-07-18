@@ -83,7 +83,7 @@
        href: http://10.0.0.28/
        description: downloader
        namespace: media
-       app: transmission
+       app: transmission-vpn
 
 - Host:
     - Proxmox:
@@ -110,9 +110,10 @@
        description: NAS management gui
 
     - PiHole:
-        icon: pi-hole.png
+        icon: pi-hole-unbound.png
         ping: http://pihole.lan/admin
         href: http://pihole.lan/admin
+        namespace: tools
         description: dns management
     - PiHole2:
         icon: pi-hole.png
@@ -124,5 +125,5 @@
        icon: longhorn.png
        href: http://10.0.0.20/
        description: Persistent Volume viewer
-       namespace: media
+       namespace: longhorn-system
        app: Longhorn
