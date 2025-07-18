@@ -18,15 +18,6 @@ spec:
     metadata:
       labels:
         app.kubernetes.io/name: radarr
-        app.kubernetes.io/instance: radarr
-        app.kubernetes.io/part-of: homepage
-      annotations:
-        gethomepage.dev/enabled: "true"
-        gethomepage.dev/group: Media
-        gethomepage.dev/icon: radarr.png
-        gethomepage.dev/name: Radarr
-        gethomepage.dev/url: http://radarr.lan
-        gethomepage.dev/description: Movie manager
     spec:
       containers:
         - name: radarr
