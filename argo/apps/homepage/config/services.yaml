@@ -90,8 +90,7 @@
        description: downloader
        namespace: media
        app: transmission-vpn
-
--Host:
+- Host:
     - TrueNAS:
        icon: truenas-scale.png
        href: https://10.0.0.3/
