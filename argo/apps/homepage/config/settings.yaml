@@ -11,8 +11,10 @@ background:
   opacity: 100 # 0-100
 theme: dark
 color: slate
-statusStyle: "basic"
+statusStyle: "dot"
 hideVersion: true
+disableUpdateCheck: true
+headerStyle: boxedWidgets
 layout:
   Media:
     columns: 3
