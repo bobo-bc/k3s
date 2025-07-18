@@ -62,7 +62,7 @@
         href: http://10.0.0.26
         description: books manager
         namespace: media # The kubernetes namespace the app resides in
-        app: readarr # The name of the deployed app
+        app: lazylibrarian # The name of the deployed app
 
     - kavita:
         icon: kavita.png
