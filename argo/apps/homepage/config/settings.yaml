@@ -16,6 +16,10 @@ hideVersion: true
 disableUpdateCheck: true
 headerStyle: boxed
 layout:
+  infra: 
+    column: 2
+    style: row
+    icon: mdi-folder-multiple-image
   Apps:
     columns: 4
     style: row
