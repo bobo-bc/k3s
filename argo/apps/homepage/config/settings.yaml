@@ -17,15 +17,15 @@ disableUpdateCheck: true
 headerStyle: boxed
 layout:
   Apps:
-    columns: 5
+    columns: 4
     style: row
     icon: mdi-folder-multiple-image
   Servarr:
-    columns: 5
+    columns: 4
     style: row
     icon: mdi-folder-multiple-image
   Host:
-    columns: 5
+    columns: 4
     style: row
     icon: mdi-folder-multiple-image
 providers:
