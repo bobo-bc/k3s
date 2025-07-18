@@ -124,7 +124,11 @@
         description: Kubernetes viewer
         namespace: portainer 
         app: portainer 
-  
+    - ArgoCD:
+        icon: argocd.png
+        href: http://10.0.0.34/
+        decription: deployment tool
+          
     - longhorn:
        icon: longhorn.png
        href: http://10.0.0.21
