@@ -17,7 +17,7 @@
 
     - Wiki
         icon: wikijs.png
-        href: wiki.stevenfemeyer.me
+        href: https://wiki.stevenfemeyer.me
         description: technical notes
         namespace: media
         app: wikijs
