@@ -11,4 +11,5 @@ namespace_selector:
   - ghost
   - longhorn-systems
   - metallb-system
+  - kube-system
     
