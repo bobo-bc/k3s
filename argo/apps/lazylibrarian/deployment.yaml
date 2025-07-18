@@ -20,10 +20,11 @@ spec:
         app.kubernetes.io/part-of: homepage
       annotations:
         homepage/enabled: "true"
-        homepage/group: Media
+        homepage/namespace: media
+        homepage/group: media
         homepage/icon: lazylibrarian.png
-        homepage/name: Lazylibrarian
-        homepage/url: http://lazylibrarian.lan
+        homepage/name: lazylibrarian
+        homepage/url: http://10.0.0.28
         homepage/description: book manager
     spec:
       containers:
