@@ -15,6 +15,7 @@ rules:
     verbs:
       - get
       - list
+      - watch
   - apiGroups:
       - extensions
       - networking.k8s.io
