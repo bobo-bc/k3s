@@ -6,8 +6,8 @@ metadata:
     app.kubernetes.io/name: homepage
 rules:
   - apiGroups: [""]
-    resources: ["namespaces", "pods", "nodes"]
-    verbs: ["get", "list"]
+    resources: ["namespaces", "services", "pods", "nodes"]
+    verbs: ["get", "list", "watch"]
   - apiGroups: ["extensions", "networking.k8s.io"]
     resources: ["ingresses"]
     verbs: ["get", "list"]
