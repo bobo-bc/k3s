@@ -15,7 +15,7 @@
         namespace: default 
         app: ghost 
 
-    - Wiki
+    - Wiki:
         icon: wikijs.png
         href: https://wiki.stevenfemeyer.me
         description: technical notes
