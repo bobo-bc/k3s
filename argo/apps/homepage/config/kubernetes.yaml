@@ -7,3 +7,9 @@ kubernetes:
     - tools
     - default
     - homepage
+    - argocd
+    - default
+    - ghost
+    - longhorn-systems
+    - metallb-system
+    
