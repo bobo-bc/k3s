@@ -5,7 +5,8 @@ metadata:
   namespace: monitoring
 spec:
   selector:
-    app: uptime-kuma
+    app.kubernetes.io/name: uptime-kuma
+    app.kubernetes.io/instance: uptime-kuma
   type: LoadBalancer
   loadBalancerIP: 10.0.0.36
   ports:
