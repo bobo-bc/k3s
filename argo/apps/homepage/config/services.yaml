@@ -17,7 +17,7 @@
 
     - Wiki:
         icon: wikijs.png
-        href: https://wiki.stevenfemeyer.me
+        href: https://wiki.stevenfmeyer.me
         description: technical notes
         ping: wiki.stevenfmeyer.me
     
@@ -120,7 +120,7 @@
 
     - portainer:
         icon: portainer.png
-        href: http://10.0.0.21:9000/
+        href: http://10.0.0.20:9000/
         description: Kubernetes viewer
         namespace: portainer 
         app: portainer 
