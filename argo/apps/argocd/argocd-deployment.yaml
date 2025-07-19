@@ -1,0 +1,38 @@
+# Argo CD Official Install Manifest
+# Source: https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+# Modified: Added MetalLB IP, homepage labels, and annotations
+
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: argocd
+---
+# ... other Argo CD components remain unchanged ...
+# You’ll paste the full official file here, unchanged — until you reach the section below
+
+# At the bottom of the file, replace the `argocd-server` Service block with this:
+apiVersion: v1
+kind: Service
+metadata:
+  name: argocd-server
+  namespace: argocd
+  labels:
+    app.kubernetes.io/name: argocd-server
+    homepage.group: GitOps
+    homepage.icon: argo
+    homepage.description: Argo CD
+  annotations:
+    homepage.href: http://10.0.0.34
+spec:
+  type: LoadBalancer
+  loadBalancerIP: 10.0.0.34
+  ports:
+    - name: http
+      port: 80
+      targetPort: 8080
+    - name: https
+      port: 443
+      targetPort: 8080
+  selector:
+    app.kubernetes.io/name: argocd-server
