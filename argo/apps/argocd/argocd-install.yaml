@@ -1,29 +1,19 @@
 apiVersion: v1
-kind: Namespace
-metadata:
-  name: argocd
-  labels:
-    homepage.group: "Cluster"
-    homepage.name: "Argo CD"
-    homepage.icon: "argocd.png"
-    homepage.weight: "10"
----
-apiVersion: v1
 kind: Service
 metadata:
   name: argocd-server
   namespace: argocd
   labels:
     app.kubernetes.io/name: argocd-server
-    homepage.group: "Cluster"
-    homepage.name: "Argo CD"
-    homepage.icon: "argocd.png"
+    app.kubernetes.io/part-of: homepage
   annotations:
-    homepage.url: "http://argocd.local"  # Replace with your real hostname
-    homepage.description: "GitOps for Kubernetes"
-    homepage.statusUrl: "http://argocd.local/healthz"  # Optional, if exposed
+    homepage.cloudnative.home/description: "GitOps management with Argo CD"
+    homepage.cloudnative.home/group: "Cluster"
+    homepage.cloudnative.home/icon: "https://raw.githubusercontent.com/argoproj/argo-cd/master/docs/assets/logo.png"
 spec:
   type: LoadBalancer
+  selector:
+    app.kubernetes.io/name: argocd-server
   ports:
     - name: http
       port: 80
@@ -31,9 +21,3 @@ spec:
     - name: https
       port: 443
       targetPort: 8080
-  selector:
-    app.kubernetes.io/name: argocd-server
----
-# The rest of Argo CD's manifests
-# Use official manifests or kustomize if you want to pull in from upstream:
-# https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
