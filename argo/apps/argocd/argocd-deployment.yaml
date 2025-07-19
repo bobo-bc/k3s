@@ -21,7 +21,7 @@ metadata:
     app.kubernetes.io/name: argocd-server
     homepage.group: GitOps
     homepage.icon: argo
-    homepage.description: Argo CD
+    homepage.description: Argo-CD
   annotations:
     homepage.href: http://10.0.0.34
 spec:
