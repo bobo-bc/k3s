@@ -33,6 +33,5 @@ spec:
           command:
             - argocd-server
           args:
-            - --staticassets
-            - /shared/app
-            - --insecure # allows access via HTTP
+            - argocd-server
+            - --insecure
