@@ -22,7 +22,7 @@
        # network: default
 - Uptime:
     - Uptime Kuma:
-        url: http://10.0.0.36:3001/status/main
+        url: http://uptime-kuma.monitoring.svc.cluster.local:3001/status/main
         icon: uptime-kuma.png
         type: uptimekuma
 - search:
