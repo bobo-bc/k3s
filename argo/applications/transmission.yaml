@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/YOUR_USERNAME/your-k8s-repo
+    repoURL: https://github.com/bobo-bc/k3s.git
     targetRevision: main
     path: argo/apps/transmission  # wherever your YAML lives
   destination:
