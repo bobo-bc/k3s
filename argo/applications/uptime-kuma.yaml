@@ -8,13 +8,7 @@ spec:
   source:
     repoURL: https://github.com/bobo-bc/k3s
     targetRevision: HEAD
-    path: apps/uptime-kuma
-    helm:
-      chart: uptime-kuma
-      repoURL: https://bjw-s.github.io/helm-charts
-      version: 2.6.1 # or latest
-      valueFiles:
-        - values.yaml
+    path: argo/apps/uptime-kuma
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring
