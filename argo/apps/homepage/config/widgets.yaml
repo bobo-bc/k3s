@@ -20,11 +20,6 @@
     cpu: false
     memory: false
        # network: default
-- Uptime:
-    - Uptime Kuma:
-        url: http://uptime-kuma.monitoring.svc.cluster.local:3001/status/main
-        icon: uptime-kuma.png
-        type: uptimekuma
 - search:
     provider: google
     target: _blank
