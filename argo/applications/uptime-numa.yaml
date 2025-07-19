@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: uptime-kuma
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/bobo-bc/k3s.git
+    targetRevision: HEAD
+    path: argo/apps/uptime-kuma
+    helm:
+      chart: uptime-kuma
+      repoURL: https://bjw-s.github.io/helm-charts
+      version: latest # or latest
+      valueFiles:
+        - values.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: monitoring
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+    syncOptions:
+      - CreateNamespace=true
