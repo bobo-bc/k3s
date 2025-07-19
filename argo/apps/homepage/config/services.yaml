@@ -124,10 +124,18 @@
         description: Kubernetes viewer
         namespace: portainer 
         app: portainer 
+        
     - ArgoCD:
         icon: argo-cd.png
         href: http://10.0.0.34/
         decription: deployment tool
+
+    - Uptime-Kuma:
+        icon: uptime-kuma.png
+        href: http://10.0.0.36/
+        description: monitoring tool
+        namespace: monitoring
+        app: uptime-kuma
           
     - longhorn:
        icon: longhorn.png
