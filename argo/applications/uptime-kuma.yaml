@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/bobo-bc/k3s.git
+    repoURL: https://github.com/bobo-bc/k3s
     targetRevision: HEAD
     path: argo/apps/uptime-kuma
     helm:
