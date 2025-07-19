@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: argocd-server
+  namespace: argocd
+  labels:
+    app.kubernetes.io/name: argocd-server
+    homepage.group: Platform
+    homepage.name: Argo CD
+    homepage.icon: argo.png
+    homepage.href: http://10.0.0.34
+  annotations:
+    homepage.kubernetes.io/description: GitOps for K3s
+    homepage.kubernetes.io/icon: argo.png
+    homepage.kubernetes.io/group: Platform
+spec:
+  type: LoadBalancer
+  loadBalancerIP: 10.0.0.34
+  ports:
+    - port: 80
+      targetPort: 8080
+      protocol: TCP
+      name: http
+  selector:
+    app.kubernetes.io/name: argocd-server
