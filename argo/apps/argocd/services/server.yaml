@@ -5,6 +5,7 @@ metadata:
   namespace: argocd
   labels:
     app.kubernetes.io/name: argocd-server
+    app.kubernetes.io/instance: argocd-server
     homepage.group: "Platform"
     homepage.name: "Argo CD"
     homepage.icon: "argo.png"
@@ -23,3 +24,4 @@ spec:
       name: http
   selector:
     app.kubernetes.io/name: argocd-server
+        app.kubernetes.io/instance: argo-server
