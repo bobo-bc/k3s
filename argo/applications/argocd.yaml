@@ -31,6 +31,8 @@ spec:
             admin.enabled: true
 
         server:
+          extraArgs:
+           - --port=8080
           service:
             type: LoadBalancer
             loadBalancerIP: 10.0.0.34
