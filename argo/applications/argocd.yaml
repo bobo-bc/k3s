@@ -3,21 +3,32 @@ kind: Application
 metadata:
   name: argocd
   namespace: argocd
+  labels:
+    app.kubernetes.io/name: argocd
+    app.kubernetes.io/instance: argocd
+    homepage/type: helm
+    homepage/weight: "10"
+  annotations:
+    homepage/description: GitOps CD tool
+    homepage/group: infrastructure
+    homepage/icon: https://raw.githubusercontent.com/cncf/artwork/main/projects/argo/icon/color/argo-icon-color.svg
+    homepage/name: Argo CD
+    homepage/url: https://argocd.local
 spec:
   project: default
   source:
-    repoURL: https://github.com/bobo-bc/k3s
-    targetRevision: main
-    path: argo/apps/argocd
+    repoURL: https://argoproj.github.io/argo-helm
+    chart: argo-cd
+    targetRevision: 6.7.14
     helm:
       valueFiles:
-        - values.yaml
+        - https://raw.githubusercontent.com/bobo-bc/k3s/HEAD/argo/apps/argocd/values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd
   syncPolicy:
     automated:
-      selfHeal: true
       prune: true
+      selfHeal: true
     syncOptions:
       - CreateNamespace=true
