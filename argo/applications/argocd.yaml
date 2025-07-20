@@ -9,11 +9,11 @@ metadata:
     homepage/type: helm
     homepage/weight: "10"
   annotations:
-    homepage/description: GitOps CD tool
-    homepage/group: infrastructure
-    homepage/icon: https://raw.githubusercontent.com/cncf/artwork/main/projects/argo/icon/color/argo-icon-color.svg
-    homepage/name: Argo CD
-    homepage/url: http://10.0.0.34
+    homepage/description: "GitOps CD tool"
+    homepage/group: "infrastructure"
+    homepage/icon: "https://raw.githubusercontent.com/cncf/artwork/main/projects/argo/icon/color/argo-icon-color.svg"
+    homepage/name: "Argo CD"
+    homepage/url: "http://10.0.0.34"
 spec:
   project: default
   source:
