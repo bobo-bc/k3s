@@ -15,7 +15,7 @@ metadata:
     homepage/name: "Argo CD"
     homepage/url: "http://10.0.0.34"
 spec:
-    destination:
+  destination:
     server: https://kubernetes.default.svc
     namespace: argocd
   project: default
