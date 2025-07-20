@@ -13,7 +13,7 @@ metadata:
     homepage/group: infrastructure
     homepage/icon: https://raw.githubusercontent.com/cncf/artwork/main/projects/argo/icon/color/argo-icon-color.svg
     homepage/name: Argo CD
-    homepage/url: https://argocd.local
+    homepage/url: http://10.0.0.34
 spec:
   project: default
   source:
