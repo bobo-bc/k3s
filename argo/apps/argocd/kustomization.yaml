@@ -1,8 +1,0 @@
-resources:
-  - namespace.yaml
-  - deployments/server.yaml
-  - deployments/repo-server.yaml
-  - deployments/controller.yaml
-  - deployments/dex.yaml
-  - deployments/redis.yaml
-  - services/server.yaml
