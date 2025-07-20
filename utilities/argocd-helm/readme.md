@@ -2,8 +2,8 @@ I found it easiest and most stable to install argocd from helm. do it as follows
 1. kubectl create namespace argocd
 2. create argocd-values file
 3. add repo:
-4.   
-     helm repo add argo https://argoproj.github.io/argo-helm
+     
+helm repo add argo https://argoproj.github.io/argo-helm
 helm repo update
 
 helm install argocd argo/argo-cd \
