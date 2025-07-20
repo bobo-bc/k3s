@@ -21,11 +21,27 @@ spec:
     chart: argo-cd
     targetRevision: 6.7.14
     helm:
-      valueFiles:
-        - https://raw.githubusercontent.com/bobo-bc/k3s/HEAD/argo/apps/argocd/values.yaml
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: argocd
+      values: |
+        configs:
+          cm:
+            timeout.reconciliation: 30s
+            admin.enabled: true
+
+        server:
+          service:
+            type: LoadBalancer
+            loadBalancerIP: 10.0.0.34
+          ingress:
+            enabled: false
+
+        controller:
+          resources:
+            limits:
+              cpu: 500m
+              memory: 512Mi
+            requests:
+              cpu: 250m
+              memory: 256Mi
   syncPolicy:
     automated:
       prune: true
