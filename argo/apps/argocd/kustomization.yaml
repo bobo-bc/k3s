@@ -1,0 +1,7 @@
+helmCharts:
+  - name: argo-cd
+    repo: https://argoproj.github.io/argo-helm
+    version: latest # pin this to what you used before
+    releaseName: argocd
+    namespace: argocd
+    valuesFile: values.yaml
