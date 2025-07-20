@@ -1,0 +1,13 @@
+# argocd-values.yaml
+server:
+  service:
+    type: LoadBalancer
+    loadBalancerIP: 10.0.0.34
+  ingress:
+    enabled: false
+  extraArgs:
+    - --insecure  # allows http access (no TLS)
+
+configs:
+  params:
+    server.insecure: true
