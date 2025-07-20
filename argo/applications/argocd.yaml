@@ -15,11 +15,11 @@ metadata:
     homepage/name: "Argo CD"
     homepage/url: "http://10.0.0.34"
 spec:
-  project: default
-  source:
     destination:
     server: https://kubernetes.default.svc
     namespace: argocd
+  project: default
+  source:
     repoURL: https://argoproj.github.io/argo-helm
     chart: argo-cd
     targetRevision: 6.7.14
