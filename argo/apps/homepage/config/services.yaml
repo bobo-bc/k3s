@@ -98,26 +98,31 @@
         ping: https://10.0.0.5:8006
         description: proxmox host
 
+    - Proxmox backup:
+        icon: proxmox.png
+        href: https://10.0.9:8007/
+        #ping: https://10.0.9:8007/
+        description: backup server
+
+    - Unifi Gateway:
+       icon: ubiquiti-unifi.png
+       href: http://10.0.0.1
+       description: unifi 
+       ping: 10.0.0.1
+
     - TrueNAS:
         icon: truenas-scale.png
         href: https://10.0.0.3/
         ping : https:/10.0.0.3
         description: NAS management gui
-        
-    - PiHole:
-        icon: pi-hole-unbound.png
-        href: http://pihole.lan/admin
-        namespace: tools
-        app: pihole
-        description: dns management
-        
-    - PiHole2:
-        icon: pi-hole.png
-        ping: http://10.0.0.4/admin
-        href: http://10.0.0.4/admin
-        description: dns management
 
-
+    - longhorn:
+       icon: longhorn.png
+       href: http://10.0.0.21
+       description: Persistent Volume viewer
+       namespace: longhorn-system
+       app: longhorn
+        
     - portainer:
         icon: portainer.png
         href: http://10.0.0.20:9000/
@@ -140,22 +145,18 @@
         namespace: monitoring
         app: uptime-kuma
           
-    - longhorn:
-       icon: longhorn.png
-       href: http://10.0.0.21
-       description: Persistent Volume viewer
-       namespace: longhorn-system
-       app: longhorn
 
-    - Unifi Gateway:
-       icon: ubiquiti-unifi.png
-       href: http://10.0.0.1
-       description: unifi   
-
-    - Proxmox backup:
-        icon: proxmox.png
-        href: https://10.0.9:8007/
-        ping: https://10.0.9:8007/
-        description: backup server
+    - PiHole:
+        icon: pi-hole-unbound.png
+        href: http://pihole.lan/admin
+        namespace: tools
+        app: pihole
+        description: dns management
+        
+    - PiHole2:
+        icon: pi-hole.png
+        ping: http://10.0.0.4/admin
+        href: http://10.0.0.4/admin
+        description: dns management
 
    
