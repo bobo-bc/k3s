@@ -22,7 +22,7 @@ layout:
     style: row
     icon: mdi-folder-multiple-image
   Apps:
-    columns: 4
+    columns: 3
     style: row
     icon: mdi-folder-multiple-image
   Servarr:
@@ -30,7 +30,7 @@ layout:
     style: row
     icon: mdi-folder-multiple-image
   Host:
-    columns: 4
+    columns: 5
     style: row
     icon: mdi-folder-multiple-image
 providers:
