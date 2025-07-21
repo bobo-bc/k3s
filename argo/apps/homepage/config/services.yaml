@@ -134,7 +134,7 @@
         icon: argo-cd.png
         href: http://10.0.0.34/
         decription: deployment tool
-        ping: http://10.0.0.34
+        ping: https://10.0.0.34
 
 
     - Uptime-Kuma:
