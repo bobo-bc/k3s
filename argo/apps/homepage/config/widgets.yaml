@@ -24,6 +24,6 @@
     provider: google
     target: _blank
  - uptimekuma:
-      url: http://10.0.0.34
+      url: https://10.0.0.34
       key:  uk1_tavNiFi0Gdw3JI-1qRxPUlwdoJxmRz5XSmjOtilC
       layout: [2, 1]  # optional: [width, height]
