@@ -20,51 +20,42 @@
     - dietpi lxc:
         - abbr: dx
           icon: https://www.unixmen.com/wp-content/uploads/2014/07/LXC.png
-
           href: https://dietpi.com/blog/?p=2642
-- Build:
 
-    - Wireless modem:
-        - abbr: WF
-          icon: router.png
-          href: http://10.0.0.1
-    - GITHUB:
+- Build:
+    - Namecheap:
+        - abbr: nr
+          icon: https://images.seeklogo.com/logo-png/27/2/namecheap-logo-png_seeklogo-273737.png
+          href: https://www.namecheap.com/
+
+    - Cloudflare:
+        - abbr: cf
+          icon: cloudflare.png
+          href: https://www.cloudflare.com/en-ca/
+    - My GitHub:
         - abbr: GH
           icon: git.png
-          href: https://github.com/bobo-bc/docker-media
-
+          href: https://github.com/bobo-bc/k3s
     - icons:
         - abbr: DR
           icon: homepage.png
           href: https://github.com/homarr-labs/dashboard-icons/tree/main/svg
-    - Swarm:
-        - abbr: ds
-          icon: docker-moby.png
-          href: https://rpi4cluster.com/docker-swarm-intro/
-    - piupmylife:
-        - abbr: UP
-          icon: https://pimylifeup.com/wp-content/uploads/2021/02/pimylifeup-square-logo.png
-          href: https://pimylifeup.com
 
-- Web hosting:
-    - namecheap:
-        - abbr: nr
-          icon: https://images.seeklogo.com/logo-png/27/2/namecheap-logo-png_seeklogo-273737.png
-          href: https://www.namecheap.com/
-    - cloudflare:
-        - abbr: cf
-          icon: cloudflare.png
-          href: https://www.cloudflare.com/en-ca/
 - Reference:
-    - IMDB:
-        - abbr: db
-          icon: https://icon2.cleanpng.com/20180706/bbf/aaxz1nwz7.webp
-          href: https://www.imdb.com
-
     - Dockerholics:
         - abbr: DH
           icon: docker.png
           href: https://petersem.github.io/dockerholics/
+
+    - Swarm:
+        - abbr: ds
+          icon: docker-moby.png
+          href: https://rpi4cluster.com/docker-swarm-intro/
+    - Piupmylife:
+        - abbr: UP
+          icon: https://pimylifeup.com/wp-content/uploads/2021/02/pimylifeup-square-logo.png
+          href: https://pimylifeup.com
+
     - Coursiv AI learning:
         - abbr: AI
           icon: https://blog.coursiv.io/api/media/file/coursiv-logo.svg
