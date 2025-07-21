@@ -19,23 +19,31 @@ useEqualHeights: true
 layout:
   - Main
   - System Health
-tabs: main
-  Infra: 
-    column: 3
-    style: row
-    icon: mdi-folder-multiple-image
-  Apps:
-    columns: 3
-    style: row
-    icon: mdi-folder-multiple-image
-  Servarr:
-    columns: 4
-    style: row
-    icon: mdi-folder-multiple-image
-  Host:
-    columns: 5
-    style: row
-    icon: mdi-folder-multiple-image
+tabs: 
+  - name: main
+    Infra: 
+      column: 3
+      style: row
+      icon: mdi-folder-multiple-image
+    Apps:
+      columns: 3
+      style: row
+      icon: mdi-folder-multiple-image
+    Servarr:
+      columns: 4
+      style: row
+      icon: mdi-folder-multiple-image
+    Host:
+      columns: 5
+      style: row
+      icon: mdi-folder-multiple-image
+tabs:
+  - name: System Health
+    widgets:
+      - glances:
+          url: 10.0.0.12:61208
+          metric: cpu
+          metric: mem
 providers:
   longhorn:
     url: http://10.0.0.20
