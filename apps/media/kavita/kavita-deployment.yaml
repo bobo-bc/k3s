@@ -1,0 +1,66 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kavita
+  namespace: media
+  labels:
+    app: kavita
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kavita
+  template:
+    metadata:
+      labels:
+        app: kavita
+    spec:
+      securityContext:
+        fsGroup: 1000
+      initContainers:
+        - name: fix-permissions
+          image: busybox
+          command: ["sh", "-c", "chown -R 1000:1000 /kavita/config"]
+          volumeMounts:
+            - name: config
+              mountPath: /kavita/config
+      containers:
+        - name: kavita
+          image: jvmilazz0/kavita:latest
+          imagePullPolicy: Always
+          env:
+            - name: TZ
+              value: "America/Vancouver"
+          ports:
+            - containerPort: 5000
+              protocol: TCP
+          volumeMounts:
+            - name: config
+              mountPath: /kavita/config
+            - name: media
+              mountPath: /manga
+      volumes:
+        - name: config
+          persistentVolumeClaim:
+            claimName: kavita-config
+        - name: media
+          nfs:
+            server: 10.0.0.3
+            path: /mnt/tank/data//data/books
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: kavita
+  namespace: media
+  annotations:
+    metallb.universe.tf/ip-allocated-from-pool: home-pool
+spec:
+  selector:
+    app: kavita
+  type: LoadBalancer
+  loadBalancerIP: 10.0.0.37
+  ports:
+    - port: 80
+      targetPort: 5000
+      protocol: TCP

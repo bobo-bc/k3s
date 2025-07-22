@@ -1,0 +1,75 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: media
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: readarr
+  namespace: media
+  labels:
+    app: readarr
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: readarr
+  template:
+    metadata:
+      labels:
+        app: readarr
+    spec:
+      containers:
+      - name: reeadarr
+        image: linuxserver/readarr:latest
+        ports:
+        - containerPort: 8787
+          name: http
+        env:
+        - name: PUID
+          value: "1000"
+        - name: PGID
+          value: "1000"
+        - name: TZ
+          value: "America/Vancouver"
+        volumeMounts:
+        - name: config
+          mountPath: /config
+        - name: books
+          mountPath: /books
+          readOnly: false
+        - name: data
+          mountPath: /downloads
+          readOnly: true
+      volumes:
+      - name: config
+        persistentVolumeClaim:
+          claimName: longhorn-pvc-lazylibrarian-config
+      - name: books
+        persistentVolumeClaim:
+          claimName: nfs-pvc-books
+      - name: data
+        persistentVolumeClaim:
+          claimName: nfs-pvc-torrents
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: readarr
+  namespace: media
+  labels:
+    app: readarr
+spec:
+  type: LoadBalancer
+  loadBalancerIP: 10.0.0.32
+  selector:
+    app: readarr
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8787

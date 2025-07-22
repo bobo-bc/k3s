@@ -1,0 +1,85 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pihole
+  namespace: tools
+  labels:
+    app: pihole
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pihole
+  template:
+    metadata:
+      labels:
+        app: pihole
+    spec:
+      securityContext:
+        fsGroup: 1000
+      initContainers:
+        - name: fix-permissions
+          image: busybox
+          command: ["sh", "-c", "chown -R 1000:1000 /etc/pihole /etc/dnsmasq.d"]
+          volumeMounts:
+            - name: config
+              mountPath: /etc/pihole
+            - name: dnsmasq
+              mountPath: /etc/dnsmasq.d
+      containers:
+        - name: pihole
+          image: pihole/pihole:latest
+          imagePullPolicy: Always
+          env:
+            - name: TZ
+              value: America/Vancouver
+            - name: WEBPASSWORD
+              value: Hurts2p33   # 🔒 Set your admin password
+          ports:
+            - containerPort: 80
+              name: web
+              protocol: TCP
+            - containerPort: 53
+              name: dns-tcp
+              protocol: TCP
+            - containerPort: 53
+              name: dns-udp
+              protocol: UDP
+          volumeMounts:
+            - name: config
+              mountPath: /etc/pihole
+            - name: dnsmasq
+              mountPath: /etc/dnsmasq.d
+      volumes:
+        - name: config
+          persistentVolumeClaim:
+            claimName: pihole-config
+        - name: dnsmasq
+          persistentVolumeClaim:
+            claimName: pihole-dnsmasq
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: pihole
+  namespace: tools
+  annotations:
+    metallb.universe.tf/ip-allocated-from-pool: home-pool
+spec:
+  selector:
+    app: pihole
+  type: LoadBalancer
+  loadBalancerIP: 10.0.0.38
+  ports:
+    - name: web
+      port: 80
+      targetPort: 80
+      protocol: TCP
+    - name: dns-tcp
+      port: 53
+      targetPort: 53
+      protocol: TCP
+    - name: dns-udp
+      port: 53
+      targetPort: 53
+      protocol: UDP
