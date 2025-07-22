@@ -1,0 +1,62 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/configs/bookmarks
+
+- Proxmox:
+    - proxmox backup server install instructions::
+        - abbr: pb
+          icon: proxmox.png
+          href: https://4sysops.com/archives/proxmox-backup-server-install-and-configure/
+
+    - proxmox helper scripts:
+        - abbr: ph
+          icon: https://raw.githubusercontent.com/tteck/Proxmox/main/misc/images/logo.png
+          href: https://community-scripts.github.io/ProxmoxVE/scripts
+    - dietpi proxmox installer:
+        - abbr: pi
+          icon: https://e7.pngegg.com/pngimages/558/768/png-clipart-logo-debian-gnu-linux-computer-icons-linux->
+          href: https://github.com/dazeb/proxmox-dietpi-installer
+
+    - dietpi lxc:
+        - abbr: dx
+          icon: https://www.unixmen.com/wp-content/uploads/2014/07/LXC.png
+          href: https://dietpi.com/blog/?p=2642
+
+- Build:
+    - Namecheap:
+        - abbr: nr
+          icon: https://images.seeklogo.com/logo-png/27/2/namecheap-logo-png_seeklogo-273737.png
+          href: https://www.namecheap.com/
+
+    - Cloudflare:
+        - abbr: cf
+          icon: cloudflare.png
+          href: https://www.cloudflare.com/en-ca/
+    - My GitHub:
+        - abbr: GH
+          icon: git.png
+          href: https://github.com/bobo-bc/k3s
+    - icons:
+        - abbr: DR
+          icon: homepage.png
+          href: https://github.com/homarr-labs/dashboard-icons/tree/main/svg
+
+- Reference:
+    - Dockerholics:
+        - abbr: DH
+          icon: docker.png
+          href: https://petersem.github.io/dockerholics/
+
+    - Swarm:
+        - abbr: ds
+          icon: docker-moby.png
+          href: https://rpi4cluster.com/docker-swarm-intro/
+    - Piupmylife:
+        - abbr: UP
+          icon: https://pimylifeup.com/wp-content/uploads/2021/02/pimylifeup-square-logo.png
+          href: https://pimylifeup.com
+
+    - Coursiv AI learning:
+        - abbr: AI
+          icon: https://blog.coursiv.io/api/media/file/coursiv-logo.svg
+          href: https://coursiv.io/en

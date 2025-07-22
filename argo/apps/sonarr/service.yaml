@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: sonarr
+  namespace: media
+  annotations:
+    homepage.lan/name: "Sonarr"
+    homepage.lan/description: "TV Show Downloader"
+    homepage.lan/group: "Media"
+    homepage.lan/icon: "sonarr"
+    homepage.lan/url: http://sonarr.lan/
+   # metallb.io/ip-allocated-from-pool: default-address-pool
+spec:
+  type: LoadBalancer
+  loadBalancerIP: 10.0.0.23
+  ports:
+    - name: http
+      port: 80
+      targetPort: 8989
+      protocol: TCP
+  selector:
+    app.kubernetes.io/name: sonarr
+    app.kubernetes.io/instance: sonarr

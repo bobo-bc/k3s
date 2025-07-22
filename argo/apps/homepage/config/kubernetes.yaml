@@ -1,0 +1,16 @@
+mode: cluster
+serviceAccount: homepage
+namespace_selector:
+  - media
+  - monitoring
+  - homepage
+  - tools
+  - default
+  - homepage
+  - argocd
+  - default
+  - ghost
+  - longhorn-systems
+  - metallb-system
+  - kube-system
+    

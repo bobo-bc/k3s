@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: uptime-kuma
+  namespace: monitoring
+spec:
+  selector:
+    app.kubernetes.io/name: uptime-kuma
+    app.kubernetes.io/instance: uptime-kuma
+  type: LoadBalancer
+  loadBalancerIP: 10.0.0.36
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 3001

@@ -1,0 +1,160 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/latest/configs/services
+      
+- Apps:
+    - HomeAssistant:
+        icon: home-assistant.png
+        href: http://10.0.0.7:8123
+        ping: http://10.0.0.7:8123
+        description: home automation
+        
+    - Ghost Blog:
+        icon: ghost-light.png
+        href: https://stevenfmeyer.me
+        description: my blog
+        ping: https:stevenfmeyer.me
+
+    - Wiki:
+        icon: wikijs.png
+        href: https://wiki.stevenfmeyer.me
+        description: technical notes
+        ping: wiki.stevenfmeyer.me
+    
+
+    - plex:
+        icon: plex.png
+        href: http://10.0.0.10:32400/web/
+        ping: http://10.0.0.10:32400/
+        description: Media Viewer
+
+    - drawio:
+        icon: draw-io.svg
+        href: http://10.0.0.31
+        description: Visio type drawing tool
+        namespace: tools 
+        app: drawio
+        
+    - it-tools:
+        icon: it-tools.png
+        href: http://10.0.0.32
+        description: bundle of handy tech tools
+        namespace: tools 
+        app: it-tools
+
+- Servarr:
+    - sonarr:
+        icon: sonarr.png
+        href: http://10.0.0.23
+        description: TV shows manager
+        namespace: media 
+        app: sonarr 
+
+    - radarr:
+        icon: radarr.png
+        href: http://10.0.0.24
+        description: Movie manager
+        namespace: media 
+        app: radarr 
+
+    - lidarr:
+        icon: lidarr.png
+        href: http://10.0.0.25
+        description: Music manager
+        namespace: media 
+        app: lidarr 
+
+    - lazyLibrarian:
+        icon: lazylibrarian.png
+        href: http://10.0.0.26
+        description: books manager
+        namespace: media 
+        app: lazylibrarian 
+
+    - kavita:
+        icon: kavita.png
+        href: http://10.0.0.29
+        description: Online book reader
+        namespace: media 
+        app: kavita 
+
+    - prowlarr:
+        icon: prowlarr.png
+        href: http://10.0.0.27
+        description: Index server
+        namespace: media 
+        app: prowlarr 
+
+    - transmission:
+       icon: transmission.png
+       href: http://10.0.0.28/
+       description: downloader
+       namespace: media
+       app: transmission-vpn
+- Host:
+    - Proxmox:
+        icon: proxmox.png
+        href: https://10.0.0.5:8006
+        ping: https://10.0.0.5:8006
+        description: proxmox host
+
+    - Proxmox backup:
+        icon: proxmox.png
+        href: https://10.0.9:8007/
+        #ping: https://10.0.9:8007/
+        description: backup server
+
+    - Unifi Gateway:
+       icon: ubiquiti-unifi.png
+       href: http://10.0.0.1
+       description: unifi 
+       ping: 10.0.0.1
+
+    - TrueNAS:
+        icon: truenas-scale.png
+        href: https://10.0.0.3/
+        ping : https:/10.0.0.3
+        description: NAS management gui
+
+    - longhorn:
+       icon: longhorn.png
+       href: http://10.0.0.21
+       description: Persistent Volume viewer
+       namespace: longhorn-system
+       app: longhorn
+        
+    - portainer:
+        icon: portainer.png
+        href: http://10.0.0.20:9000/
+        description: Kubernetes viewer
+        namespace: portainer 
+        app: portainer 
+        
+    - ArgoCD:
+        icon: argo-cd.png
+        href: http://10.0.0.34/
+        decription: deployment tool
+
+
+    - Uptime-Kuma:
+        icon: uptime-kuma.png
+        href: http://10.0.0.36/
+        description: monitoring tool
+        namespace: monitoring
+        app: uptime-kuma
+          
+
+    - PiHole:
+        icon: pi-hole-unbound.png
+        href: http://pihole.lan/admin
+        namespace: tools
+        app: pihole
+        description: dns management
+        
+    - PiHole2:
+        icon: pi-hole.png
+        ping: http://10.0.0.4/admin
+        href: http://10.0.0.4/admin
+        description: dns management
+
+   

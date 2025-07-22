@@ -1,0 +1,3 @@
+resources:
+  - nfs-volumes.yaml
+  - nfs-pvc.yaml
