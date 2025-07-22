@@ -82,13 +82,13 @@ spec:
           volumeMounts:
             - name: config
               mountPath: /config
-            - name: data
+            - name: torrents
               mountPath: /downloads
       volumes:
         - name: config
           persistentVolumeClaim:
             claimName: sonarr-config
-        - name: data
+        - name: torrents
           persistentVolumeClaim:
             claimName: nfs-pvc-torrents
         - name: tv
