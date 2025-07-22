@@ -127,7 +127,7 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   storageClassName: nfs
   nfs:
-    path: /mnt/tank/books/books
+    path: /mnt/tank/books
     server: 10.0.0.3
 ---
 apiVersion: v1
