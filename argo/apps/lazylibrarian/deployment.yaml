@@ -46,7 +46,7 @@ spec:
               mountPath: /config
             - name: books
               mountPath: /books
-            - name: data
+            - name: torrents
               mountPath: /data
               readOnly: true
       volumes:
@@ -56,6 +56,6 @@ spec:
         - name: books
           persistentVolumeClaim:
             claimName: nfs-pvc-books
-        - name: data
+        - name: torrents
           persistentVolumeClaim:
             claimName: nfs-pvc-torrents
