@@ -83,13 +83,13 @@ spec:
           volumeMounts:
             - name: config
               mountPath: /config
-            - name: data
+            - name: torrents
               mountPath: /data
       volumes:
         - name: config
           persistentVolumeClaim:
             claimName: radarr-config
-        - name: data
+        - name: torrents
           persistentVolumeClaim:
             claimName: nfs-pvc-torrents
         - name: movies
