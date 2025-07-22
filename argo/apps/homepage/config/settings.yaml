@@ -10,7 +10,7 @@ background:
   brightness: 50 # 0, 50, 75... see https://tailwindcss.com/docs/backdrop-brightness
   opacity: 100 # 0-100
 theme: dark
-color: slate
+color: red
 statusStyle: "dot"
 hideVersion: true
 disableUpdateCheck: true
