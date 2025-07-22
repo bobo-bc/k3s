@@ -20,13 +20,6 @@ spec:
         app.kubernetes.io/name: lidarr
         app.kubernetes.io/instance: lidarr
         app.kubernetes.io/part-of: homepage
-      annotations:
-        gethomepage.dev/enabled: "true"
-        gethomepage.dev/group: Media
-        gethomepage.dev/icon: lidarr.png
-        gethomepage.dev/name: Lidarr
-        gethomepage.dev/url: http://lidarr.lan
-        gethomepage.dev/description: Music manager
     spec:
       containers:
         - name: lidarr
@@ -90,11 +83,13 @@ spec:
           volumeMounts:
             - name: config
               mountPath: /config
+            - name: data
+              mountPath: /data
       volumes:
         - name: config
           persistentVolumeClaim:
             claimName: lidarr-config
-        - name: torrents
+        - name: data
           persistentVolumeClaim:
             claimName: nfs-pvc-torrents
         - name: music
