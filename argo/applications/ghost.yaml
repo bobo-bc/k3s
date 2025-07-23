@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ghost
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/youruser/your-repo
+    targetRevision: HEAD
+    path: apps/ghost
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+  preserveResourcesOnDeletion: true
