@@ -8,11 +8,9 @@ namespace_selector:
   - homepage
   - tools
   - default
-  - homepage
   - argocd
-  - default
   - ghost
-  - longhorn-systems
+  - longhorn-system
   - metallb-system
   - kube-system
     
