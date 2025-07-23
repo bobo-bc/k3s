@@ -3,6 +3,9 @@ kind: Deployment
 metadata:
   name: ghost
   namespace: default
+  labels:
+    app.kubernetes.io/name: ghost
+    app.kubernetes.io/instance: ghost
 spec:
   replicas: 1
   selector:
