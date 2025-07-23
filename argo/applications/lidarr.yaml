@@ -14,10 +14,11 @@ spec:
   destination:
     server: https://kubernetes.default.svc
     namespace: media
-  syncPolicy:
+  syncPolicy: 
     automated:
       selfHeal: true
       prune: true
     syncOptions:
       - CreateNamespace=true
-  preserveResourcesOnDeletion: true
+      - PruneLast=true
+      - PreserveResourcesOnDeletion=true
