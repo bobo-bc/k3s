@@ -12,8 +12,8 @@
     - Ghost Blog:
         icon: ghost-light.png
         href: https://stevenfmeyer.me
-        namespace: media 
-        app: sonarr 
+        namespace: default 
+        app: ghost
         description: my blog
        # ping: https:stevenfmeyer.me
 
@@ -21,7 +21,9 @@
         icon: wikijs.png
         href: https://wiki.stevenfmeyer.me
         description: technical notes
-        ping: wiki.stevenfmeyer.me
+        namespace: media 
+        app: wikijs
+     #   ping: wiki.stevenfmeyer.me
     
 
     - plex:
