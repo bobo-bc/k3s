@@ -11,7 +11,7 @@ metadata:
     homepage.group: "ghost"
     homepage.icon: "ghost.png"
     homepage.href: "https://stevenfmeyer.me/"
-    hompage.weigh: "1"
+    hompage.weight: "1"
 spec:
   type: LoadBalancer
   loadBalancerIP: 10.0.0.30
