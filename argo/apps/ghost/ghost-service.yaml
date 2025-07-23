@@ -8,7 +8,7 @@ metadata:
   labels:
     homepage.name: "ghost"
     homepage.description: "external blog"
-    homepage.group: "ghost"
+    homepage.group: "Applications"
     homepage.icon: "ghost.png"
     homepage.href: "https://stevenfmeyer.me/"
     hompage.weight: "1"
