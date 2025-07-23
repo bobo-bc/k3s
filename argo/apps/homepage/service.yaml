@@ -13,7 +13,8 @@ metadata:
     homepage.group: "Applications"
     homepage.icon: "gethomepage.png"
     homepage.weight: "2"
-  #  app.kubernetes.io/name: homepage
+    app.kubernetes.io/name: homepage
+    app.kubernetes.io/instance: homepage
 spec:
   type: LoadBalancer
   loadBalancerIP: 10.0.0.22
