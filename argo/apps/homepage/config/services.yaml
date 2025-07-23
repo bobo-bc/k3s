@@ -12,7 +12,7 @@
     - Ghost Blog:
         icon: ghost-light.png
         href: https://stevenfmeyer.me
-        namespace: default 
+        namespace: ghost 
         app: ghost
         description: my blog
        # ping: https:stevenfmeyer.me
