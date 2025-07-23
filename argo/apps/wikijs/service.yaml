@@ -5,10 +5,12 @@ metadata:
   namespace: media
   annotations:
     metallb.io/ip-allocated-from-pool: default-address-pool
+    homepage.lan/name: "wikijs"
+    homepage.lan/description: "internal wiki notes"
+    homepage.lan/group: "Media"
+    homepage.lan/icon: "wikijs"
+    homepage.lan/url: "https://wiki.stevenfmeyer.me/"
 spec:
-  selector:
-    app.kubernetes.io/name: wikijs
-    app.kubernetes.io/instance: wikijs
   type: LoadBalancer
   loadBalancerIP: 10.0.0.35
   ports:
@@ -16,3 +18,6 @@ spec:
       port: 80
       targetPort: 3000
       protocol: TCP
+  selector:
+    app.kubernetes.io/name: wikijs
+    app.kubernetes.io/instance: wikijs
