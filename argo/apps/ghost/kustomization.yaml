@@ -1,0 +1,7 @@
+resources:
+  - ghost-deployment.yaml
+  - ghost-service.yaml
+  - mysql-service.yaml
+  - mysql-deployment.yaml
+
+
