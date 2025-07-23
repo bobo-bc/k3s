@@ -24,6 +24,8 @@ spec:
           image: "ghcr.io/gethomepage/homepage:latest"
           imagePullPolicy: Always
           env:
+            - name: CONFIG_PATH
+              value: /app/config
             - name: HOMEPAGE_ALLOWED_HOSTS
               value: "*" 
           ports:
