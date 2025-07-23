@@ -12,8 +12,11 @@ spec:
   destination:
     server: https://kubernetes.default.svc
     namespace: tools
-  syncPolicy:
+  syncPolicy: 
     automated:
-      prune: true
       selfHeal: true
-  preserveResourcesOnDeletion: true
+      prune: true
+    syncOptions:
+      - CreateNamespace=true
+      - PruneLast=true
+      - PreserveResourcesOnDeletion=true
