@@ -20,7 +20,8 @@ spec:
   type: LoadBalancer
   loadBalancerIP: 10.0.0.30
   selector:
-    app: ghost
+    app.kubernetes.io/name: ghost
+    app.kubernetes.io/instance: ghost
   ports:
     - name: http
       port: 80
