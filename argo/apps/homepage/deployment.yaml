@@ -5,15 +5,19 @@ metadata:
   namespace: homepage
   labels:
     app.kubernetes.io/name: homepage
+    app.kubernetes.io/instance: homepage
 spec:
   replicas: 1
   selector:
     matchLabels:
       app.kubernetes.io/name: homepage
+      app.kubernetes.io/instance: homepage
   template:
     metadata:
       labels:
         app.kubernetes.io/name: homepage
+        app.kubernetes.io/instance: homepage
+        app.kubernetes.io/part-of: homepage
     spec:
       serviceAccountName: homepage
       automountServiceAccountToken: true
