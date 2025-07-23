@@ -5,6 +5,11 @@ metadata:
   namespace: ghost
   annotations:
     metallb.universe.tf/ip-allocated-from-pool: default-address-pool
+    homepage.lan/name: "ghost"
+    homepage.lan/description: "external blog"
+    homepage.lan/group: "ghost"
+    homepage.lan/icon: "ghost"
+    homepage.lan/url: "https://stevenfmeyer.me/"
 spec:
   type: LoadBalancer
   loadBalancerIP: 10.0.0.30
