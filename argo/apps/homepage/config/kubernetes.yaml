@@ -2,7 +2,7 @@ mode: cluster
 serviceLabels:
   enabled: true
 serviceAccount: homepage
-namespace_selector:
+namespaceSelector:
   - media
   - monitoring
   - homepage
