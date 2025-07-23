@@ -11,7 +11,8 @@ spec:
   template:
     metadata:
       labels:
-        app: ghost
+        app.kubernetes.io/name: ghost
+        app.kubernetes.io/instance: ghost
     spec:
       containers:
         - name: ghost
