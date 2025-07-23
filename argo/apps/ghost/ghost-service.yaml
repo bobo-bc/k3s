@@ -5,13 +5,13 @@ metadata:
   namespace: ghost
   annotations:
     metallb.universe.tf/ip-allocated-from-pool: default-address-pool
+    homepage.description: "External blog"
+    homepage.href: "https://stevenfmeyer.me/"
   labels:
     homepage.name: "ghost"
-    homepage.description: "external blog"
-    homepage.group: "Applications"
+    homepage.group: "blogs"
     homepage.icon: "ghost.png"
-    homepage.href: "https://stevenfmeyer.me/"
-    hompage.weight: "1"
+    homepage.weight: "1"
 spec:
   type: LoadBalancer
   loadBalancerIP: 10.0.0.30
