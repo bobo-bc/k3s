@@ -4,16 +4,20 @@ metadata:
   name: wikijs
   namespace: media
   labels:
-    app: wikijs
+    app.kubernetes.io/name: wikijs
+    app.kubernetes.io/instance: wikijs
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: wikijs
+      app.kubernetes.io/name: wikijs
+      app.kubernetes.io/instance: wikijs
   template:
     metadata:
       labels:
-        app: wikijs
+        app.kubernetes.io/name: wikijs
+        app.kubernetes.io/instance: wikijs
+        app.kubernetes.io/part-of: homepage
     spec:
       initContainers:
         - name: fix-permissions
