@@ -5,15 +5,6 @@ metadata:
   namespace: ghost
   annotations:
     metallb.universe.tf/ip-allocated-from-pool: default-address-pool
-    homepage.cloud/enable: "true"
-    homepage.cloud/name: "Ghost Blog"
-    homepage.cloud/description: "Personal blog CMS"
-    homepage.cloud/group: "Web"
-    homepage.cloud/icon: "ghost"
-    homepage.cloud/url: "https://stevenfmeyer.me"
-    homepage.cloud/statusStyle: "dot"
-    homepage.cloud/statusCheck: "true"
-    homepage.cloud/statusUrl: "http://ghost:2368"
 spec:
   type: LoadBalancer
   loadBalancerIP: 10.0.0.30
