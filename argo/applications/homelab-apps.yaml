@@ -21,4 +21,4 @@ spec:
     syncOptions:
       - CreateNamespace=true
       - PruneLast=true
-  preserveResourcesOnDeletion: true
+      - PreserveResourcesOnDeletion=true 
