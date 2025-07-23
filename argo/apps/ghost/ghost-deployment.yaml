@@ -1,0 +1,67 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ghost
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ghost
+  template:
+    metadata:
+      labels:
+        app: ghost
+    spec:
+      containers:
+        - name: ghost
+          image: ghost:5
+          ports:
+            - containerPort: 2368
+          env:
+            - name: url
+              value: https://stevenfmeyer.me
+            - name: database__client
+              value: mysql
+            - name: database__connection__host
+              value: mysql
+            - name: database__connection__user
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-secret
+                  key: user
+            - name: database__connection__password
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-secret
+                  key: password
+            - name: database__connection__database
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-secret
+                  key: database
+            - name: mail__transport
+              value: SMTP
+            - name: mail__options__host
+              value: smtp.gmail.com
+            - name: mail__options__port
+              value: "465"
+            - name: mail__options__secure
+              value: "true"
+            - name: mail__options__auth__user
+              valueFrom:
+                secretKeyRef:
+                  name: ghost-mail-secret
+                  key: smtp-user
+            - name: mail__options__auth__pass
+              valueFrom:
+                secretKeyRef:
+                  name: ghost-mail-secret
+                  key: smtp-pass
+          volumeMounts:
+            - name: ghost-content
+              mountPath: /var/lib/ghost/content
+      volumes:
+        - name: ghost-content
+          persistentVolumeClaim:
+            claimName: ghost-pvc
