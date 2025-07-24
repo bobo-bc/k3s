@@ -9,6 +9,8 @@ metadata:
     homepage.description: "External blog"
     homepage.href: "https://stevenfmeyer.me/"
   labels:
+    app.kubernetes.io/name: ghost
+    app.kubernetes.io/instance: ghost
     homepage.name: "ghost"
     homepage.group: "blogs"
     homepage.icon: "ghost.png"
