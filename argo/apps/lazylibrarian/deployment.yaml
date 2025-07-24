@@ -5,27 +5,15 @@ metadata:
   namespace: media
   labels:
     app.kubernetes.io/name: lazylibrarian
-    app.kubernetes.io/instance: lazylibrarian
 spec:
   replicas: 1
   selector:
     matchLabels:
       app.kubernetes.io/name: lazylibrarian
-      app.kubernetes.io/instance: lazylibrarian
   template:
     metadata:
       labels:
         app.kubernetes.io/name: lazylibrarian
-        app.kubernetes.io/instance: lazylibrarian
-        app.kubernetes.io/part-of: homepage
-      annotations:
-        homepage/enabled: "true"
-        homepage/namespace: media
-        homepage/group: media
-        homepage/icon: lazylibrarian.png
-        homepage/name: lazylibrarian
-        homepage/url: http://10.0.0.28
-        homepage/description: book manager
     spec:
       containers:
         - name: lazylibrarian
