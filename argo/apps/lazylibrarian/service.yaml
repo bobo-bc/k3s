@@ -4,17 +4,13 @@ metadata:
   name: lazylibrarian
   namespace: media
   labels:
-    app: lazylibrarian
+    homepage.name: "lazylibrarian"
 spec:
-  type: LoadBalancer
-  loadBalancerIP: 10.0.0.26
-  selector:
-    app: lazylibrarian
+  type: ClusterIP
   ports:
     - port: 80
       targetPort: 5299
       protocol: TCP
-
   selector:
     app.kubernetes.io/name: lazylibrarian
     app.kubernetes.io/instance: lazylibrarian
