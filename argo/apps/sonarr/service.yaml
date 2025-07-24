@@ -4,19 +4,17 @@ metadata:
   name: sonarr
   namespace: media
   annotations:
-    homepage.lan/name: "Sonarr"
-    homepage.lan/description: "TV Show Downloader"
-    homepage.lan/group: "Media"
-    homepage.lan/icon: "sonarr"
-    homepage.lan/url: http://sonarr.lan/
-   # metallb.io/ip-allocated-from-pool: default-address-pool
+    homepage.sh/name: "Sonarr"
+    homepage.sh/description: "TV Show Downloader"
+    homepage.sh/group: "Media"
+    homepage.sh/icon: "sonarr"
+    homepage.sh/url: "http://sonarr.lan"
 spec:
   type: ClusterIP
-  #loadBalancerIP: 10.0.0.23
   ports:
     - name: http
-      port: 8989
-      targetPort: 8989
+      port: 80            # 👈 This should be 80 so that Ingress forwards cleanly to it
+      targetPort: 8989    # 👈 Still routes to the container’s internal port
       protocol: TCP
   selector:
     app.kubernetes.io/name: sonarr
