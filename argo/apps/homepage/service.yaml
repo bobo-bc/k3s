@@ -5,14 +5,14 @@ metadata:
   namespace: homepage
   annotations:
     metallb.universe.tf/ip-allocated-from-pool: default-address-pool
-    homepage.enabled: "true"
-    homepage.description: "External blog"
-    homepage.href: "https://10.0.0.22"
+    gethomepage.dev/enabled: true
+    gethomepage.dev/description: "External blog"
+    gethomepage.dev/href: "https://10.0.0.22"
   labels:
-    homepage.name: "Homepage"
-    homepage.group: "Applications"
-    homepage.icon: "gethomepage.png"
-    homepage.weight: "2"
+    gethomepage.dev/name: "Homepage"
+    gethomepage.dev/group: "Applications"
+    gethomepage.dev/icon: "gethomepage.png"
+    gethomepage.dev/weight: "2"
     app.kubernetes.io/name: homepage
     app.kubernetes.io/instance: homepage
 
