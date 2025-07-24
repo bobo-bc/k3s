@@ -4,23 +4,15 @@ metadata:
   name: drawio
   namespace: tools
   labels:
+    homepage.name: "drawio"
     app.kubernetes.io/name: drawio
     app.kubernetes.io/instance: drawio
-  annotations:
-    argocd.argoproj.io/tracking-id: drawio:/Service:tools/drawio
-    homepage/name: "Draw.io"
-    homepage/namespace: "tools"
-    homepage/url: "http://10.0.0.31"
-    homepage/icon: "drawio"
-    homepage/group: "Tools"
-    homepage/statusStyle: "dot"
 spec:
-  selector:
-    app.kubernetes.io/name: drawio
-    app.kubernetes.io/instance: drawio
-  type: LoadBalancer
-  loadBalancerIP: 10.0.0.31
+  type: ClusterIP
   ports:
     - port: 80
       targetPort: 8080
       protocol: TCP
+  selector:
+    app.kubernetes.io/name: drawio
+    app.kubernetes.io/instance: drawio
