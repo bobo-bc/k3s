@@ -11,7 +11,7 @@ metadata:
     homepage/icon: "radarr"
     homepage/namespace: "media"
 spec:
-  type: clusterIP
+  type: ClusterIP
 #  loadBalancerIP: 10.0.0.24
   ports:
     - name: http
