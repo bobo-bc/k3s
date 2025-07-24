@@ -16,7 +16,7 @@ spec:
     - host: "pihole.lan"
       http:
         paths:
-          - path: "/admin"
+          - path: "/"
             pathType: Prefix
             backend:
               service:
