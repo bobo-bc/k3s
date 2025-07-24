@@ -1,27 +1,16 @@
 apiVersion: v1
 kind: Service
 metadata:
+  labels:
+    homepage.name: "it-tools"
   name: it-tools
   namespace: tools
-  annotations:
-    argocd.argoproj.io/tracking-id: it-tools:/Service:tools/it-tools
-    homepage/name: "IT Tools"
-    homepage/namespace: "tools"
-    homepage/url: "http://10.0.0.32"
-    homepage/icon: "terminal"
-    homepage/group: "tools"
-    homepage/statusStyle: "dot"
-    metallb.io/ip-allocated-from-pool: default-address-pool
-  labels:
-    app.kubernetes.io/name: it-tools
-    app.kubernetes.io/instance: it-tools
 spec:
-  type: LoadBalancer
-  loadBalancerIP: 10.0.0.32
-  selector:
-    app.kubernetes.io/name: it-tools
-    app.kubernetes.io/instance: it-tools
+  type: ClusterIP
   ports:
-    - port: 80
+    - name: http
+      port: 80
       targetPort: 80
       protocol: TCP
+  selector:
+    app.kubernetes.io/name: it-tools
