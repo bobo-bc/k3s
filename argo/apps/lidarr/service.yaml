@@ -14,4 +14,4 @@ spec:
       protocol: TCP
   selector:
     app.kubernetes.io/name: lidarr
-    app.kubernetes.io/instance: lidarr
+
