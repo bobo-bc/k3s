@@ -4,19 +4,16 @@ metadata:
   name: prowlarr
   namespace: media
   labels:
-    app: prowlarr
+    homepage.name: "prowlarr"
   annotations:
-    homepage/name: "Rrowlarr"
+    homepage/name: "Prowlarr"
     homepage/group: "Media"
     homepage/url: "http://prowlarr.lan"
     homepage/icon: "prowlarr"
     homepage/namespace: "media"
     homepage/statusStyle: "dot"
 spec:
-  type: LoadBalancer
-  loadBalancerIP: 10.0.0.27
-  selector:
-    app: prowlarr
+  type: ClusterIP
   ports:
     - port: 80
       targetPort: 9696
