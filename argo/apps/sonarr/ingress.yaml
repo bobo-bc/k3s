@@ -8,7 +8,7 @@ metadata:
   annotations:
     gethomepage.dev/description: Dynamically Detected sonarr
     gethomepage.dev/enabled: "true"
-    gethomepage.dev/group: Cluster Management
+    gethomepage.dev/group: Media management
     gethomepage.dev/icon: sonarr.png
     gethomepage.dev/name: Sonarr
 spec:
