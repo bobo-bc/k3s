@@ -10,7 +10,6 @@ spec:
   loadBalancerIP: 10.0.0.23
   selector:
     app.kubernetes.io/name: pihole
-    app.kubernetes.io/instance: pihole
   ports:
     - name: web
       port: 80
