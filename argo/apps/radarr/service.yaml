@@ -4,7 +4,7 @@ metadata:
   name: radarr
   namespace: media
   annotations:
-    metallb.io/ip-allocated-from-pool: default-address-pool
+  #  metallb.io/ip-allocated-from-pool: default-address-pool
     homepage/name: "Radarr"
     homepage/group: "Media"
     homepage/url: "http://radarr.lan"
