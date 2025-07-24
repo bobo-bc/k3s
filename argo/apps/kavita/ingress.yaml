@@ -1,17 +1,25 @@
-apiVersion: traefik.io/v1alpha1
-kind: IngressRoute
+apiVersion: networking.k8s.io/v1
+kind: Ingress
 metadata:
   name: kavita
   namespace: media
   labels:
     app.kubernetes.io/name: kavita
-    homepage.sh/enabled: "true"
+  annotations:
+    gethomepage.dev/description: Dynamically Detected kavita
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/group: Media management
+    gethomepage.dev/icon: kavita.png
+    gethomepage.dev/name: Kavita
 spec:
-  entryPoints:
-    - web
-  routes:
-    - match: Host(`books.lan`)
-      kind: Rule
-      services:
-        - name: kavita
-          port: 80
+  rules:
+    - host: "books.lan"
+      http:
+        paths:
+          - path: "/"
+            pathType: Prefix
+            backend:
+              service:
+                name: kavita
+                port:
+                  number: 80
