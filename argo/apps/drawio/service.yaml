@@ -4,15 +4,14 @@ metadata:
   name: drawio
   namespace: tools
   labels:
-    homepage.name: "drawio"
     app.kubernetes.io/name: drawio
-    app.kubernetes.io/instance: drawio
+  annotations:
 spec:
   type: ClusterIP
   ports:
-    - port: 80
-      targetPort: 8080
+    - port: 8080
+      targetPort: http
       protocol: TCP
+      name: http
   selector:
-    app.kubernetes.io/name: drawio
-    app.kubernetes.io/instance: drawio
+    app.kubernetes.io/name: homepage
