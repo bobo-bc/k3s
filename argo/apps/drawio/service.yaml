@@ -14,4 +14,4 @@ spec:
       protocol: TCP
   selector:
     app.kubernetes.io/name: drawio
-    app.kubernetes.io/instance: drawio
+
