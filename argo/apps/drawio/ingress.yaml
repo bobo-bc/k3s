@@ -1,17 +1,25 @@
-apiVersion: traefik.io/v1alpha1
-kind: IngressRoute
+apiVersion: networking.k8s.io/v1
+kind: Ingress
 metadata:
   name: drawio
-  namespace: tools
+  namespace: media
   labels:
     app.kubernetes.io/name: drawio
-    homepage.sh/enabled: "true"
+  annotations:
+    gethomepage.dev/description: Dynamically Detected drawio
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/group: Apps
+    gethomepage.dev/icon: drawio.png
+    gethomepage.dev/name: Drawio
 spec:
-  entryPoints:
-    - web
-  routes:
-    - match: Host(`drawio.lan`)
-      kind: Rule
-      services:
-        - name: drawio
-          port: 80
+  rules:
+    - host: "drawio.lan"
+      http:
+        paths:
+          - path: "/"
+            pathType: Prefix
+            backend:
+              service:
+                name: drawio
+                port:
+                  number: 80
