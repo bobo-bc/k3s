@@ -13,4 +13,3 @@ spec:
       protocol: TCP
   selector:
     app.kubernetes.io/name: lazylibrarian
-    app.kubernetes.io/instance: lazylibrarian
