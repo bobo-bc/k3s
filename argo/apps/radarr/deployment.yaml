@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
         - name: radarr
-          image: ghcr.io/onedr0p/radarr:latest
+          image: lscr.io/linuxserver/radarr:latest
           imagePullPolicy: IfNotPresent
           env:
             - name: PUID
