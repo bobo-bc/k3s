@@ -5,13 +5,6 @@ metadata:
   namespace: media
   labels:
     homepage.name: "prowlarr"
-  annotations:
-    homepage/name: "Prowlarr"
-    homepage/group: "Media"
-    homepage/url: "http://prowlarr.lan"
-    homepage/icon: "prowlarr"
-    homepage/namespace: "media"
-    homepage/statusStyle: "dot"
 spec:
   type: ClusterIP
   ports:
@@ -20,4 +13,3 @@ spec:
       protocol: TCP
   selector:
     app.kubernetes.io/name: prowlarr
-    app.kubernetes.io/instance: prowlarr
