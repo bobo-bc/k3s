@@ -5,7 +5,6 @@ metadata:
   namespace: media
   labels:
     app.kubernetes.io/name: lidarr
-    app.kubernetes.io/instance: lidarr
 spec:
   replicas: 1
   strategy:
@@ -13,13 +12,10 @@ spec:
   selector:
     matchLabels:
       app.kubernetes.io/name: lidarr
-      app.kubernetes.io/instance: lidarr
   template:
     metadata:
       labels:
         app.kubernetes.io/name: lidarr
-        app.kubernetes.io/instance: lidarr
-        app.kubernetes.io/part-of: homepage
     spec:
       containers:
         - name: lidarr
@@ -35,35 +31,6 @@ spec:
           ports:
             - containerPort: 8686
               name: http
-          livenessProbe:
-            exec:
-              command:
-                - /usr/bin/env
-                - bash
-                - -c
-                - curl --fail localhost:8686/api/v1/system/status?apiKey=`IFS=\> && while read -d \< E C; do if [[ $E = "ApiKey" ]]; then echo $C; fi; done < /config/config.xml`
-            initialDelaySeconds: 60
-            periodSeconds: 10
-            timeoutSeconds: 10
-            successThreshold: 1
-            failureThreshold: 5
-          readinessProbe:
-            tcpSocket:
-              port: 8686
-            periodSeconds: 10
-            timeoutSeconds: 1
-            successThreshold: 1
-            failureThreshold: 3
-          startupProbe:
-            tcpSocket:
-              port: 8686
-            periodSeconds: 5
-            timeoutSeconds: 1
-            successThreshold: 1
-            failureThreshold: 30
-          securityContext:
-            runAsUser: 1000
-            runAsGroup: 1000
           volumeMounts:
             - name: config
               mountPath: /config
@@ -72,14 +39,6 @@ spec:
               readOnly: true
             - name: music
               mountPath: /music
-      initContainers:
-        - name: fix-permissions
-          image: busybox
-          imagePullPolicy: Always
-          command:
-            - sh
-            - -c
-            - chown -R 1000:1000 /config && chmod -R 775 /config
           volumeMounts:
             - name: config
               mountPath: /config
