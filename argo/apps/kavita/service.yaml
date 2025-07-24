@@ -3,8 +3,6 @@ kind: Service
 metadata:
   name: kavita
   namespace: media
-  annotations:
-    argocd.argoproj.io/tracking-id: kavita:/Service:media/kavita
   labels:
     homepage.name: "sonarr"
     app.kubernetes.io/name: kavita
