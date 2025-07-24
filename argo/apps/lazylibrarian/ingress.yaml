@@ -1,0 +1,17 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: lazylibrarian
+  namespace: media
+  labels:
+    app.kubernetes.io/name: lazylibrarian
+    homepage.sh/enabled: "true"
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: Host(`library.lan`)
+      kind: Rule
+      services:
+        - name: lazylibrarian
+          port: 80
