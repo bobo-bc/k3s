@@ -5,7 +5,7 @@ metadata:
   namespace: ghost
   annotations:
     metallb.universe.tf/ip-allocated-from-pool: default-address-pool
-    homepage.enabled: "true"
+    gethomepage.dev/enabled: "true"
     homepage.description: "External blog"
     homepage.href: "https://stevenfmeyer.me/"
   labels:
