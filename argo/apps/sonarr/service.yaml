@@ -15,7 +15,7 @@ spec:
   #loadBalancerIP: 10.0.0.23
   ports:
     - name: http
-      port: 80
+      port: 8989
       targetPort: 8989
       protocol: TCP
   selector:
