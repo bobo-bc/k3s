@@ -5,12 +5,6 @@ metadata:
     homepage.name: "radarr"
   name: radarr
   namespace: media
-  annotations:
-    homepage/name: "Radarr"
-    homepage/group: "Media"
-    homepage/url: "http://radarr.lan"
-    homepage/icon: "radarr"
-    homepage/namespace: "media"
 spec:
   type: ClusterIP
   ports:
@@ -20,4 +14,3 @@ spec:
       protocol: TCP
   selector:
     app.kubernetes.io/name: radarr
-    app.kubernetes.io/instance: radarr
