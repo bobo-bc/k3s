@@ -3,14 +3,15 @@ kind: Service
 metadata:
   labels:
     homepage.name: "sonarr"
+    app.kubernetes.io/name: homepage
   name: sonarr
   namespace: media
   annotations:
-    homepage.sh/name: "Sonarr"
-    homepage.sh/description: "TV Show Downloader"
-    homepage.sh/group: "Media"
-    homepage.sh/icon: "sonarr"
-    homepage.sh/url: "http://sonarr.lan"
+    gethomepage.dev/description: Dynamically Detected sonarr
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/group: Cluster Management
+    gethomepage.dev/icon: soanrr.png
+    gethomepage.dev/name: sonarr
 spec:
   type: ClusterIP
   ports:
