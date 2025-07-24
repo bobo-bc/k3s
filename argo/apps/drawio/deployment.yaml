@@ -5,21 +5,15 @@ metadata:
   namespace: tools
   labels:
     app.kubernetes.io/name: drawio
-    app.kubernetes.io/instance: drawio
-    app.kubernetes.io/part-of: homepage
-  annotations:
-    argocd.argoproj.io/tracking-id: drawio:apps/Deployment:tools/drawio
 spec:
   replicas: 1
   selector:
     matchLabels:
       app.kubernetes.io/name: drawio
-      app.kubernetes.io/instance: drawio
   template:
     metadata:
       labels:
         app.kubernetes.io/name: drawio
-        app.kubernetes.io/instance: drawio
     spec:
       containers:
         - name: drawio
