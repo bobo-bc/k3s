@@ -11,8 +11,8 @@ metadata:
     homepage.lan/url: http://sonarr.lan/
    # metallb.io/ip-allocated-from-pool: default-address-pool
 spec:
-  type: LoadBalancer
-  loadBalancerIP: 10.0.0.23
+  type: ClusterIP
+  #loadBalancerIP: 10.0.0.23
   ports:
     - name: http
       port: 80
