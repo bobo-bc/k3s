@@ -3,22 +3,15 @@ kind: Service
 metadata:
   labels:
     homepage.name: "sonarr"
-    app.kubernetes.io/name: homepage
   name: sonarr
   namespace: media
-  annotations:
-    gethomepage.dev/description: Dynamically Detected sonarr
-    gethomepage.dev/enabled: "true"
-    gethomepage.dev/group: Cluster Management
-    gethomepage.dev/icon: soanrr.png
-    gethomepage.dev/name: sonarr
 spec:
   type: ClusterIP
   ports:
     - name: http
-      port: 80            # 👈 This should be 80 so that Ingress forwards cleanly to it
-      targetPort: 8989    # 👈 Still routes to the container’s internal port
+      port: 80
+      targetPort: 8989
       protocol: TCP
   selector:
     app.kubernetes.io/name: sonarr
-    app.kubernetes.io/instance: sonarr
+
