@@ -5,8 +5,6 @@ metadata:
   namespace: media
   labels:
     app.kubernetes.io/name: transmission-vpn
-    app.kubernetes.io/instance: transmission-vpn
-    app.kubernetes.io/part-of: homepage
 spec:
   replicas: 1
   strategy:
@@ -17,27 +15,11 @@ spec:
   selector:
     matchLabels:
       app.kubernetes.io/name: transmission-vpn
-      app.kubernetes.io/instance: transmission-vpn
   template:
     metadata:
       labels:
         app.kubernetes.io/name: transmission-vpn
-        app.kubernetes.io/instance: transmission-vpn
-        app.kubernetes.io/part-of: homepage
     spec:
-      securityContext:
-        fsGroup: 1000
-      initContainers:
-        - name: fix-permissions
-          image: busybox
-          imagePullPolicy: Always
-          command:
-            - sh
-            - -c
-            - chown -R 1000:1000 /config
-          volumeMounts:
-            - name: config
-              mountPath: /config
       containers:
         - name: transmission-vpn
           image: haugene/transmission-openvpn:latest
