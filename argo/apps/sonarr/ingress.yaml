@@ -11,4 +11,4 @@ spec:
       kind: Rule
       services:
         - name: sonarr
-          port: 80
+          port: 8980
