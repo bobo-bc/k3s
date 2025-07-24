@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: transmission-vpn
+  namespace: media
+  labels:
+    app.kubernetes.io/name: transmission-vpn
+  annotations:
+    gethomepage.dev/description: Dynamically Detected transmission-vpn
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/group: Media management
+    gethomepage.dev/icon: transmission.png
+    gethomepage.dev/name: Transmission-vpn
+spec:
+  rules:
+    - host: "transmission.lan"
+      http:
+        paths:
+          - path: "/"
+            pathType: Prefix
+            backend:
+              service:
+                name: transmission-vpn
+                port:
+                  number: 80
