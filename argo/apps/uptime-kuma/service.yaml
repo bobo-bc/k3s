@@ -1,15 +1,17 @@
 apiVersion: v1
 kind: Service
 metadata:
+  labels:
+    homepage.name: "uptime-kuma"
   name: uptime-kuma
   namespace: monitoring
 spec:
-  selector:
-    app.kubernetes.io/name: uptime-kuma
-    app.kubernetes.io/instance: uptime-kuma
-  type: LoadBalancer
-  loadBalancerIP: 10.0.0.36
+  type: ClusterIP
   ports:
-    - protocol: TCP
+    - name: http
       port: 80
       targetPort: 3001
+      protocol: TCP
+  selector:
+    app.kubernetes.io/name: uptime-kuma
+
