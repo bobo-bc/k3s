@@ -1,0 +1,17 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: drawio
+  namespace: media
+  labels:
+    app.kubernetes.io/name: drawio
+    homepage.sh/enabled: "true"
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: Host(`drawio.lan`)
+      kind: Rule
+      services:
+        - name: drawio
+          port: 80
