@@ -5,7 +5,6 @@ metadata:
   namespace: media
   labels:
     app.kubernetes.io/name: prowlarr
-    app.kubernetes.io/instance: prowlarr
 spec:
   replicas: 1
   strategy:
@@ -13,26 +12,11 @@ spec:
   selector:
     matchLabels:
       app.kubernetes.io/name: prowlarr
-      app.kubernetes.io/instance: prowlarr
   template:
     metadata:
       labels:
         app.kubernetes.io/name: prowlarr
-        app.kubernetes.io/instance: prowlarr
-        app.kubernetes.io/part-of: homepage
     spec:
-      securityContext:
-        fsGroup: 1000
-      initContainers:
-        - name: fix-permissions
-          image: busybox
-          command:
-            - sh
-            - -c
-            - chown -R 1000:1000 /config
-          volumeMounts:
-            - name: config
-              mountPath: /config
       containers:
         - name: prowlarr
           image: linuxserver/prowlarr:latest
