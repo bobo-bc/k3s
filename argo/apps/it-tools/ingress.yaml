@@ -6,7 +6,7 @@ metadata:
   labels:
     app.kubernetes.io/name: it-tools
   annotations:
-    gethomepage.dev/description: Dynamically Detected sonarr
+    gethomepage.dev/description: Dynamically Detected it-tools
     gethomepage.dev/enabled: "true"
     gethomepage.dev/group: Apps
     gethomepage.dev/icon: it-tools.png
