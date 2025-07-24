@@ -8,7 +8,7 @@ metadata:
   annotations:
     gethomepage.dev/description: Dynamically Detected uptime-kuma
     gethomepage.dev/enabled: "true"
-    gethomepage.dev/group: Cluster Manangement
+    gethomepage.dev/group: Cluster Management
     gethomepage.dev/icon: uptime-kuma.png
     gethomepage.dev/name: Uptime-kuma
 spec:
