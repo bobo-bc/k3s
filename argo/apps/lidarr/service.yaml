@@ -5,8 +5,6 @@ metadata:
     homepage.name: "lidarr"
   name: lidarr
   namespace: media
-  annotations:
-    metallb.io/ip-allocated-from-pool: default-address-pool
 spec:
   type: ClusterIP
   ports:
