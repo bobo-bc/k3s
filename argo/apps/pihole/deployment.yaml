@@ -5,8 +5,6 @@ metadata:
   namespace: tools
   labels:
     app.kubernetes.io/name: pihole
-    app.kubernetes.io/instance: pihole
-    app.kubernetes.io/part-of: homepage
 spec:
   replicas: 1
   strategy:
@@ -17,28 +15,11 @@ spec:
   selector:
     matchLabels:
       app.kubernetes.io/name: pihole
-      app.kubernetes.io/instance: pihole
   template:
     metadata:
       labels:
         app.kubernetes.io/name: pihole
-        app.kubernetes.io/instance: pihole
-        app.kubernetes.io/part-of: homepage
     spec:
-      securityContext:
-        fsGroup: 1000
-      initContainers:
-        - name: fix-permissions
-          image: busybox
-          command:
-            - sh
-            - -c
-            - chown -R 1000:1000 /etc/pihole /etc/dnsmasq.d
-          volumeMounts:
-            - name: config
-              mountPath: /etc/pihole
-            - name: dnsmasq
-              mountPath: /etc/dnsmasq.d
       containers:
         - name: pihole
           image: pihole/pihole:latest
