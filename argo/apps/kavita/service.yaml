@@ -4,9 +4,8 @@ metadata:
   name: kavita
   namespace: media
   labels:
-    homepage.name: "sonarr"
+    homepage.name: "kavita"
     app.kubernetes.io/name: kavita
-    app.kubernetes.io/instance: kavita
 spec:
   type: ClusterIP
   ports:
@@ -15,4 +14,4 @@ spec:
       protocol: TCP
   selector:
     app.kubernetes.io/name: kavita
-    app.kubernetes.io/instance: kavita
+
