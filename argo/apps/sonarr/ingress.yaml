@@ -1,8 +1,11 @@
-apiVersion: traefik.containo.us/v1alpha1
+apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
   name: sonarr
   namespace: media
+  labels:
+    app.kubernetes.io/name: sonarr
+    homepage.sh/enabled: "true"
 spec:
   entryPoints:
     - web
@@ -11,4 +14,4 @@ spec:
       kind: Rule
       services:
         - name: sonarr
-          port: 8980
+          port: 80
