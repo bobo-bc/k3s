@@ -8,7 +8,7 @@ metadata:
   annotations:
     gethomepage.dev/description: Dynamically Detected radarr
     gethomepage.dev/enabled: "true"
-    gethomepage.dev/group: Cluster Management
+    gethomepage.dev/group: Media management
     gethomepage.dev/icon: radarr.png
     gethomepage.dev/name: Radarr
 spec:
