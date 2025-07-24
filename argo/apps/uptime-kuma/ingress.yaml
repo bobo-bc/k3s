@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: uptime-kuma
+  namespace: monitoring
+  labels:
+    app.kubernetes.io/name: uptime-kuma
+  annotations:
+    gethomepage.dev/description: Dynamically Detected uptime-kuma
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/group: Cluster Manangement
+    gethomepage.dev/icon: uptime-kuma.png
+    gethomepage.dev/name: Uptime-kuma
+spec:
+  rules:
+    - host: "uptime.lan"
+      http:
+        paths:
+          - path: "/"
+            pathType: Prefix
+            backend:
+              service:
+                name: uptime-kuma
+                port:
+                  number: 80
