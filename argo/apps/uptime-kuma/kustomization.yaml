@@ -1,4 +1,4 @@
 resources:
   - deployment.yaml
   - service.yaml
-  - kuma-config.yaml
+  - ingress.yaml
