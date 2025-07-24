@@ -1,16 +1,17 @@
 apiVersion: v1
 kind: Service
 metadata:
+  labels:
+    app.kubernetes.io/name: "drawio"
   name: drawio
   namespace: tools
-  labels:
-    app.kubernetes.io/name: drawio
-  annotations:
 spec:
   type: ClusterIP
   ports:
-    - port: 80
+    - name: http
+      port: 80
       targetPort: 8080
       protocol: TCP
   selector:
     app.kubernetes.io/name: drawio
+    app.kubernetes.io/instance: drawio
