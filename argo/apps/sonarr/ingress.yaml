@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: sonarr
+  namespace: media
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: web
+    traefik.ingress.kubernetes.io/router.middlewares: homepage-basic-auth@kubernetescrd
+    homepage.lan/enabled: "true"
+    homepage.lan/name: "Sonarr"
+    homepage.lan/description: "TV Show Downloader"
+    homepage.lan/group: "Media"
+    homepage.lan/icon: "sonarr"
+    homepage.lan/url: "http://sonarr.lan"
+spec:
+  rules:
+    - host: sonarr.lan
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: sonarr
+                port:
+                  number: 80
