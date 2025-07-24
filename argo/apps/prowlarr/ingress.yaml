@@ -8,7 +8,7 @@ metadata:
   annotations:
     gethomepage.dev/description: Dynamically Detected prowlarr
     gethomepage.dev/enabled: "true"
-    gethomepage.dev/group: Cluster Management
+    gethomepage.dev/group: Media management
     gethomepage.dev/icon: prowlarr.png
     gethomepage.dev/name: Prowlarr
 spec:
