@@ -1,0 +1,17 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: radarr
+  namespace: media
+  labels:
+    app.kubernetes.io/name: radarr
+    homepage.sh/enabled: "true"
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: Host(`radarr.lan`)
+      kind: Rule
+      services:
+        - name: radarr
+          port: 80
