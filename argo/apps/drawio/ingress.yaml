@@ -9,7 +9,7 @@ metadata:
     gethomepage.dev/description: Dynamically Detected drawio
     gethomepage.dev/enabled: "true"
     gethomepage.dev/group: Apps
-    gethomepage.dev/icon: drawio.png
+    gethomepage.dev/icon: draw-io.svg
     gethomepage.dev/name: Drawio
 spec:
   rules:
