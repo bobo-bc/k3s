@@ -1,11 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
+  labels:
+    homepage.name: "portainer"
   name: portainer
   namespace: portainer
-  annotations:
-    metallb.universe.tf/ip-allocated-from-pool: default-address-pool
+
 spec:
+  type: ClusterIP
   type: LoadBalancer
   externalTrafficPolicy: Cluster
   ports:
@@ -20,5 +22,4 @@ spec:
       targetPort: 8000
   selector:
     app.kubernetes.io/name: portainer
-    app.kubernetes.io/instance: portainer
-  loadBalancerIP: 10.0.0.20
+
