@@ -20,11 +20,15 @@ echo -e " \033[32;5m                                                           \
 # YOU SHOULD ONLY NEED TO EDIT THIS SECTION #
 #############################################
 
+# This is an update version of the K3S script that install longhorn on the worker nodes.
+# The worker nodes are scaled to 3 for redundancy and HA
+# This has the added benefit of using local storage on worker nodes (faster)
+
 # Version of Kube-VIP to deploy
 KVVERSION="v0.6.3"
 
 # K3S Version
-k3sVersion="v1.26.10+k3s2"
+k3sVersion="v1.28.7+k3s1"
 
 # Set the IP addresses of the master and work nodes
 master1=192.168.3.21
@@ -32,6 +36,7 @@ master2=192.168.3.22
 master3=192.168.3.23
 worker1=192.168.3.24
 worker2=192.168.3.25
+worker3=192.168.3.26
 
 # User of remote machines
 user=ubuntu
@@ -46,22 +51,19 @@ vip=192.168.3.50
 masters=($master2 $master3)
 
 # Array of worker nodes
-workers=($worker1 $worker2)
+workers=($worker1 $worker2 $worker3)
 
 # Array of all
-all=($master1 $master2 $master3 $worker1 $worker2)
+all=($master1 $master2 $master3 $worker1 $worker2 $worker3)
 
 # Array of all minus master
-allnomaster1=($master2 $master3 $worker1 $worker2)
+allnomaster1=($master2 $master3 $worker1 $worker2 $worker3)
 
 #Loadbalancer IP range
 lbrange=192.168.3.60-192.168.3.80
 
 #ssh certificate name variable
 certName=id_rsa
-
-#ssh config file
-config_file=~/.ssh/config
 
 #############################################
 #            DO NOT EDIT BELOW              #
@@ -95,31 +97,8 @@ else
     echo -e " \033[32;5mKubectl already installed\033[0m"
 fi
 
-# Check for SSH config file, create if needed, add/change Strict Host Key Checking (don't use in production!)
-
-if [ ! -f "$config_file" ]; then
-  # Create the file and add the line
-  echo "StrictHostKeyChecking no" > "$config_file"
-  # Set permissions to read and write only for the owner
-  chmod 600 "$config_file"
-  echo "File created and line added."
-else
-  # Check if the line exists
-  if grep -q "^StrictHostKeyChecking" "$config_file"; then
-    # Check if the value is not "no"
-    if ! grep -q "^StrictHostKeyChecking no" "$config_file"; then
-      # Replace the existing line
-      sed -i 's/^StrictHostKeyChecking.*/StrictHostKeyChecking no/' "$config_file"
-      echo "Line updated."
-    else
-      echo "Line already set to 'no'."
-    fi
-  else
-    # Add the line to the end of the file
-    echo "StrictHostKeyChecking no" >> "$config_file"
-    echo "Line added."
-  fi
-fi
+# Create SSH Config file to ignore checking (don't use in production!)
+sed -i '1s/^/StrictHostKeyChecking no\n/' ~/.ssh/config
 
 #add ssh keys for all nodes
 for node in "${all[@]}"; do
@@ -129,7 +108,7 @@ done
 # Install policycoreutils for each node
 for newnode in "${all[@]}"; do
   ssh $user@$newnode -i ~/.ssh/$certName sudo su <<EOF
-  NEEDRESTART_MODE=a apt-get install policycoreutils -y
+  NEEDRESTART_MODE=a apt install policycoreutils -y
   exit
 EOF
   echo -e " \033[32;5mPolicyCoreUtils installed!\033[0m"
@@ -205,7 +184,6 @@ kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.13.12/conf
 # Download ipAddressPool and configure using lbrange above
 curl -sO https://raw.githubusercontent.com/JamesTurland/JimsGarage/main/Kubernetes/K3S-Deploy/ipAddressPool
 cat ipAddressPool | sed 's/$lbrange/'$lbrange'/g' > $HOME/ipAddressPool.yaml
-kubectl apply -f $HOME/ipAddressPool.yaml
 
 # Step 9: Test with Nginx
 kubectl apply -f https://raw.githubusercontent.com/inlets/inlets-operator/master/contrib/nginx-sample-deployment.yaml -n default
@@ -230,3 +208,53 @@ kubectl get svc
 kubectl get pods --all-namespaces -o wide
 
 echo -e " \033[32;5mHappy Kubing! Access Nginx at EXTERNAL-IP above\033[0m"
+
+# Step 11: Install helm
+curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+chmod 700 get_helm.sh
+./get_helm.sh
+
+# Step 12: Add Rancher Helm Repository
+helm repo add rancher-latest https://releases.rancher.com/server-charts/latest
+kubectl create namespace cattle-system
+
+# Step 13: Install Cert-Manager
+kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.13.2/cert-manager.crds.yaml
+helm repo add jetstack https://charts.jetstack.io
+helm repo update
+helm install cert-manager jetstack/cert-manager \
+--namespace cert-manager \
+--create-namespace \
+--version v1.13.2
+kubectl get pods --namespace cert-manager
+
+# Step 14: Install Rancher
+helm install rancher rancher-latest/rancher \
+ --namespace cattle-system \
+ --set hostname=rancher.my.org \
+ --set bootstrapPassword=admin
+kubectl -n cattle-system rollout status deploy/rancher
+kubectl -n cattle-system get deploy rancher
+
+# Step 15: Expose Rancher via Loadbalancer
+kubectl get svc -n cattle-system
+kubectl expose deployment rancher --name=rancher-lb --port=443 --type=LoadBalancer -n cattle-system
+kubectl get svc -n cattle-system
+
+# Profit: Go to Rancher GUI
+echo -e " \033[32;5mHit the url… and create your account\033[0m"
+echo -e " \033[32;5mBe patient as it downloads and configures a number of pods in the background to support the UI (can be 5-10mins)\033[0m"
+
+# Step 16: Install Longhorn (using modified Official to pin to Longhorn Nodes)
+echo -e " \033[32;5mInstalling Longhorn - It can take a while for all pods to deploy...\033[0m"
+kubectl apply -f https://raw.githubusercontent.com/JamesTurland/JimsGarage/main/Kubernetes/Longhorn/longhorn.yaml
+kubectl get pods \
+--namespace longhorn-system \
+--watch
+
+# Step 17: Print out confirmation
+
+kubectl get nodes
+kubectl get svc -n longhorn-system
+
+echo -e " \033[32;5mHappy Kubing! Access Longhorn through Rancher UI\033[0m"
