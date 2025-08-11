@@ -1,11 +1,9 @@
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: portainer
-  namespace: portainer
-spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 1Gi
+extraVolumes:
+  - name: app-storage
+    persistentVolumeClaim:
+      claimName: iscsi-pvc-1
+
+extraVolumeMounts:
+  - name: app-storage
+    mountPath: /data
+    subPath: portainer
