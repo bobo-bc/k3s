@@ -1,0 +1,26 @@
+# 08-ingress-portainer.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: portainer
+  namespace: portainer
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    traefik.ingress.kubernetes.io/router.middlewares: portainer/security-headers@kubernetescrd
+spec:
+  ingressClassName: traefik
+  tls:
+    - hosts:
+        - portainer.lan
+      secretName: wildcard-lan-tls   # cert-manager created secret - ensure it's in this namespace or copied
+  rules:
+    - host: portainer.lan
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: portainer-svc
+                port:
+                  number: 9000
