@@ -1,0 +1,22 @@
+# 07-ingress-portainer-redirect.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: portainer-redirect
+  namespace: portainer
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    traefik.ingress.kubernetes.io/router.entrypoints: web
+    traefik.ingress.kubernetes.io/router.middlewares: portainer/redirect-to-https@kubernetescrd
+spec:
+  rules:
+    - host: portainer.lan
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: portainer-svc
+                port:
+                  number: 9000
