@@ -1,0 +1,10 @@
+# 05-middleware-redirect.yaml
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: redirect-to-https
+  namespace: portainer
+spec:
+  redirectScheme:
+    scheme: https
+    permanent: true
