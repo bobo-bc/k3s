@@ -24,7 +24,7 @@ spec:
               service:
                 name: prowlarr-service
                 port:
-                  number: 8989
+                  number: 9696
 ---
 apiVersion: traefik.io/v1alpha1
 kind: Middleware
