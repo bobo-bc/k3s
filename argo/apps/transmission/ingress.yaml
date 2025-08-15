@@ -1,25 +1,37 @@
+---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: transmission-vpn
+  name: transmission-vpn-ingress
   namespace: media
-  labels:
-    app.kubernetes.io/name: transmission-vpn
   annotations:
-    gethomepage.dev/description: Dynamically Detected transmission-vpn
-    gethomepage.dev/enabled: "true"
-    gethomepage.dev/group: Media management
-    gethomepage.dev/icon: transmission.png
-    gethomepage.dev/name: Transmission-vpn
+    kubernetes.io/ingress.class: traefik
+    traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
+    traefik.ingress.kubernetes.io/router.tls: "true"
+    traefik.ingress.kubernetes.io/router.middlewares: media-transmission-vpn-redirect-https@kubernetescrd
 spec:
+  tls:
+    - hosts:
+        - transmission.lan
+      secretName: wildcard-lan-tls
   rules:
-    - host: "transmission.lan"
+    - host: transmission.lan
       http:
         paths:
-          - path: "/"
+          - path: /
             pathType: Prefix
             backend:
               service:
-                name: transmission-vpn
+                name: transmission-vpn-service
                 port:
-                  number: 80
+                  number: 9091
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: transmission-vpn-redirect-https
+  namespace: media
+spec:
+  redirectScheme:
+    scheme: https
+    permanent: true
