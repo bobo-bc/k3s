@@ -1,15 +1,13 @@
----
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: transmission-vpn-ingress
   namespace: media
   annotations:
-    kubernetes.io/ingress.class: traefik
     traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
-    traefik.ingress.kubernetes.io/router.tls: "true"
     traefik.ingress.kubernetes.io/router.middlewares: media-transmission-vpn-redirect-https@kubernetescrd
 spec:
+  ingressClassName: traefik
   tls:
     - hosts:
         - transmission-vpn.lan
@@ -22,7 +20,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: transmission-vpn-service
+                name: transmission-vpn
                 port:
                   number: 9091
 ---
