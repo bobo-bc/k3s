@@ -24,7 +24,7 @@ spec:
               service:
                 name: lidarr-service
                 port:
-                  number: 8989
+                  number: 8686
 ---
 apiVersion: traefik.io/v1alpha1
 kind: Middleware
