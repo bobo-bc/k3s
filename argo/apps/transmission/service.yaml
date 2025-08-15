@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  labels:
-    app.kubernetes.io/name: transmission-vpn
   name: transmission-vpn
   namespace: media
+  labels:
+    app.kubernetes.io/name: transmission-vpn
 spec:
   type: ClusterIP
   ports:
