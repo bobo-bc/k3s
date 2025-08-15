@@ -12,10 +12,10 @@ metadata:
 spec:
   tls:
     - hosts:
-        - transmission.lan
+        - transmission-vpn.lan
       secretName: wildcard-lan-tls
   rules:
-    - host: transmission.lan
+    - host: transmission-vpn.lan
       http:
         paths:
           - path: /
