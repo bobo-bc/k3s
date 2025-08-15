@@ -34,14 +34,8 @@ spec:
           volumeMounts:
             - name: config
               mountPath: /config
-            - name: torrents
-              mountPath: /data
-              readOnly: true
             - name: music
               mountPath: /music
-          volumeMounts:
-            - name: config
-              mountPath: /config
             - name: torrents
               mountPath: /data
       volumes:
