@@ -1,17 +1,16 @@
 apiVersion: v1
 kind: Service
 metadata:
-  labels:
-    homepage.name: "sonarr"
-  name: sonarr
+  name: sonarr-service        # match the ingress backend
   namespace: media
+  labels:
+    app.kubernetes.io/name: sonarr
 spec:
   type: ClusterIP
   ports:
     - name: http
-      port: 80
+      port: 8989               # or 80 if you want to match the Ingress path directly
       targetPort: 8989
       protocol: TCP
   selector:
     app.kubernetes.io/name: sonarr
-
