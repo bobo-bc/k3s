@@ -22,7 +22,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: sonarr-service
+                name: radarr-service
                 port:
                   number: 7878
 ---
