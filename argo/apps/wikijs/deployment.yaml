@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: wikijs
-  namespace: media
+  namespace: post
   labels:
     app.kubernetes.io/name: wikijs
     app.kubernetes.io/instance: wikijs
