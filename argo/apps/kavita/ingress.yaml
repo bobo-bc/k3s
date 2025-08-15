@@ -1,25 +1,37 @@
+---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: kavita
+  name: kavita-ingress
   namespace: media
-  labels:
-    app.kubernetes.io/name: kavita
   annotations:
-    gethomepage.dev/description: Dynamically Detected kavita
-    gethomepage.dev/enabled: "true"
-    gethomepage.dev/group: Media management
-    gethomepage.dev/icon: kavita.png
-    gethomepage.dev/name: Kavita
+    kubernetes.io/ingress.class: traefik
+    traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
+    traefik.ingress.kubernetes.io/router.tls: "true"
+    traefik.ingress.kubernetes.io/router.middlewares: media-kavita-redirect-https@kubernetescrd
 spec:
+  tls:
+    - hosts:
+        - kavita.lan
+      secretName: wildcard-lan-tls
   rules:
-    - host: "books.lan"
+    - host: kavita.lan
       http:
         paths:
-          - path: "/"
+          - path: /
             pathType: Prefix
             backend:
               service:
-                name: kavita
+                name: kavita-service
                 port:
-                  number: 80
+                  number: 8989
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: kavita-redirect-https
+  namespace: media
+spec:
+  redirectScheme:
+    scheme: https
+    permanent: true
