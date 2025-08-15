@@ -36,6 +36,8 @@ spec:
               mountPath: /config
             - name: torrents
               mountPath: /data
+            - name: movies
+              mountPath: /movies
       volumes:
         - name: config
           persistentVolumeClaim:
