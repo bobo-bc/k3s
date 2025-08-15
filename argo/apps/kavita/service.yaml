@@ -1,10 +1,9 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: kavita
+  name: kavita-service
   namespace: media
   labels:
-    homepage.name: "kavita"
     app.kubernetes.io/name: kavita
 spec:
   type: ClusterIP
