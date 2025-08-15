@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: wiki-postgres
-  namespace: media
+  namespace: post
   labels:
     app: wiki-postgres
 spec:
