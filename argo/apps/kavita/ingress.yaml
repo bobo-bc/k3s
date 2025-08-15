@@ -24,7 +24,7 @@ spec:
               service:
                 name: kavita-service
                 port:
-                  number: 8989
+                  number: 5000
 ---
 apiVersion: traefik.io/v1alpha1
 kind: Middleware
