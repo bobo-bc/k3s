@@ -1,33 +1,4 @@
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: bookstack
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: bookstack-pvc
-  namespace: bookstack
-spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 5Gi
-  storageClassName: longhorn
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: mariadb-pvc
-  namespace: bookstack
-spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 5Gi
-  storageClassName: longhorn
+
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -72,16 +43,7 @@ spec:
           persistentVolumeClaim:
             claimName: mariadb-pvc
 ---
-apiVersion: v1
-kind: Secret
-metadata:
-  name: bookstack-db-secret
-  namespace: bookstack
-type: Opaque
-stringData:
-  root-password: "ChangeMeRoot123!"
-  user-password: "ChangeMeUser123!"
----
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
