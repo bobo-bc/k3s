@@ -16,7 +16,7 @@ spec:
       labels:
         app.kubernetes.io/name: wikijs
     spec:
-     securityContext:
+      securityContext:
         runAsUser: 1000
         fsGroup: 1000
       initContainers:
@@ -27,10 +27,10 @@ spec:
         - name: config
           mountPath: /wiki/data
       containers:
-        - name: wikijs
-          image: ghcr.io/requarks/wiki:latest
-          ports:
-            - containerPort: 3000
+      - name: wikijs
+        image: ghcr.io/requarks/wiki:latest
+        ports:
+          - containerPort: 3000
           env:
             - name: DB_TYPE
               value: postgres
