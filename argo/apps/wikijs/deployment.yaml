@@ -16,6 +16,16 @@ spec:
       labels:
         app.kubernetes.io/name: wikijs
     spec:
+     securityContext:
+        runAsUser: 1000
+        fsGroup: 1000
+      initContainers:
+      - name: fix-permissions
+        image: busybox
+        command: ["sh", "-c", "chown -R 1000:1000 /wiki/data"]
+        volumeMounts:
+        - name: config
+          mountPath: /wiki/data
       containers:
         - name: wikijs
           image: ghcr.io/requarks/wiki:latest
