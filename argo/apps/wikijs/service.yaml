@@ -9,7 +9,7 @@ spec:
   type: ClusterIP
   ports:
     - name: http
-      port: 3000               # or 80 if you want to match the Ingress path directly
+      port: 80               # or 80 if you want to match the Ingress path directly
       targetPort: 3000
       protocol: TCP
   selector:
