@@ -1,25 +1,26 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: homepage
+  name: homepage-ingress
   namespace: homepage
-  labels:
-    app.kubernetes.io/name: homepage
   annotations:
-    gethomepage.dev/description: Dynamically Detected Homepage
-    gethomepage.dev/enabled: "true"
-    gethomepage.dev/group: Cluster Management
-    gethomepage.dev/icon: homepage.png
-    gethomepage.dev/name: Homepage
+    kubernetes.io/ingress.class: traefik
+    traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
+    traefik.ingress.kubernetes.io/router.tls: "true"
+    traefik.router.middlewares: homepage-homepage-redirect-https@kubernetescrd
 spec:
+  tls:
+    - hosts:
+        - homepage.lan
+      secretName: wildcard-lan-tls
   rules:
-    - host: "homepage.lan"
+    - host: homepage.lan
       http:
         paths:
-          - path: "/"
+          - path: /
             pathType: Prefix
             backend:
               service:
-                name: homepage
+                name: homepage-service
                 port:
-                  number: 3000
+                  number: 80
