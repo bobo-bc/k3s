@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: wiki-postgres
-  namespace: media
+  namespace: post
   labels:
     app: wiki-postgres
 spec:
