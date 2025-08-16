@@ -4,6 +4,7 @@ metadata:
   name: transmission-vpn-ingress
   namespace: media
   annotations:
+    kubernetes.io/ingress.class: traefik
     traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
     traefik.ingress.kubernetes.io/router.middlewares: media-transmission-vpn-redirect-https@kubernetescrd
 spec:
