@@ -29,7 +29,7 @@ spec:
 apiVersion: traefik.io/v1alpha1
 kind: Middleware
 metadata:
-  name: wikijs-redirect-https
+  name: post-wikijs-redirect-https
   namespace: post
 spec:
   redirectScheme:
