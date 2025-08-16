@@ -1,3 +1,14 @@
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: wikijs-redirect-https
+  namespace: post
+spec:
+  redirectScheme:
+    scheme: https
+    permanent: true
+---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -23,14 +34,4 @@ spec:
               service:
                 name: wikijs-service
                 port:
-                  number: 80   # must match Service.spec.ports[].port
----
-apiVersion: traefik.io/v1alpha1
-kind: Middleware
-metadata:
-  name: wikijs-redirect-https
-  namespace: post
-spec:
-  redirectScheme:
-    scheme: https
-    permanent: true
+                  number: 80
