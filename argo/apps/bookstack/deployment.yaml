@@ -69,7 +69,7 @@ spec:
                 name: bookstack-app-key
                 key: APP_KEY
           - name: DB_HOST
-            value: mariadb.bookstack.svc.cluster.local
+            value: mariadb
           - name: DB_USER
             value: bookstack
           - name: DB_PASS
