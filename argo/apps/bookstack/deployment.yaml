@@ -63,6 +63,8 @@ spec:
       - name: bookstack
         image: ghcr.io/linuxserver/bookstack:latest
         env:
+          - name: APP_KEY
+            value: d+ruO9mx+yD2yLMwXhcMungZu36rj66qnFL/4mCH0vY=
           - name: DB_HOST
             value: mariadb.bookstack.svc.cluster.local
           - name: DB_USER
