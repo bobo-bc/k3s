@@ -31,44 +31,44 @@ spec:
         image: ghcr.io/requarks/wiki:latest
         ports:
           - containerPort: 3000
-          env:
-            - name: DB_TYPE
-              value: postgres
-            - name: DB_HOST
-              value: wiki-postgres.post.svc.cluster.local
-            - name: DB_PORT
-              value: "5432"
-            - name: DB_USER
-              valueFrom:
-                secretKeyRef:
-                  name: wikijs-db-secret
-                  key: username
-            - name: DB_PASS
-              valueFrom:
-                secretKeyRef:
-                  name: wikijs-db-secret
-                  key: password
-            - name: DB_NAME
-              value: wiki
-            - name: TZ
-              value: America/Vancouver
-          volumeMounts:
-            - name: config
-              mountPath: /wiki/data
-            - name: backup
-              mountPath: /backup
-          readinessProbe:
-            httpGet:
-              path: /
-              port: 3000
-            initialDelaySeconds: 10
-            periodSeconds: 10
-          livenessProbe:
-            httpGet:
-              path: /
-              port: 3000
-            initialDelaySeconds: 30
-            periodSeconds: 30
+        env:
+          - name: DB_TYPE
+            value: postgres
+          - name: DB_HOST
+            value: wiki-postgres.post.svc.cluster.local
+          - name: DB_PORT
+            value: "5432"
+          - name: DB_USER
+            valueFrom:
+              secretKeyRef:
+                name: wikijs-db-secret
+                key: username
+          - name: DB_PASS
+            valueFrom:
+              secretKeyRef:
+                name: wikijs-db-secret
+                key: password
+          - name: DB_NAME
+            value: wiki
+          - name: TZ
+            value: America/Vancouver
+        volumeMounts:
+          - name: config
+            mountPath: /wiki/data
+          - name: backup
+            mountPath: /backup
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 3000
+          initialDelaySeconds: 10
+          periodSeconds: 10
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 3000
+          initialDelaySeconds: 30
+          periodSeconds: 30
       volumes:
         - name: config
           persistentVolumeClaim:
