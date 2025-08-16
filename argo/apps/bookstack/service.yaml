@@ -4,7 +4,7 @@ metadata:
   name: bookstack-service
   namespace: bookstack
   labels:
-    app.kubernetes.io/name: sonarr
+    app.kubernetes.io/name: bookstack
 spec:
   type: ClusterIP
   ports:
