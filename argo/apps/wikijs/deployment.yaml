@@ -22,10 +22,13 @@ spec:
       initContainers:
       - name: fix-permissions
         image: busybox
-        command: ["sh", "-c", "chown -R 1000:1000 /wiki/data"]
-        volumeMounts:
-        - name: config
-          mountPath: /wiki/data
+       command:
+         - sh
+         - -c
+         - "mkdir -p /wiki/data && chown -R 1000:1000 /wiki/data"
+       volumeMounts:
+         - name: config
+           mountPath: /wiki/data
       containers:
       - name: wikijs
         image: ghcr.io/requarks/wiki:latest
