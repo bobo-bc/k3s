@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mysql
-  namespace: ghost
+  namespace: post
 spec:
   replicas: 1
   selector:
