@@ -22,7 +22,7 @@ spec:
             - containerPort: 2368
           env:
             - name: url
-              value: https://stevenfmeyer.me
+              value: http://10.0.0.22
             - name: database__client
               value: mysql
             - name: database__connection__host
