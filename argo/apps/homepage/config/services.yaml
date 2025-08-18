@@ -30,6 +30,18 @@
         ping: http://10.0.0.9:32400/
         description: Media Viewer
 
+    - Drawio:
+        icon: Drawio.png
+        ping: http://drawio.lan
+        href: http://drawio.lan
+        description: Drawing tool
+
+    - IT-Tools:
+        icon: it-tools.png
+        ping: http://tools.lan
+        href: http://tools.lan
+        description: Handy IT tools
+
  
 - Host:
     - Proxmox:
@@ -62,6 +74,12 @@
         ping: http://10.0.0.4/admin
         href: http://10.0.0.4/admin
         description: dns management
+    - Argo-CD:
+        icon: argo-cd.png
+        ping: http://argocd.lan
+        href: http://1argocd.lan
+        description: dns management
+
 
 - Media: 
     - Sonarr:
@@ -86,6 +104,18 @@
         icon: lazylibrarian.png
         href: http://library.lan/
         description: Books management
+
+    - Kavita:
+        icon: Kavita.png
+        href: http://kavita.lan/
+        description: Book reader
+        
+    - Transmission-vpn:
+        icon: transmission.png
+        href: http://transmission.lan/
+        description: Downloader
+
+
 
 
    
