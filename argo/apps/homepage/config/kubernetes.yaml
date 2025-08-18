@@ -1,16 +1,4 @@
 mode: cluster
-serviceLabels:
-  enabled: true
-serviceAccount: homepage
-namespaceSelector:
-  - media
-  - monitoring
-  - homepage
-  - tools
-  - default
-  - argocd
-  - ghost
-  - longhorn-system
-  - metallb-system
-  - kube-system
+
+
     
