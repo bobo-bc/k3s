@@ -6,32 +6,26 @@
     - HomeAssistant:
         icon: home-assistant.png
         href: http://10.0.0.7:8123
-        ping: http://10.0.0.7:8123
         description: home automation
         
     - Ghost Blog:
         icon: ghost-light.png
         href: https://stevenfmeyer.me
-        namespace: ghost 
-        app: ghost
         description: my blog
 
     - Wiki:
         icon: wikijs.png
         href: https://wikijs.lan/
         description: technical notes
-        namespace: media 
-        app: wikijs
 
     - plex:
         icon: plex.png
         href: http://10.0.0.9:32400/web/
-        ping: http://10.0.0.9:32400/
         description: Media Viewer
 
     - Drawio:
         icon: drawio.png
-        href: http://drawio.lan
+        href: http://draw-io.lan
         description: Drawing tool
 
     - IT-Tools:
@@ -60,8 +54,6 @@
        icon: longhorn.png
        href: http://longhornlan/
        description: Persistent Volume viewer
-       namespace: longhorn-system
-       app: longhorn
         
   
     - PiHole:
