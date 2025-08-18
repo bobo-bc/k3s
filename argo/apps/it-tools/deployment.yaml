@@ -1,24 +1,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ittools
+  name: it-tools
   namespace: tools
   labels:
-    app.kubernetes.io/name: ittools
+    app.kubernetes.io/name: it-tools
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app.kubernetes.io/name: ittools
+      app.kubernetes.io/name: it-tools
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: ittools
+        app.kubernetes.io/name: it-tools
     spec:
       securityContext:
         fsGroup: 1000
       containers:
-        - name: ittools
+        - name: it-tools
           image: ghcr.io/corentinth/it-tools:latest
           imagePullPolicy: Always
           ports:
