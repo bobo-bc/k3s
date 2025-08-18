@@ -1,15 +1,15 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: it-tools-service
+  name: ittools-service
   namespace: tools
   labels:
-    app.kubernetes.io/name: it-tools
+    app.kubernetes.io/name: ittools
   annotations:
     kubernetes.io/ingress.class: traefik
     traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
     traefik.ingress.kubernetes.io/router.tls: "true"
-    traefik.router.middlewares: tools-it-tools-redirect-https@kubernetescrd
+    traefik.router.middlewares: toolsit-tools-redirect-https@kubernetescrd
 spec:
   tls:
     - hosts:
@@ -23,6 +23,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: it-tools-service
+                name: ittools-service
                 port:
                   number: 80
