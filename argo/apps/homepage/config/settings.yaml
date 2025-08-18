@@ -19,15 +19,15 @@ layout:
     style: row
     icon: mdi-folder-multiple-image
   Apps:
-    columns: 5
+    columns: 3
     style: row
     icon: mdi-folder-multiple-image
   Media:
-    columns: 5
+    columns: 4
     style: row
     icon: mdi-folder-multiple-image
   Host:
-    columns: 5
+    columns: 3
     style: row
     icon: mdi-folder-multiple-image
 providers:
