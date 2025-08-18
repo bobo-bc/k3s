@@ -66,10 +66,11 @@ spec:
         image: ghcr.io/linuxserver/bookstack:latest
         env:
           - name: APP_KEY
-            valueFrom:
-              secretKeyRef:
-                name: bookstack-db-secret
-                key: key
+            value: d+ruO9mx+yD2yLMwXhcMungZu36rj66qnFL/4mCH0vY=
+    #        valueFrom:
+    #          secretKeyRef:
+    #            name: bookstack-db-secret
+    #            key: key
           - name: DB_HOST
             value: mariadb
           - name: DB_USER
