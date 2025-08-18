@@ -15,15 +15,15 @@ headerStyle: boxed
 useEqualHeights: true
 layout:
   Infra: 
-    column: 3
+    column: 5
     style: row
     icon: mdi-folder-multiple-image
   Apps:
-    columns: 3
+    columns: 5
     style: row
     icon: mdi-folder-multiple-image
-  Media management:
-    columns: 4
+  Media:
+    columns: 5
     style: row
     icon: mdi-folder-multiple-image
   Host:
