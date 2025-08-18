@@ -67,8 +67,8 @@ spec:
           - name: APP_KEY
             valueFrom:
               secretKeyRef:
-                name: bookstack-keys
-                key: APP_KEY
+                name: bookstack-db-secret
+                key: key
           - name: DB_HOST
             value: mariadb
           - name: DB_USER
