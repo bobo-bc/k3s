@@ -32,7 +32,7 @@ spec:
             valueForm:
               secretKeyRef:
                 name: bookstack-db-secret
-                key: user-password   
+                key: mariadb-password  
         ports:
           - containerPort: 3306
         volumeMounts:
