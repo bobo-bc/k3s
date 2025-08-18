@@ -8,8 +8,6 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: traefik
     traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
-    traefik.ingress.kubernetes.io/router.tls: "true"
-    traefik.router.middlewares: tools-ittools-redirect-https@kubernetescrd
 spec:
   rules:
     - host: tools.lan
