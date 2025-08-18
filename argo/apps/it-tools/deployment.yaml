@@ -19,7 +19,7 @@ spec:
         fsGroup: 1000
       containers:
         - name: ittools
-          image: ghcr.io/corentinth/ittools:latest
+          image: ghcr.io/corentinth/it-tools:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 80
