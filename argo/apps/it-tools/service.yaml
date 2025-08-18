@@ -2,8 +2,8 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app.kubernetes.io/name: it-tools
-  name: it-tools
+    app.kubernetes.io/name: ittools
+  name: ittools
   namespace: tools
 spec:
   type: ClusterIP
@@ -13,4 +13,4 @@ spec:
       targetPort: 80
       protocol: TCP
   selector:
-    app.kubernetes.io/name: it-tools
+    app.kubernetes.io/name: ittools
