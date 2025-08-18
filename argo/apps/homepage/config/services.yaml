@@ -15,7 +15,6 @@
         namespace: ghost 
         app: ghost
         description: my blog
-       # ping: https:stevenfmeyer.me
 
     - Wiki:
         icon: wikijs.png
@@ -31,14 +30,12 @@
         description: Media Viewer
 
     - Drawio:
-        icon: Drawio.png
-        ping: http://drawio.lan
+        icon: drawio.png
         href: http://drawio.lan
         description: Drawing tool
 
     - IT-Tools:
         icon: it-tools.png
-        ping: http://tools.lan
         href: http://tools.lan
         description: Handy IT tools
 
@@ -47,7 +44,6 @@
     - Proxmox:
         icon: proxmox.png
         href: https://10.0.0.5:8006
-        ping: https://10.0.0.5:8006
         description: proxmox host
 
     - Unifi Gateway:
@@ -58,7 +54,6 @@
     - TrueNAS:
         icon: truenas-scale.png
         href: https://10.0.0.3/
-        ping : https:/10.0.0.3
         description: NAS management gui
 
     - longhorn:
@@ -71,12 +66,10 @@
   
     - PiHole:
         icon: pi-hole.png
-        ping: http://10.0.0.4/admin
         href: http://10.0.0.4/admin
         description: dns management
     - Argo-CD:
         icon: argo-cd.png
-        ping: http://argocd.lan
         href: http://1argocd.lan
         description: dns management
 
