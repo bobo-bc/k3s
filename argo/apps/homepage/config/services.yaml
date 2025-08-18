@@ -19,17 +19,15 @@
 
     - Wiki:
         icon: wikijs.png
-        href: https://wiki.stevenfmeyer.me
+        href: https://wikijs.lan/
         description: technical notes
         namespace: media 
         app: wikijs
-     #   ping: wiki.stevenfmeyer.me
-    
 
     - plex:
         icon: plex.png
-        href: http://10.0.0.10:32400/web/
-        ping: http://10.0.0.10:32400/
+        href: http://10.0.0.9:32400/web/
+        ping: http://10.0.0.9:32400/
         description: Media Viewer
 
  
@@ -40,17 +38,10 @@
         ping: https://10.0.0.5:8006
         description: proxmox host
 
-    - Proxmox backup:
-        icon: proxmox.png
-        href: https://10.0.9:8007/
-        #ping: https://10.0.9:8007/
-        description: backup server
-
     - Unifi Gateway:
        icon: ubiquiti-unifi.png
        href: http://10.0.0.1
        description: unifi 
-       ping: 10.0.0.1
 
     - TrueNAS:
         icon: truenas-scale.png
@@ -60,16 +51,41 @@
 
     - longhorn:
        icon: longhorn.png
-       href: http://10.0.0.21
+       href: http://longhornlan/
        description: Persistent Volume viewer
        namespace: longhorn-system
        app: longhorn
         
   
-    - PiHole2:
+    - PiHole:
         icon: pi-hole.png
         ping: http://10.0.0.4/admin
         href: http://10.0.0.4/admin
         description: dns management
+
+- Media: 
+    - Sonarr:
+        icon: sonarr.png
+        href: http://sonarr.lan/
+        description: Tv management
+        namespace: media
+
+    - Radarr:
+        icon: radarr.png
+        href: http://radarr.lan/
+        description: Movies management
+    - Lidarr:
+        icon: lidarr.png
+        href: http://lidarr.lan/
+        description: Music management
+    - Prowlarr:
+        icon: prowlarr.png
+        href: http://prowlarr.lan/
+        description: index management
+    - Lazylibrarian:
+        icon: lazylibrarian.png
+        href: http://library.lan/
+        description: Books management
+
 
    
