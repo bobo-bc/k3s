@@ -29,10 +29,11 @@ spec:
           - name: MYSQL_USER
             value: bookstack
           - name: MYSQL_PASSWORD
-            valueForm:
-              secretKeyRef:
-                name: bookstack-db-secret
-                key: user-password
+            value: testpass
+    #        valueForm:
+    #          secretKeyRef:
+    #            name: bookstack-db-secret
+    #            key: user-password
               
         ports:
           - containerPort: 3306
@@ -74,10 +75,11 @@ spec:
           - name: DB_USER
             value: bookstack
           - name: DB_PASS
-            valueForm:
-              secretKeyRef:
-                name: bookstack-db-secret
-                key: user-password
+            value: testpass
+#            valueForm:
+#              secretKeyRef:
+#                name: bookstack-db-secret
+#                key: user-password
           - name: DB_NAME
             value: bookstack
           - name: APP_URL
