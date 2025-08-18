@@ -11,10 +11,6 @@ metadata:
     traefik.ingress.kubernetes.io/router.tls: "true"
     traefik.router.middlewares: tools-ittools-redirect-https@kubernetescrd
 spec:
-  tls:
-    - hosts:
-        - tools.lan
-      secretName: wildcard-lan-tls
   rules:
     - host: tools.lan
       http:
