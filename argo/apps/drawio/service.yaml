@@ -3,7 +3,7 @@ kind: Service
 metadata:
   labels:
     app.kubernetes.io/name: "drawio"
-  name: drawio
+  name: drawio-service
   namespace: tools
 spec:
   type: ClusterIP
