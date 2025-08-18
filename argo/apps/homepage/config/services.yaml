@@ -24,8 +24,8 @@
         description: Media Viewer
 
     - Drawio:
-        icon: drawio.png
-        href: http://draw-io.lan
+        icon: draw-io.png
+        href: http://drawio.lan
         description: Drawing tool
 
     - IT-Tools:
