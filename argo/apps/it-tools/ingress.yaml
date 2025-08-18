@@ -1,25 +1,28 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: it-tools
+  name: it-tools-service
   namespace: tools
   labels:
     app.kubernetes.io/name: it-tools
   annotations:
-    gethomepage.dev/description: Dynamically Detected it-tools
-    gethomepage.dev/enabled: "true"
-    gethomepage.dev/group: Apps
-    gethomepage.dev/icon: it-tools.png
-    gethomepage.dev/name: It-tools
+    kubernetes.io/ingress.class: traefik
+    traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
+    traefik.ingress.kubernetes.io/router.tls: "true"
+    traefik.router.middlewares: tools-it-tools-redirect-https@kubernetescrd
 spec:
+  tls:
+    - hosts:
+        - tools.lan
+      secretName: wildcard-lan-tls
   rules:
-    - host: "tools.lan"
+    - host: tools.lan
       http:
         paths:
-          - path: "/"
+          - path: /
             pathType: Prefix
             backend:
               service:
-                name: it-tools
+                name: it-tools-service
                 port:
                   number: 80
