@@ -29,12 +29,10 @@ spec:
           - name: MYSQL_USER
             value: bookstack
           - name: MYSQL_PASSWORD
-            value: testpass
-    #        valueForm:
-    #          secretKeyRef:
-    #            name: bookstack-db-secret
-    #            key: user-password
-              
+            valueForm:
+              secretKeyRef:
+                name: bookstack-db-secret
+                key: user-password   
         ports:
           - containerPort: 3306
         volumeMounts:
@@ -64,36 +62,34 @@ spec:
       containers:
       - name: bookstack
         image: ghcr.io/linuxserver/bookstack:latest
-        env:
-          - name: APP_KEY
-            value: d+ruO9mx+yD2yLMwXhcMungZu36rj66qnFL/4mCH0vY=
-    #        valueFrom:
-    #          secretKeyRef:
-    #            name: bookstack-db-secret
-    #            key: key
-          - name: DB_HOST
-            value: mariadb
-          - name: DB_USER
-            value: bookstack
-          - name: DB_PASS
-            value: testpass
-#            valueForm:
-#              secretKeyRef:
-#                name: bookstack-db-secret
-#                key: user-password
-          - name: DB_NAME
-            value: bookstack
-          - name: APP_URL
-            value: https://bookstack.lan
-          - name: PUID
-            value: "1000"
-          - name: PGID
-            value: "1000"
         ports:
           - containerPort: 80
+        env:
+          - name: DB_HOST
+            value: mariadb
+          - name: DB_DATABASE
+            valueFrom:
+              secretKeyRef:
+                name: bookstack-db-secret
+                key: database
+          - name: DB_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: bookstack-db-secret
+                key: username
+          - name: DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: bookstack-db-secret
+                key: mariadb-password
+          - name: APP_KEY
+            valueFrom:
+              secretKeyRef:
+                name: bookstack-app-key
+                key: APP_KEY
         volumeMounts:
-          - mountPath: /config
-            name: bookstack-data
+          - name: bookstack-data
+            mountPath: /config
       volumes:
         - name: bookstack-data
           persistentVolumeClaim:
