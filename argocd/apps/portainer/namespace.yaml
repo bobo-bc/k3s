@@ -1,8 +1,0 @@
-# 01-namespace.yaml
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: portainer
-  labels:
-    app.kubernetes.io/name: portainer
-    app.kubernetes.io/managed-by: argocd
