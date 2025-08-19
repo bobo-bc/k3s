@@ -9,7 +9,6 @@ title: Bobo Homepage
 statusStyle: "dot"
 hideVersion: false
 disableUpdateCheck: false
-headerStyle: boxed
 useEqualHeights: true
 layout:
   Infra: 
