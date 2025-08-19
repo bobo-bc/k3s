@@ -3,24 +3,20 @@
 # https://gethomepage.dev/latest/configs/services
       
 - Apps:
-    - HomeAssistant:
-        icon: home-assistant.png
-        href: http://10.0.0.7:8123
-        description: home automation
-        
-    - Ghost Blog:
-        icon: ghost-light.png
-        href: https://stevenfmeyer.me
-        description: my blog
-
+ 
     - Wiki:
         icon: wikijs.png
         href: https://wikijs.lan/
         description: technical notes
-    - plex:
-        icon: plex.png
-        href: http://10.0.0.9:32400/web/
-        description: Media Viewer
+    - Ghost Blog:
+        icon: ghost-light.png
+        href: https://stevenfmeyer.me
+        description: my blog
+    - Semaphore:
+        icon: semaphore.png
+        href: http://ansible.lan:3000/
+        description: Ansible UI
+
     - Drawio:
         icon: draw-io.png
         href: http://drawio.lan
@@ -29,35 +25,24 @@
         icon: it-tools.png
         href: http://tools.lan
         description: Handy IT tools
-    - Semaphore:
-        icon: semaphore.png
-        href: http://ansible.lan:3000/
-        description: Ansible UI
-       
+
+    - Plex:
+        icon: plex.png
+        href: http://10.0.0.9:32400/web/
+        description: Media Viewer
+    - HomeAssistant:
+        icon: home-assistant.png
+        href: http://10.0.0.7:8123
+        description: home automation       
 
  
 - Host:
-    - Proxmox:
-        icon: proxmox.png
-        href: https://10.0.0.5:8006
-        description: proxmox host
 
-    - Unifi Gateway:
-       icon: ubiquiti-unifi.png
-       href: http://10.0.0.1
-       description: unifi 
 
-    - TrueNAS:
-        icon: truenas-scale.png
-        href: https://10.0.0.3/
-        description: NAS management gui
-
-    - longhorn:
-       icon: longhorn.png
-       href: http://longhorn.lan/
-       description: Persistent Volume viewer
-        
-  
+    - PiHole:
+        icon: pi-hole.png
+        href: http://10.0.0.4/admin
+        description: dns management  
     - Portainer:
         icon: portainer-alt.png
         href: http://portainer.lan
@@ -65,11 +50,25 @@
     - Argo-CD:
         icon: argo-cd.png
         href: http://argocd.lan
-        description: dns management
-    - PiHole:
-        icon: pi-hole.png
-        href: http://10.0.0.4/admin
-        description: dns management  
+        description: dns management 
+    - longhorn:
+       icon: longhorn.png
+       href: http://longhorn.lan/
+       description: Persistent Volume viewer   
+    - TrueNAS:
+        icon: truenas-scale.png
+        href: https://10.0.0.3/
+        description: NAS management gui   
+    - Proxmox:
+        icon: proxmox.png
+        href: https://10.0.0.5:8006
+        description: proxmox host
+    - Unifi Gateway:
+       icon: ubiquiti-unifi.png
+       href: http://10.0.0.1
+       description: unifi      
+  
+
 
 
 - Media: 
@@ -87,10 +86,7 @@
         icon: lidarr.png
         href: http://lidarr.lan/
         description: Music management
-    - Prowlarr:
-        icon: prowlarr.png
-        href: http://prowlarr.lan/
-        description: index management
+
     - Lazylibrarian:
         icon: lazylibrarian.png
         href: http://library.lan/
@@ -105,6 +101,11 @@
         icon: transmission.png
         href: http://transmission.lan/
         description: Downloader
+
+    - Prowlarr:
+        icon: prowlarr.png
+        href: http://prowlarr.lan/
+        description: index management
 
 
 
