@@ -33,10 +33,7 @@
         icon: semaphore.png
         href: http://ansible.lan:3000/
         description: Ansible UI
-    - PiHole:
-        icon: pi-hole.png
-        href: http://10.0.0.4/admin
-        description: dns management      
+       
 
  
 - Host:
@@ -61,7 +58,7 @@
        description: Persistent Volume viewer
         
   
-    - PiHole:
+    - Portainer:
         icon: portainer.png
         href: http://portainer.lan
         description: k3s/docker management
@@ -69,6 +66,10 @@
         icon: argo-cd.png
         href: http://argocd.lan
         description: dns management
+    - PiHole:
+        icon: pi-hole.png
+        href: http://10.0.0.4/admin
+        description: dns management  
 
 
 - Media: 
