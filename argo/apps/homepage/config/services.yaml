@@ -32,6 +32,12 @@
         icon: it-tools.png
         href: http://tools.lan
         description: Handy IT tools
+    - Semaphore:
+        icon: semaphore.png
+        href: http://ansible.lan:3000/
+        description: Ansible UI
+
+        
 
  
 - Host:
