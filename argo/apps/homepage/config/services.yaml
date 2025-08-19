@@ -58,7 +58,7 @@
 
     - longhorn:
        icon: longhorn.png
-       href: http://longhornlan/
+       href: http://longhorn.lan/
        description: Persistent Volume viewer
         
   
