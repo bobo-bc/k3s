@@ -17,17 +17,14 @@
         icon: wikijs.png
         href: https://wikijs.lan/
         description: technical notes
-
     - plex:
         icon: plex.png
         href: http://10.0.0.9:32400/web/
         description: Media Viewer
-
     - Drawio:
         icon: draw-io.png
         href: http://drawio.lan
         description: Drawing tool
-
     - IT-Tools:
         icon: it-tools.png
         href: http://tools.lan
@@ -36,8 +33,7 @@
         icon: semaphore.png
         href: http://ansible.lan:3000/
         description: Ansible UI
-
-      - PiHole:
+    - PiHole:
         icon: pi-hole.png
         href: http://10.0.0.4/admin
         description: dns management      
