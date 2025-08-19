@@ -42,24 +42,24 @@ spec:
                 secretKeyRef:
                   name: mysql-secret
                   key: database
-#            - name: mail__transport
-#              value: SMTP
-#            - name: mail__options__host
-#              value: smtp.gmail.com
-#            - name: mail__options__port
-#              value: "465"
-#            - name: mail__options__secure
-#              value: "true"
-#            - name: mail__options__auth__user
-#              valueFrom:
-#                secretKeyRef:
-#                  name: ghost-mail-secret
-#                  key: smtp-user
-#           - name: mail__options__auth__pass
-#              valueFrom:
-#                secretKeyRef:
-#                  name: ghost-mail-secret
-#                  key: smtp-pass
+            - name: mail__transport
+              value: SMTP
+            - name: mail__options__host
+              value: smtp.gmail.com
+            - name: mail__options__port
+              value: "465"
+            - name: mail__options__secure
+              value: "true"
+            - name: mail__options__auth__user
+              valueFrom:
+                secretKeyRef:
+                  name: ghost-mail-secret
+                  key: smtp-user
+           - name: mail__options__auth__pass
+              valueFrom:
+                secretKeyRef:
+                  name: ghost-mail-secret
+                  key: gmail-app-password
           volumeMounts:
             - name: ghost-content
               mountPath: /var/lib/ghost/content
