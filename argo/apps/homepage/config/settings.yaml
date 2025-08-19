@@ -16,7 +16,7 @@ layout:
     style: row
     icon: mdi-folder-multiple-image
   Apps:
-    columns: 3
+    columns: 4
     style: row
     icon: mdi-folder-multiple-image
   Media:
