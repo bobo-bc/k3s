@@ -4,8 +4,7 @@
 backgroundOpacity: 0.6
 cardBlur: md # or sm, lg
 headerStyle: underlined # or boxed, boxedWidgets, clean
-
-background: https://i.ibb.co/hMWFX6D/mountain-clouds.gif
+background: https://images.unsplash.com/photo-1502790671504-542ad42d5189?auto=format&fit=crop&w=2560&q=80
 title: Bobo Homepage
 statusStyle: "dot"
 hideVersion: false
