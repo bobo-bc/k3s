@@ -71,7 +71,7 @@
         description: k3s/docker management
     - Argo-CD:
         icon: argo-cd.png
-        href: http://1argocd.lan
+        href: http://argocd.lan
         description: dns management
 
 
