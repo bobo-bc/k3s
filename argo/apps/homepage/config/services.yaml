@@ -59,7 +59,7 @@
         
   
     - Portainer:
-        icon: portainer.png
+        icon: portainer-alt.png
         href: http://portainer.lan
         description: k3s/docker management
     - Argo-CD:
