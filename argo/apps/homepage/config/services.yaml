@@ -37,7 +37,10 @@
         href: http://ansible.lan:3000/
         description: Ansible UI
 
-        
+      - PiHole:
+        icon: pi-hole.png
+        href: http://10.0.0.4/admin
+        description: dns management      
 
  
 - Host:
@@ -63,9 +66,9 @@
         
   
     - PiHole:
-        icon: pi-hole.png
-        href: http://10.0.0.4/admin
-        description: dns management
+        icon: portainer.png
+        href: http://portainer.lan
+        description: k3s/docker management
     - Argo-CD:
         icon: argo-cd.png
         href: http://1argocd.lan
