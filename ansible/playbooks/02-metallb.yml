@@ -1,0 +1,19 @@
+- hosts: masters
+  tasks:
+    - name: Install MetalLB via manifests
+      kubernetes.core.k8s:
+        state: present
+        src: https://raw.githubusercontent.com/metallb/metallb/v0.14.5/config/manifests/metallb-native.yaml
+
+    - name: Configure address pool
+      kubernetes.core.k8s:
+        state: present
+        definition:
+          apiVersion: metallb.io/v1beta1
+          kind: IPAddressPool
+          metadata:
+            name: default-addresspool
+            namespace: metallb-system
+          spec:
+            addresses:
+              - 10.0.0.20-10.0.0.30
