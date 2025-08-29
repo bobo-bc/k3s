@@ -1,26 +1,15 @@
-- name: Create VM from Proxmox template
-  hosts: 10.0.0.5
+- name: Clone VM from template
+  hosts: localhost
   gather_facts: no
   tasks:
-    - name: Clone VM from template
+    - name: Clone VM
       community.general.proxmox_kvm:
-        api_host: "{{ proxmox_host }}"
-        api_user: "{{ proxmox_user }}"
-        api_token_id: "{{ proxmox_token_id }}"
-        api_token_secret: "{{ proxmox_token_secret }}"
-        node: "pve1"
-        vmid: 9000                       # template VMID
-        clone: true
-        newid: 101                       # new VM ID
-        name: "k3s1"
-        storage: "local-lvm"
-        memory: 8192
-        cores: 4
-        net:
-          net0: "virtio,bridge=vmbr0"
-        ciuser: "bobo"
-        cipassword: "supersecret"
-        sshkeys: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
-        ipconfig:
-          ipconfig0: "ip=10.0.0.15/24,gw=10.0.0.1"
+        api_host: "{{ PROXMOX_HOST }}"
+        api_user: "{{ PROXMOX_USER }}"
+        api_token_id: "{{ PROXMOX_USER }}"
+        api_token_secret: "{{ PROXMOX_TOKEN }}"
+        node: "pve"
+        vmid: 9000
+        newid: 120
+        name: "k3s-node01"
         state: started
