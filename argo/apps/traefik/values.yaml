@@ -1,0 +1,27 @@
+service:
+  enabled: true
+  type: LoadBalancer
+  spec:
+    loadBalancerIP: 10.0.0.21   # pick a static IP from your MetalLB pool
+
+ports:
+  web:
+    port: 80
+    expose: true
+    exposedPort: 80
+    protocol: TCP
+  websecure:
+    port: 443
+    expose: true
+    exposedPort: 443
+    protocol: TCP
+
+ingressRoute:
+  dashboard:
+    enabled: true
+
+# enable Traefik to use cert-manager secrets
+providers:
+  kubernetesIngress:
+    publishedService:
+      enabled: true
