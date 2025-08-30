@@ -1,5 +1,7 @@
 resources:
   - https://github.com/cert-manager/cert-manager/releases/download/v1.15.3/cert-manager.crds.yaml
+  - cluster-issuer.yaml
+  - wildcard-cert.yaml
 
 helmCharts:
   - name: cert-manager
@@ -8,4 +10,4 @@ helmCharts:
     releaseName: cert-manager
     namespace: cert-manager
     valuesInline:
-      installCRDs: false   # CRDs already applied above
+      installCRDs: false
