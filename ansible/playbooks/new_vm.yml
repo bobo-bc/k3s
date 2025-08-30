@@ -7,7 +7,7 @@
   vars:
     proxmox_api_host: "10.0.0.5"
     proxmox_api_user: "ansible@pve!ansible" # Or @pve for API token
-    proxmox_api_password: "5d31ff0d-3c5c-45c6-8462-9b838ba37703" # Or API token secret
+    proxmox_api_password: "<secret>" # Or API token secret
     template_vm_id: 9000 # The VMID of your Proxmox template
     new_vm_id: 150 # The desired VMID for the new clone
     new_vm_name: "my_cloned_vm"
