@@ -2,7 +2,7 @@
   hosts: localhost
   gather_facts: no
   tasks:
-    - name: Clone a VM from template
+    - name: Clone
       community.general.proxmox:
         api_host: "{{ proxmox_host }}"
         api_port: "{{ proxmox_port }}"
