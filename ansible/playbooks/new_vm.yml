@@ -1,0 +1,32 @@
+---
+- name: Clone Proxmox VM Template
+  hosts: localhost
+  connection: local
+  gather_facts: no
+
+  vars:
+    proxmox_api_host: "10.0.0.5"
+    proxmox_api_user: "ansible@pve!ansible" # Or @pve for API token
+    proxmox_api_password: "5d31ff0d-3c5c-45c6-8462-9b838ba37703" # Or API token secret
+    template_vm_id: 9000 # The VMID of your Proxmox template
+    new_vm_id: 150 # The desired VMID for the new clone
+    new_vm_name: "my_cloned_vm"
+    target_node: "pve" # The Proxmox node where the VM will be cloned
+    storage_pool: "local-lvm" # The storage pool for the new VM's disk
+    full_clone: true # Set to true for a full clone, false for a linked clone
+
+  tasks:
+    - name: Clone Proxmox VM
+      community.general.proxmox:
+        api_host: "{{ proxmox_api_host }}"
+        api_user: "{{ proxmox_api_user }}"
+        api_password: "{{ proxmox_api_password }}"
+        vmid: "{{ template_vm_id }}"
+        newid: "{{ new_vm_id }}"
+        name: "{{ new_vm_name }}"
+        node: "{{ target_node }}"
+        storage: "{{ storage_pool }}"
+        full: "{{ full_clone }}"
+        state: cloned
+      delegate_to: localhost
+      run_once: true
