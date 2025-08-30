@@ -1,0 +1,19 @@
+- name: Create VM from Proxmox template
+  hosts: localhost
+  gather_facts: no
+  tasks:
+    - name: Clone a VM from template
+      community.general.proxmox:
+        api_host: "{{ proxmox_host }}"
+        api_port: "{{ proxmox_port }}"
+        api_user: "{{ proxmox_user }}"
+        api_password: "{{ proxmox_password }}"
+        node: "{{ proxmox_node }}"
+        clone: 9000        # Template VM ID
+        vmid: 125          # New VM ID
+        name: test-vm
+        storage: local-lvm
+        memory: 2048
+        cores: 2
+        net0: "virtio,bridge=vmbr0"
+        state: present
