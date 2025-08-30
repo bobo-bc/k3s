@@ -1,5 +1,8 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+# Your Issuer and Certificate definitions stay here
 resources:
-  - https://github.com/cert-manager/cert-manager/releases/download/v1.15.3/cert-manager.crds.yaml
   - cluster-issuer.yaml
   - wildcard-cert.yaml
 
@@ -10,4 +13,4 @@ helmCharts:
     releaseName: cert-manager
     namespace: cert-manager
     valuesInline:
-      installCRDs: false
+      installCRDs: true
