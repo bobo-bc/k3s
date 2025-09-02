@@ -5,22 +5,5 @@ namespace: cert-manager
 
 resources:
   - namespace.yaml
-  # If you’re using Helm via ArgoCD for cert-manager, you don’t need a raw YAML here,
-  # just keep clusterissuer + certificate
   - clusterissuer.yaml
   - certificate.yaml
-
-# If you want Argo to ignore diffs for the Cloudflare secret placeholder, add a patch
-patches:
-  - target:
-      kind: Secret
-      name: cloudflare-api-token-secret
-    patch: |-
-      apiVersion: v1
-      kind: Secret
-      metadata:
-        name: cloudflare-api-token-secret
-        namespace: cert-manager
-        annotations:
-          argocd.argoproj.io/compare-options: IgnoreExtraneous
-          argocd.argoproj.io/sync-options: Prune=false
