@@ -73,7 +73,7 @@ spec:
             - name: NFS_SERVER
               value: 10.0.0.5
             - name: NFS_PATH
-              value: /tank/k8s-storage
+              value: /tank/k8s-nfs
       volumes:
         - name: nfs-client-root
           nfs:
