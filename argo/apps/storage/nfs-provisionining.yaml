@@ -162,7 +162,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: nfs-folder
+  name: nfs-torrents
 spec:
   capacity:
     storage: 200Gi
@@ -170,4 +170,4 @@ spec:
     - ReadWriteMany
   nfs:
     server: 10.0.0.5
-    path: /tank/media/folder
+    path: /tank/media/torrents
