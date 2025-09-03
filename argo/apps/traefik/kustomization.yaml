@@ -1,10 +1,4 @@
-helmCharts:
-  - name: traefik
-    repo: https://traefik.github.io/charts
-    version: 27.0.2     # check latest before commit
-    releaseName: traefik
-    namespace: traefik
-    valuesFile: values.yaml
+
 resources:
   - values.yaml
   - dashboard-ingress.yaml
