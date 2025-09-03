@@ -2,7 +2,7 @@ service:
   enabled: true
   type: LoadBalancer
   spec:
-    loadBalancerIP: 10.0.0.21   # pick a static IP from your MetalLB pool
+    loadBalancerIP: 10.0.0.20   # pick a static IP from your MetalLB pool
 
 ports:
   web:
