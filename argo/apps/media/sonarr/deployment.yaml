@@ -1,0 +1,56 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sonarr
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sonarr
+  template:
+    metadata:
+      labels:
+        app: sonarr
+    spec:
+      containers:
+      - name: sonarr
+        image: lscr.io/linuxserver/sonarr:latest
+        ports:
+        - containerPort: 8989
+        env:
+        - name: PUID
+          value: "1000"   # match your host user
+        - name: PGID
+          value: "1000"
+        - name: TZ
+          value: "America/Vancouver"
+        volumeMounts:
+        - name: config
+          mountPath: /config
+        - name: tv
+          mountPath: /tv
+        - name: downloads
+          mountPath: /downloads
+      volumes:
+      - name: config
+        persistentVolumeClaim:
+          claimName: sonarr-config-pvc
+      - name: tv
+        persistentVolumeClaim:
+          claimName: sonarr-tv-pvc
+      - name: downloads
+        persistentVolumeClaim:
+          claimName: sonarr-downloads-pvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sonarr
+spec:
+  selector:
+    app: sonarr
+  ports:
+  - port: 8989
+    targetPort: 8989
+    protocol: TCP
