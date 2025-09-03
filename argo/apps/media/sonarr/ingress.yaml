@@ -5,6 +5,7 @@ metadata:
   name: sonarr
   annotations:
     traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    cert-manager.io/cluster-issuer: letsencrypt-dns
 spec:
   rules:
   - host: sonarr.smeyer.ca
