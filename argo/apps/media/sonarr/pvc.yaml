@@ -1,0 +1,67 @@
+---
+# Dynamic PVC for /config
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: sonarr-config-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: nfs-client   # your dynamic provisioner
+
+---
+# Static PV/PVC for /tv
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: sonarr-tv-pv
+spec:
+  capacity:
+    storage: 100Gi
+  accessModes:
+    - ReadWriteMany
+  nfs:
+    server: 10.0.0.5
+    path: /tank/media/tv
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: sonarr-tv-pvc
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 100Gi
+  volumeName: sonarr-tv-pv
+
+---
+# Static PV/PVC for /downloads
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: sonarr-downloads-pv
+spec:
+  capacity:
+    storage: 100Gi
+  accessModes:
+    - ReadWriteMany
+  nfs:
+    server: 10.0.0.5
+    path: /tank/media/torrents
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: sonarr-downloads-pvc
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 100Gi
+  volumeName: sonarr-downloads-pv
