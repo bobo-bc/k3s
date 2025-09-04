@@ -67,5 +67,5 @@ spec:
   resources:
     requests:
       storage: 100Gi
-  volumeName: sonarr-downloads-pv
+  volumeName: radarr-downloads-pv
   storageClassName: ""   # must match PV
