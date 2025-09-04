@@ -1,0 +1,17 @@
+# apps/sonarr/ingressroute.yaml
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: radarr
+  namespace: media
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`radarr.smeyer.ca`)
+      kind: Rule
+      services:
+        - name: radarr
+          port: 80
+  tls:
+    certResolver: letsencrypt
