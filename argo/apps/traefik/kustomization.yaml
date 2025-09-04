@@ -1,4 +1,3 @@
 
 resources:
-  - values.yaml
   - dashboard-ingress.yaml
