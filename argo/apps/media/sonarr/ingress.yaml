@@ -1,24 +1,16 @@
----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
 metadata:
   name: sonarr
-  annotations:
-    traefik.ingress.kubernetes.io/router.entrypoints: websecure
-    cert-manager.io/cluster-issuer: letsencrypt-dns
+  namespace: media
 spec:
-  rules:
-  - host: sonarr.smeyer.ca
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: sonarr
-            port:
-              number: 8989
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`sonarr.smeyer.ca`)
+      kind: Rule
+      services:
+        - name: sonarr
+          port: 8989
   tls:
-  - hosts:
-    - sonarr.smeyer.ca
-    secretName: smeyer-ca-tls
+    certResolver: letsencrypt-dns
