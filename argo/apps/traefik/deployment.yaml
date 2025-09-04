@@ -7,22 +7,22 @@ spec:
   template:
     spec:
       containers:
-        - name: traefik
-          volumeMounts:
-            - name: traefik-config
-              mountPath: /etc/traefik/traefik.yml
-              subPath: traefik.yml
-            - name: acme
-              mountPath: /data
-          env:
-            - name: CF_API_TOKEN
-              valueFrom:
-                secretKeyRef:
-                  name: traefik-cloudflare
-                  key: CF_API_TOKEN
+      - name: traefik
+        volumeMounts:
+          - name: traefik-config
+            mountPath: /etc/traefik/traefik.yml
+            subPath: traefik.yml
+          - name: acme
+            mountPath: /data
+        env:
+          - name: CF_API_TOKEN
+            valueFrom:
+              secretKeyRef:
+                name: traefik-cloudflare
+                key: CF_API_TOKEN
       volumes:
         - name: traefik-config
           configMap:
             name: traefik-config
         - name: acme
-          emptyDir: {}   # or mount a PVC for persistent acme.json
+          emptyDir: {} # replace with PVC for persistence
