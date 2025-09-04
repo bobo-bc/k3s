@@ -15,6 +15,10 @@ data:
       kubernetesCRD: {}
       kubernetesIngress: {}
 
+    api:
+      insecure: true
+      dashboard: true
+
     certificatesResolvers:
       letsencrypt-dns:
         acme:
