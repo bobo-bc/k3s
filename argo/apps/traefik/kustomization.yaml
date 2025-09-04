@@ -1,3 +1,5 @@
 
 resources:
   - dashboard-ingress.yaml
+  - deployment.yaml
+  - configmap.yaml
