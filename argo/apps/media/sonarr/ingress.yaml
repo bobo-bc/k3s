@@ -1,3 +1,14 @@
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: redirect-to-https
+  namespace: media
+spec:
+  redirectScheme:
+    scheme: https
+    permanent: true
+---
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
@@ -5,8 +16,8 @@ metadata:
   namespace: media
 spec:
   entryPoints:
-    - web
-    - websecure
+    - web       # HTTP
+    - websecure # HTTPS
   routes:
     - match: Host(`sonarr.smeyer.ca`)
       kind: Rule
