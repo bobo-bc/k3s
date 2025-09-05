@@ -1,4 +1,4 @@
-apiVersion: traefik.containo.us/v1alpha1
+apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
   name: plex
@@ -10,7 +10,7 @@ spec:
     - match: Host(`plex.smeyer.ca`)
       kind: Rule
       services:
-        - name: plex-outside
+        - name: plex-external
           kind: TraefikService
           port: 32400
       middlewares:
