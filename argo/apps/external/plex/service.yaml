@@ -1,0 +1,9 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: Service
+metadata:
+  name: plex-outside
+  namespace: media
+spec:
+  loadBalancer:
+    servers:
+      - url: "http://10.0.0.11:32400"
