@@ -7,7 +7,7 @@ spec:
   entryPoints:
     - web
   routes:
-    - match: Host(`plex.smeyer.ca`)
+    - match: Host(`plex`)
       kind: Rule
       services:
         - name: plex-external
