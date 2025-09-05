@@ -5,7 +5,7 @@ metadata:
   namespace: media
 spec:
   entryPoints:
-    - websecure
+    - web
   routes:
     - match: Host(`plex.smeyer.ca`)
       kind: Rule
@@ -15,5 +15,3 @@ spec:
           port: 32400
       middlewares:
         - name: plex-strip-web
-  tls:
-    certResolver: letsencrypt
