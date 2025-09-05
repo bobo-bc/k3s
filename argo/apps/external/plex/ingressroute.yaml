@@ -11,7 +11,7 @@ spec:
       kind: Rule
       services:
         - name: plex-external
-          kind: TraefikService
+          kind: Service
           port: 32400
       middlewares:
         - name: plex-strip-web
