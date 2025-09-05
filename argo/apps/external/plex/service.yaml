@@ -1,7 +1,7 @@
-apiVersion: traefik.containo.us/v1alpha1
-kind: Service
+apiVersion: traefik.io/v1alpha1
+kind: TraefikService
 metadata:
-  name: plex-outside
+  name: plex-external
   namespace: media
 spec:
   loadBalancer:
