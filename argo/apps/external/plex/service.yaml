@@ -1,9 +1,11 @@
-apiVersion: traefik.io/v1alpha1
-kind: TraefikService
+apiVersion: v1
+kind: Service
 metadata:
   name: plex-external
   namespace: media
 spec:
-  loadBalancer:
-    servers:
-      - url: "http://10.0.0.11:32400"
+  type: ExternalName
+  externalName: 10.0.0.11
+  ports:
+    - port: 32400
+      targetPort: 32400
