@@ -1,0 +1,19 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: plex
+  namespace: media
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`plex.smeyer.ca`)
+      kind: Rule
+      services:
+        - name: plex-outside
+          kind: TraefikService
+          port: 32400
+      middlewares:
+        - name: plex-strip-web
+  tls:
+    certResolver: letsencrypt
