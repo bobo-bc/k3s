@@ -7,7 +7,7 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`download.smeyer.ca`)
+    - match: Host(`transmission.smeyer.ca`)
       kind: Rule
       services:
         - name: transmission-vpn
