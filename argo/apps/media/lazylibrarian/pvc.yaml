@@ -1,16 +1,16 @@
 ---
-# Dynamic PVC for /config
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: lazylibrarian-config
+  namespace: media
 spec:
   accessModes:
-    - ReadWriteMany
+    - ReadWriteMany   # since you’re using NFS, RWX works best
   resources:
     requests:
       storage: 1Gi
-  storageClassName: nfs-client   # your dynamic provisioner
+  storageClassName: nfs-client
 
 ---
 # Static PV/PVC for /tv
