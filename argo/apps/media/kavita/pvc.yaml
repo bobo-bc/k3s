@@ -38,10 +38,6 @@ spec:
   resources:
     requests:
       storage: 100Gi
-  volumeName: sonarr-tv-pv
+  volumeName: kavita-books-pv
   storageClassName: ""   # must match PV
 
----
-
-  volumeName: sonarr-downloads-pv
-  storageClassName: ""   # must match PV
