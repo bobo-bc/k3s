@@ -7,7 +7,7 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`prowlarr.smeyer.ca`)
+    - match: Host(`index.smeyer.ca`)
       kind: Rule
       services:
         - name: prowlarr
