@@ -22,7 +22,7 @@ spec:
   capacity:
     storage: 100Gi
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   storageClassName: ""   # important for static
   nfs:
     server: 10.0.0.5
