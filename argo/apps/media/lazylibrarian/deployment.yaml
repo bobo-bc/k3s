@@ -36,7 +36,7 @@ spec:
       - name: config
         persistentVolumeClaim:
           claimName: lazylibrarian-config-pvc
-      - name: tv
+      - name: books
         persistentVolumeClaim:
           claimName: lazylibrarian-books-pvc
       - name: downloads
