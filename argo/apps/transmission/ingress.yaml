@@ -1,36 +1,16 @@
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: transmission-vpn-ingress
-  namespace: media
-  annotations:
-    kubernetes.io/ingress.class: traefik
-    traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
-    traefik.ingress.kubernetes.io/router.middlewares: media-transmission-vpn-redirect-https@kubernetescrd
-spec:
-  ingressClassName: traefik
-  tls:
-    - hosts:
-        - transmission-vpn.lan
-      secretName: wildcard-lan-tls
-  rules:
-    - host: transmission-vpn.lan
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: transmission-vpn
-                port:
-                  number: 9091
----
 apiVersion: traefik.io/v1alpha1
-kind: Middleware
+kind: IngressRoute
 metadata:
-  name: transmission-vpn-redirect-https
+  name: transmission-vpn
   namespace: media
 spec:
-  redirectScheme:
-    scheme: https
-    permanent: true
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`download.smeyer.ca`)
+      kind: Rule
+      services:
+        - name: radarr
+          port: 80
+  tls:
+    certResolver: letsencrypt
