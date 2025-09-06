@@ -5,12 +5,10 @@ metadata:
   namespace: media
 spec:
   entryPoints:
-    - websecure
+    - web
   routes:
     - match: Host(`transmission.smeyer.ca`)
       kind: Rule
       services:
         - name: transmission-vpn
           port: 80
-  tls:
-    certResolver: letsencrypt
