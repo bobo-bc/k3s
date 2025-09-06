@@ -1,0 +1,44 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lazylibrarian
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: lazylibrarian
+  template:
+    metadata:
+      labels:
+        app: lazylibrarian
+    spec:
+      containers:
+      - name: lazylibrarian
+        image: lscr.io/linuxserver/lazylibrarian:latest
+        ports:
+        - containerPort: 5299
+        env:
+        - name: PUID
+          value: "1000"   # match your host user
+        - name: PGID
+          value: "1000"
+        - name: TZ
+          value: "America/Vancouver"
+        volumeMounts:
+        - name: config
+          mountPath: /config
+        - name: books
+          mountPath: /books
+        - name: downloads
+          mountPath: /downloads
+      volumes:
+      - name: config
+        persistentVolumeClaim:
+          claimName: lazylibrarian-config-pvc
+      - name: tv
+        persistentVolumeClaim:
+          claimName: lazylibrarian-books-pvc
+      - name: downloads
+        persistentVolumeClaim:
+          claimName: lazylibrarian-downloads-pvc
