@@ -1,4 +1,4 @@
-apiVersion: traefik.io/v1alpha1
+sapiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
   name: radarr
@@ -7,7 +7,7 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`radarr.smeyer.ca`)
+    - match: Host(`movies.smeyer.ca`)
       kind: Rule
       services:
         - name: radarr
