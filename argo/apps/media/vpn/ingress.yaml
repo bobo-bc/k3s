@@ -11,6 +11,6 @@ spec:
       kind: Rule
       services:
         - name: transmission-vpn
-          port: 9091          # Must match service port
+          port: 80        # Must match service port
   tls:
     certResolver: letsencrypt
