@@ -5,10 +5,12 @@ metadata:
   namespace: media
 spec:
   entryPoints:
-    - web
+    - websecure           # Use Traefik HTTPS entryPoint
   routes:
     - match: Host(`transmission.smeyer.ca`)
       kind: Rule
       services:
         - name: transmission-vpn
-          port: 80
+          port: 9091          # Must match service port
+  tls:
+    certResolver: letsencrypt
