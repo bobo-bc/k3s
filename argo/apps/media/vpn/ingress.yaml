@@ -10,7 +10,7 @@ spec:
     - match: Host(`download.smeyer.ca`)
       kind: Rule
       services:
-        - name: radarr
+        - name: transmission-vpn
           port: 80
   tls:
     certResolver: letsencrypt
