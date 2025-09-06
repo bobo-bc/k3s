@@ -1,0 +1,13 @@
+# apps/sonarr/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: kavita
+  namespace: media
+spec:
+  selector:
+    app: kavita
+  ports:
+    - name: http
+      port: 80
+      targetPort: 5000
