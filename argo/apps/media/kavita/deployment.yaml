@@ -1,0 +1,40 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kavita
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kavita
+  template:
+    metadata:
+      labels:
+        app: kavita
+    spec:
+      containers:
+      - name: kavita
+        image: lscr.io/linuxserver/kavita:latest
+        ports:
+        - containerPort: 5000
+        env:
+        - name: PUID
+          value: "1000"   # match your host user
+        - name: PGID
+          value: "1000"
+        - name: TZ
+          value: "America/Vancouver"
+        volumeMounts:
+        - name: config
+          mountPath: /config
+        - name: books
+          mountPath: /books
+      volumes:
+      - name: config
+        persistentVolumeClaim:
+          claimName: kavita-config-pvc
+      - name: books
+        persistentVolumeClaim:
+          claimName: kavita-books-pvc
+ 
