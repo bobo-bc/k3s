@@ -18,7 +18,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: transmission-vpn-downloads-pv
+  name: nfs-pvc-torrents
 spec:
   capacity:
     storage: 100Gi
@@ -32,12 +32,12 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: transmission-vpn-downloads-pvc
+  name: nfs-pvc-torrents
 spec:
   accessModes:
     - ReadWriteMany
   resources:
     requests:
       storage: 100Gi
-  volumeName: transmission-vpn-downloads-pv
+  volumeName: nfs-pvc-torrents
   storageClassName: ""   # must match PV
