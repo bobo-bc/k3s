@@ -8,7 +8,7 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`sonarr.smeyer.ca`)
+    - match: Host(`tv.smeyer.ca`)
       kind: Rule
       services:
         - name: sonarr
