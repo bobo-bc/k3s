@@ -1,0 +1,17 @@
+# apps/sonarr/ingressroute.yaml
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: kavita
+  namespace: media
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`books.smeyer.ca`)
+      kind: Rule
+      services:
+        - name: kavita
+          port: 80
+  tls:
+    certResolver: letsencrypt
