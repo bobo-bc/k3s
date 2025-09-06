@@ -1,0 +1,47 @@
+---
+# Dynamic PVC for /config
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: kavita-config-pvc
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: nfs-client   # your dynamic provisioner
+
+---
+# Static PV/PVC for /tv
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: kavita-books-pv
+spec:
+  capacity:
+    storage: 100Gi
+  accessModes:
+    - ReadWriteMany
+  storageClassName: ""   # important for static
+  nfs:
+    server: 10.0.0.5
+    path: /tank/media/books
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: kavita-books-pvc
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 100Gi
+  volumeName: sonarr-tv-pv
+  storageClassName: ""   # must match PV
+
+---
+
+  volumeName: sonarr-downloads-pv
+  storageClassName: ""   # must match PV
