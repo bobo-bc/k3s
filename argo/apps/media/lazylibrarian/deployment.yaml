@@ -14,7 +14,7 @@ spec:
         app: lazylibrarian
     spec:
       containers:
-      - name: lazylibrarian
+      - name: sonarr
         image: lscr.io/linuxserver/lazylibrarian:latest
         ports:
         - containerPort: 5299
