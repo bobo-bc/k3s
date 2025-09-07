@@ -3,8 +3,6 @@ kind: Deployment
 metadata:
   name: transmission-vpn
   namespace: media
-  labels:
-    app.kubernetes.io/name: transmission-vpn
 spec:
   replicas: 1
   strategy:
@@ -14,11 +12,11 @@ spec:
       maxUnavailable: 25%
   selector:
     matchLabels:
-      app.kubernetes.io/name: transmission-vpn
+      app: transmission-vpn
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: transmission-vpn
+        app: transmission-vpn
     spec:
       containers:
         - name: transmission-vpn
