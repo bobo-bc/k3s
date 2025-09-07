@@ -1,4 +1,15 @@
-# apps/sonarr/ingressroute.yaml
+# Middleware: redirect HTTP -> HTTPS
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: homepage-redirect-https
+  namespace: homepage
+spec:
+  redirectScheme:
+    scheme: https
+    permanent: true
+---
+# IngressRoute for HTTPS
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
@@ -15,4 +26,22 @@ spec:
           port: 80
   tls:
     certResolver: letsencrypt
+---
+# IngressRoute for HTTP (only used for redirect)
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: homepage-http
+  namespace: homepage
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: Host(`home.smeyer.ca`)
+      kind: Rule
+      middlewares:
+        - name: homepage-redirect-https
+      services:
+        - name: homepage
+          port: 80
       
