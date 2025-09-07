@@ -4,7 +4,7 @@ metadata:
   name: homepage-service
   namespace: homepage
   labels:
-    app.kubernetes.io/name: homepage
+    app: homepage
 spec:
   type: ClusterIP
   ports:
@@ -12,4 +12,4 @@ spec:
       targetPort: 3000
       protocol: TCP
   selector:
-    app.kubernetes.io/name: homepage
+    app: homepage
