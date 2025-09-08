@@ -16,3 +16,33 @@ spec:
         - name: transmission-auth
   tls:
     certResolver: letsencrypt
+
+        # Middleware: redirect HTTP -> HTTPS
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: transmission-vpn-redirect-https
+  namespace: media
+spec:
+  redirectScheme:
+    scheme: https
+    permanent: true
+---
+# IngressRoute for HTTP (only used for redirect)
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: transmission-vpn-http
+  namespace: media
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: Host(`transmission.smeyer.ca`)
+      kind: Rule
+      middlewares:
+        - name: transmission-vpn-redirect-https
+      services:
+        - name: transmission-vpn
+          port: 80
+      
