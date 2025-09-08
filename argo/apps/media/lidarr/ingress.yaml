@@ -1,4 +1,15 @@
-# apps/lidarr/ingressroute.yaml
+    # Middleware: redirect HTTP -> HTTPS
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: lidarr-redirect-https
+  namespace: media
+spec:
+  redirectScheme:
+    scheme: https
+    permanent: true
+---
+# IngressRoute for HTTPS
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
@@ -15,3 +26,22 @@ spec:
           port: 80
   tls:
     certResolver: letsencrypt
+---
+# IngressRoute for HTTP (only used for redirect)
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: lidarr-http
+  namespace: media
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: Host(`music.smeyer.ca`)
+      kind: Rule
+      middlewares:
+        - name: lidarr-redirect-https
+      services:
+        - name: lidarr
+          port: 80
+      
