@@ -23,13 +23,13 @@ ingress:
       traefik.ingress.kubernetes.io/router.entrypoints: websecure
       traefik.ingress.kubernetes.io/router.tls: "true"
     hosts:
-      - host: tv.smeyer.ca
+      - host: tv-shows.smeyer.ca
         paths:
           - path: /
             pathType: Prefix
     tls:
       - hosts:
-          - tv.smeyer.ca
+          - tv-shows.smeyer.ca
         secretName: sonarr-tls
 
 persistence:
