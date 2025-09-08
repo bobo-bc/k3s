@@ -9,7 +9,7 @@
         href: https://wikijs.lan/
         description: technical notes
     - Ghost Blog:
-        icon: ghost-light.png
+    #    icon: ghost-light.png
         href: https://stevenfmeyer.me
         description: my blog
     - Semaphore:
