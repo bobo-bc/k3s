@@ -5,16 +5,16 @@ metadata:
   name: uptime-kuma
   namespace: monitoring
   labels:
-    app.kubernetes.io/name: uptime-kuma
+    app: uptime-kuma
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app.kubernetes.io/name: uptime-kuma
+      app: uptime-kuma
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: uptime-kuma
+        app: uptime-kuma
     spec:
       containers:
         - name: kuma
