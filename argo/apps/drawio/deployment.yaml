@@ -4,16 +4,16 @@ metadata:
   name: drawio
   namespace: tools
   labels:
-    app.kubernetes.io/name: drawio
+    app: drawio
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app.kubernetes.io/name: drawio
+      app: drawio
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: drawio
+        app: drawio
     spec:
       containers:
         - name: drawio
