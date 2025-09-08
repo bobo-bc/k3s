@@ -1,28 +1,47 @@
-apiVersion: networking.k8s.io/v1
-kind: Ingress
+    # Middleware: redirect HTTP -> HTTPS
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
 metadata:
-  name: drawio-ingress
+  name: drawio-redirect-https
   namespace: tools
-  labels:
-    app.kubernetes.io/name: drawio
-  annotations:
-    kubernetes.io/ingress.class: traefik
-    traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
-    traefik.ingress.kubernetes.io/router.tls: "true"
-    traefik.router.middlewares: tools-drawio-redirect-https@kubernetescrd
 spec:
+  redirectScheme:
+    scheme: https
+    permanent: true
+---
+# IngressRoute for HTTPS
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: drawio
+  namespace: tools
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`drawio.smeyer.ca`)
+      kind: Rule
+      services:
+        - name: drawio
+          port: 80
   tls:
-    - hosts:
-        - drawio.lan
-      secretName: wildcard-lan-tls
-  rules:
-    - host: drawio.lan
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: drawio-service
-                port:
-                  number: 80
+    certResolver: letsencrypt
+---
+# IngressRoute for HTTP (only used for redirect)
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: drawio-http
+  namespace: tools
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: Host(`drawio.smeyer.ca`)
+      kind: Rule
+      middlewares:
+        - name: drawio-redirect-https
+      services:
+        - name: drawio
+          port: 80
+      
