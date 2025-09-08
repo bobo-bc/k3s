@@ -1,25 +1,47 @@
-apiVersion: networking.k8s.io/v1
-kind: Ingress
+    # Middleware: redirect HTTP -> HTTPS
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: uptime-kuma-redirect-https
+  namespace: tools
+spec:
+  redirectScheme:
+    scheme: https
+    permanent: true
+---
+# IngressRoute for HTTPS
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
 metadata:
   name: uptime-kuma
-  namespace: monitoring
-  labels:
-    app.kubernetes.io/name: uptime-kuma
-  annotations:
-    gethomepage.dev/description: Dynamically Detected uptime-kuma
-    gethomepage.dev/enabled: "true"
-    gethomepage.dev/group: Cluster Management
-    gethomepage.dev/icon: uptime-kuma.png
-    gethomepage.dev/name: Uptime-kuma
+  namespace: tools
 spec:
-  rules:
-    - host: "uptime.lan"
-      http:
-        paths:
-          - path: "/"
-            pathType: Prefix
-            backend:
-              service:
-                name: uptime-kuma
-                port:
-                  number: 80
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`uptime.smeyer.ca`)
+      kind: Rule
+      services:
+        - name: uptime-kuma
+          port: 80
+  tls:
+    certResolver: letsencrypt
+---
+# IngressRoute for HTTP (only used for redirect)
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: uptime-kuma-http
+  namespace: tools
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: Host(`uptime.smeyer.ca`)
+      kind: Rule
+      middlewares:
+        - name: uptime-kuma-redirect-https
+      services:
+        - name: uptime-kuma
+          port: 80
+      
