@@ -2,18 +2,18 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: ghost
-  namespace: post
+  namespace: ghost
   labels:
-    app.kubernetes.io/name: ghost
+    app: ghost
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app.kubernetes.io/name: ghost
+      app: ghost
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: ghost
+        app: ghost
     spec:
       containers:
         - name: ghost
@@ -22,7 +22,7 @@ spec:
             - containerPort: 2368
           env:
             - name: url
-              value: http://10.0.0.22
+              value: http://ghost.smeyer.ca
             - name: database__client
               value: mysql
             - name: database__connection__host
