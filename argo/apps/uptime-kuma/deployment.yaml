@@ -3,7 +3,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: uptime-kuma
-  namespace: monitoring
+  namespace: tools
   labels:
     app: uptime-kuma
 spec:
