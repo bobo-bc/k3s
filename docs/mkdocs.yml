@@ -1,0 +1,11 @@
+site_name: "K3s Wiki"
+site_url: "https://wiki.smeyer.ca"
+
+theme:
+  name: material   # simple, clean theme; install mkdocs-material for it
+
+nav:
+  - Home: index.md
+  - Getting Started: Getting-Started.md
+  - Setup Guide: Setup-Guide.md
+  - Other Page: Other-Page.md
