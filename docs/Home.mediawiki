@@ -1,0 +1,1 @@
+Welcome to the k3s wiki! An interesting repository to capture notes on K3s build. I had learned the hard way that having reference docs outside of the homelab is the only way to restore the homelab if it craters!
