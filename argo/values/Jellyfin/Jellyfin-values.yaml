@@ -1,5 +1,3 @@
-# jellyfin-values.yaml
-
 image:
   repository: jellyfin/jellyfin
   tag: latest
@@ -13,10 +11,11 @@ persistence:
   enabled: true
   config:
     size: 2Gi
-    storageClass: nfs-client   # replace with your storage class
+    storageClass: nfs-client
   media:
     size: 5Gi
-    storageClass: nfs-client   # replace with your storage class
+    storageClass: nfs-client
+
 ingress:
   enabled: true
   ingressClassName: traefik
