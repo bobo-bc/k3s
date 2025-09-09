@@ -1,0 +1,24 @@
+image:
+  repository: linuxserver/radarr
+  tag: "5.9.3"
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 7878
+  targetPort: 7878
+
+ingress:
+  enabled: true
+  host: radarr.smeyer.ca
+  tls: true
+  middlewares:
+    - redirect-to-https
+
+env:
+  - name: TZ
+    value: America/Vancouver
+  - name: PUID
+    value: "1000"
+  - name: PGID
+    value: "1000"
