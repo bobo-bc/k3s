@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: radarr
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/youruser/yourrepo'
+    targetRevision: main
+    path: charts/generic-app
+    helm:
+      valueFiles:
+        - apps/radarr/values.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: media
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
