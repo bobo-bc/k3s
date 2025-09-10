@@ -3,108 +3,76 @@
 # https://gethomepage.dev/latest/configs/services
       
 - Apps:
- 
-    - Wiki:
-        icon: wikijs.png
-        href: https://wikijs.lan/
-        description: technical notes
     - Ghost Blog:
-    #    icon: ghost-light.png
-        href: https://stevenfmeyer.me
+        icon: ghost-light.png
+        href: https://blog.smeyer.me
         description: my blog
-    - Semaphore:
-        icon: semaphore.png
-        href: http://ansible.lan:3000/
-        description: Ansible UI
-
     - Drawio:
         icon: draw-io.png
-        href: http://drawio.lan
+        href: https://drawio.smeyer.ca/
         description: Drawing tool
     - IT-Tools:
         icon: it-tools.png
-        href: http://tools.lan
+        href: https://tools.smeyer.ca/
         description: Handy IT tools
-
     - Plex:
         icon: plex.png
-        href: http://10.0.0.9:32400/web/
+        href: http://10.0.0.11:32400/web/
         description: Media Viewer
     - HomeAssistant:
         icon: home-assistant.png
-        href: http://10.0.0.7:8123
+        href: http://10.0.0.7:8123/
         description: home automation       
-
- 
 - Host:
-
-
     - PiHole:
         icon: pi-hole.png
-        href: http://10.0.0.4/admin
+        href: http://10.0.0.10/admin/
         description: dns management  
     - Portainer:
         icon: portainer-alt.png
-        href: http://portainer.lan
+        href: https://portainer.smeyer.ca/
         description: k3s/docker management
     - Argo-CD:
         icon: argo-cd.png
-        href: http://argocd.lan
-        description: dns management 
-    - longhorn:
-       icon: longhorn.png
-       href: http://longhorn.lan/
-       description: Persistent Volume viewer   
-    - TrueNAS:
-        icon: truenas-scale.png
-        href: https://10.0.0.3/
-        description: NAS management gui   
+        href: https://argo.smeyer.ca/
+        description: dns management    
     - Proxmox:
         icon: proxmox.png
-        href: https://10.0.0.5:8006
+        href: https://10.0.0.5:8006/
         description: proxmox host
     - Unifi Gateway:
        icon: ubiquiti-unifi.png
-       href: http://10.0.0.1
+       href: https://unifi.smeyer.ca
        description: unifi      
-  
-
-
-
 - Media: 
     - Sonarr:
         icon: sonarr.png
-        href: http://sonarr.lan/
+        href: https://tv.smeyer.ca/
         description: Tv management
         namespace: media
 
     - Radarr:
         icon: radarr.png
-        href: http://radarr.lan/
+        href: https://movies.smeyer.ca/
         description: Movies management
     - Lidarr:
         icon: lidarr.png
-        href: http://lidarr.lan/
+        href: https://music.smeyer.ca/
         description: Music management
-
-    - Lazylibrarian:
-        icon: lazylibrarian.png
-        href: http://library.lan/
-        description: Books management
 
     - Kavita:
         icon: kavita.png
-        href: http://kavita.lan/
+        href: https://books.smeyer.ca/
         description: Book reader
         
     - Transmission-vpn:
         icon: transmission.png
-        href: http://transmission.lan/
+        href: https://transmission.smeyer.ca/
         description: Downloader
 
     - Prowlarr:
         icon: prowlarr.png
-        href: http://prowlarr.lan/
+        href: https://index.smeyer.ca/
         description: index management
 
 
