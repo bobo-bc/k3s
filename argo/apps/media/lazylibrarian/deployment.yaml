@@ -17,7 +17,7 @@ spec:
       - name: sonarr
         image: lscr.io/linuxserver/calibre:latest
         ports:
-        - containerPort: 5299
+        - containerPort: 8181
         env:
         - name: PUID
           value: "1000"   # match your host user
