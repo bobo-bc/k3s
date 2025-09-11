@@ -2,12 +2,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: lazylibrarian
+  name: calibre
   namespace: media
 spec:
   selector:
-    app: lazylibrarian
+    app: calibre
   ports:
     - name: http
       port: 80
-      targetPort: 5299
+      targetPort: 8181
