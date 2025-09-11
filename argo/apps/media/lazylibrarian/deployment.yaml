@@ -2,20 +2,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: lazylibrarian
+  name: calibre
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: lazylibrarian
+      app: calibre
   template:
     metadata:
       labels:
-        app: lazylibrarian
+        app: calibre
     spec:
       containers:
       - name: sonarr
-        image: lscr.io/linuxserver/lazylibrarian:latest
+        image: lscr.io/linuxserver/calibre:latest
         ports:
         - containerPort: 5299
         env:
@@ -35,10 +35,10 @@ spec:
       volumes:
       - name: config
         persistentVolumeClaim:
-          claimName: lazylibrarian-config
+          claimName: calibre-config
       - name: books
         persistentVolumeClaim:
-          claimName: lazylibrarian-books-pvc
+          claimName: calibre-books-pvc
       - name: downloads
         persistentVolumeClaim:
-          claimName: lazylibrarian-downloads-pvc
+          claimName: calibre-downloads-pvc
