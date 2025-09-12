@@ -2,7 +2,7 @@
 apiVersion: traefik.io/v1alpha1
 kind: Middleware
 metadata:
-  name: calibre-redirect-https
+  name: lazylibrarian-redirect-https
   namespace: media
 spec:
   redirectScheme:
@@ -13,7 +13,7 @@ spec:
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
-  name: calibre
+  name: lazylibrarian
   namespace: media
 spec:
   entryPoints:
@@ -22,7 +22,7 @@ spec:
     - match: Host(`library.smeyer.ca`)
       kind: Rule
       services:
-        - name: calibre
+        - name: lazylibrarian
           port: 80
   tls:
     certResolver: letsencrypt
@@ -31,7 +31,7 @@ spec:
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
-  name: calibre-http
+  name: lazylibrarian-http
   namespace: media
 spec:
   entryPoints:
@@ -40,8 +40,8 @@ spec:
     - match: Host(`library.smeyer.ca`)
       kind: Rule
       middlewares:
-        - name: calibre-redirect-https
+        - name: lazylibrarian-redirect-https
       services:
-        - name: calibre
+        - name: lazylibrarian
           port: 80
       
