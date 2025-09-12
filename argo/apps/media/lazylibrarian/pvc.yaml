@@ -3,7 +3,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: calibre-config
+  name: lazylibrarian-config
 spec:
   accessModes:
     - ReadWriteOnce
@@ -17,7 +17,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: calibre-books-pv
+  name: lazylibrarian-books-pv
 spec:
   capacity:
     storage: 100Gi
@@ -31,14 +31,14 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: calibre-books-pvc
+  name: lazylibrarian-books-pvc
 spec:
   accessModes:
     - ReadWriteMany
   resources:
     requests:
       storage: 100Gi
-  volumeName: calibre-books-pv
+  volumeName: lazylibrarian-books-pv
   storageClassName: ""   # must match PV
 
 ---
@@ -46,7 +46,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: calibre-downloads-pv
+  name: lazylibrarian-downloads-pv
 spec:
   capacity:
     storage: 100Gi
@@ -60,12 +60,12 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: calibre-downloads-pvc
+  name: lazylibrarian-downloads-pvc
 spec:
   accessModes:
     - ReadWriteMany
   resources:
     requests:
       storage: 100Gi
-  volumeName: calibre-downloads-pv
+  volumeName: lazylibrarian-downloads-pv
   storageClassName: ""   # must match PV
