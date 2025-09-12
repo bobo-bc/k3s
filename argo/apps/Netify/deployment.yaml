@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: netlify-cms
+  namespace: web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: netlify-cms
+  template:
+    metadata:
+      labels:
+        app: netlify-cms
+    spec:
+      containers:
+        - name: netlify-cms
+          image: jacobwgillespie/netlify-cms:latest
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name: cms-content
+              mountPath: /srv/cms
+      volumes:
+        - name: cms-content
+          emptyDir: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: netlify-cms
+  namespace: web
+spec:
+  selector:
+    app: netlify-cms
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: ClusterIP
