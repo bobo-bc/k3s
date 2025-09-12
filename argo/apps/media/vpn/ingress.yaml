@@ -23,8 +23,8 @@ spec:
       services:
         - name: transmission-vpn
           port: 80        # Must match service port
-      middlewares:
-        - name: transmission-auth
+   #   middlewares:
+   #     - name: transmission-auth
   tls:
     certResolver: letsencrypt
 ---
