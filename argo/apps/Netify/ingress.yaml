@@ -1,11 +1,10 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: netlify-cms
-  namespace: tools
+  name: decap-cms
+  namespace: web
   annotations:
-    kubernetes.io/ingress.class: traefik # or your ingress controller
-    # Optional: for HTTPS redirect
+    kubernetes.io/ingress.class: traefik
 spec:
   rules:
     - host: cms.smeyer.ca
@@ -15,6 +14,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: netlify-cms
+                name: decap-cms
                 port:
                   number: 80
