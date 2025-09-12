@@ -17,7 +17,7 @@ spec:
       - name: lazylibrarian
         image: lscr.io/linuxserver/lazylibrarian:latest
         ports:
-        - containerPort: 8080
+        - containerPort: 5299
         env:
         - name: PUID
           value: "1000"   # match your host user
