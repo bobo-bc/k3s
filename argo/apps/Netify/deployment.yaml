@@ -1,40 +1,35 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: netlify-cms
-  namespace: tools
+  name: decap-cms
+  namespace: web
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: netlify-cms
+      app: decap-cms
   template:
     metadata:
       labels:
-        app: netlify-cms
+        app: decap-cms
     spec:
       containers:
-        - name: netlify-cms
-          image: jacobwgillespie/netlify-cms:latest
+        - name: decap-cms
+          image: itsmejoeeey/docker-decap-cms-standalone:latest
           ports:
             - containerPort: 80
+          env:
+            - name: ORIGINS
+              value: "https://cms.smeyer.ca"
+            - name: OAUTH_CLIENT_ID
+              value: "<your-client-id>"
+            - name: OAUTH_CLIENT_SECRET
+              value: "<your-client-secret>"
           volumeMounts:
-            - name: cms-content
-              mountPath: /srv/cms
+            - name: cms-config
+              mountPath: /app/config.yml
+              subPath: config.yml
       volumes:
-        - name: cms-content
-          emptyDir: {}
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: netlify-cms
-  namespace: tools
-spec:
-  selector:
-    app: netlify-cms
-  ports:
-    - protocol: TCP
-      port: 80
-      targetPort: 80
-  type: ClusterIP
+        - name: cms-config
+          configMap:
+            name: decap-cms-config
