@@ -12,19 +12,19 @@ disableUpdateCheck: false
 useEqualHeights: true
 layout:
   Infra: 
-#    column: 5
+    column: 5
     style: row
     icon: mdi-folder-multiple-image
   Apps:
-#    columns: 4
+    columns: 4
     style: column
     icon: mdi-folder-multiple-image
   Media:
-#    columns: 4
+    columns: 4
     style: column
     icon: mdi-folder-multiple-image
   Host:
-#    columns: 3
+    columns: 3
     style: column
     icon: mdi-folder-multiple-image
 providers:
