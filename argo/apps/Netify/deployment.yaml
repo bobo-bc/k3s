@@ -17,13 +17,13 @@ spec:
         - name: decap-cms
           image: itsmejoeeey/docker-decap-cms-standalone:latest
           ports:
-           - containerPort: 80
+            - containerPort: 80
           envFrom:
             - secretRef:
                 name: decap-cms-oauth
-    env:
-      - name: ORIGINS
-        value: "https://cms.smeyer.ca"
+          env:
+            - name: ORIGINS
+              value: "https://cms.smeyer.ca"
           volumeMounts:
             - name: cms-config
               mountPath: /app/config.yml
