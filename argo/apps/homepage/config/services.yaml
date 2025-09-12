@@ -64,6 +64,11 @@
         icon: kavita.png
         href: https://books.smeyer.ca/
         description: Book reader
+
+    - LazyLibrarian:
+        icon: lazylibrarian.png
+        href: https://library.smeyer.ca
+        description: books management
         
     - Transmission-vpn:
         icon: transmission.png
