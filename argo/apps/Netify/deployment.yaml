@@ -32,3 +32,4 @@ spec:
         - name: cms-config
           configMap:
             name: decap-cms-config
+            
