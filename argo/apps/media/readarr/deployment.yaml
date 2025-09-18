@@ -15,9 +15,9 @@ spec:
     spec:
       containers:
       - name: readarr
-        image: lscr.io/linuxserver/readarr:latest
+        image: lscr.io/linuxserver/readarr:develop-0.4.18.2805-ls157
         ports:
-        - containerPort: 7878
+        - containerPort: 8787
         env:
         - name: PUID
           value: "1000"   # match your host user
