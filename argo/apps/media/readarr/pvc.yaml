@@ -1,0 +1,71 @@
+---
+# Dynamic PVC for /config
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: readarr-config
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: nfs-client   # your dynamic provisioner
+
+---
+# Static PV/PVC for /tv
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: readarr-books-pv
+spec:
+  capacity:
+    storage: 100Gi
+  accessModes:
+    - ReadWriteMany
+  storageClassName: ""   # important for static
+  nfs:
+    server: 10.0.0.5
+    path: /tank/media/books
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: readarr-books-pvc
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 100Gi
+  volumeName: readarr-books-pv
+  storageClassName: ""   # must match PV
+
+---
+# Static PV/PVC for /downloads
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: readarr-downloads-pv
+spec:
+  capacity:
+    storage: 100Gi
+  accessModes:
+    - ReadWriteMany
+  storageClassName: ""   # must match PV
+  nfs:
+    server: 10.0.0.5
+    path: /tank/media/torrents
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: readarr-downloads-pvc
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 100Gi
+  volumeName: readarr-downloads-pv
+  storageClassName: ""   # must match PV
