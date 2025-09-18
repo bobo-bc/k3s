@@ -1,0 +1,44 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: readarr
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: readarr
+  template:
+    metadata:
+      labels:
+        app: readarr
+    spec:
+      containers:
+      - name: readarr
+        image: lscr.io/linuxserver/readarr:latest
+        ports:
+        - containerPort: 7878
+        env:
+        - name: PUID
+          value: "1000"   # match your host user
+        - name: PGID
+          value: "1000"
+        - name: TZ
+          value: "America/Vancouver"
+        volumeMounts:
+        - name: config
+          mountPath: /config
+        - name: books
+          mountPath: /books
+        - name: downloads
+          mountPath: /downloads
+      volumes:
+      - name: config
+        persistentVolumeClaim:
+          claimName: readarr-config
+      - name: books
+        persistentVolumeClaim:
+          claimName: readarr-books-pvc
+      - name: downloads
+        persistentVolumeClaim:
+          claimName: readarr-downloads-pvc
