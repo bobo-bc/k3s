@@ -27,6 +27,10 @@
         icon: immich.png
         href: http://pics.smeyer.ca/
         description: photo curation
+    - Argo-CD:
+        icon: argo-cd.png
+        href: https://argo.smeyer.ca/
+        description: dns management 
         
 - Host:
     - Nginx Proxy Manager:
@@ -42,14 +46,16 @@
         icon: portainer-alt.png
         href: https://portainer.smeyer.ca/
         description: k3s/docker management
-    - Argo-CD:
-        icon: argo-cd.png
-        href: https://argo.smeyer.ca/
-        description: dns management    
+   
     - Proxmox:
         icon: proxmox.png
         href: https://pve.smeyer.ca/
         description: proxmox host
+
+    - Proxmox backup server:
+        icon: proxmox-backup.png
+        href: https://backup.smeyer.ca/
+        description: proxmox backup
     - Unifi Gateway:
        icon: ubiquiti-unifi.png
        href: https://unifi.smeyer.ca
