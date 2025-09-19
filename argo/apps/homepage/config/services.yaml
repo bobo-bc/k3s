@@ -4,7 +4,7 @@
       
 - Apps:
     - Blog:
-        icon: github.png
+        icon: github-light.png
         href: https://smeyer.me
         description: my blog
     - Drawio:
