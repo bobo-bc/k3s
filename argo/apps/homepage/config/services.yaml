@@ -53,7 +53,7 @@
         description: proxmox host
 
     - Proxmox backup server:
-        icon: proxmox-backup.png
+        icon: proxmox-light.png
         href: https://backup.smeyer.ca/
         description: proxmox backup
     - Unifi Gateway:
