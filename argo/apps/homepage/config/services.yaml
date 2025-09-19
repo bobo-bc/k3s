@@ -3,9 +3,9 @@
 # https://gethomepage.dev/latest/configs/services
       
 - Apps:
-    - Ghost Blog:
-        icon: ghost-light.png
-        href: https://blog.smeyer.me
+    - Blog:
+        icon: github.png
+        href: https://smeyer.me
         description: my blog
     - Drawio:
         icon: draw-io.png
@@ -17,16 +17,26 @@
         description: Handy IT tools
     - Plex:
         icon: plex.png
-        href: http://10.0.0.11:32400/web/
+        href: http://plex.smeyer.ca/
         description: Media Viewer
     - HomeAssistant:
         icon: home-assistant.png
-        href: http://10.0.0.7:8123/
-        description: home automation       
+        href: http://home.smeyer.ca/
+        description: home automation
+    - Immich:
+        icon: immich.png
+        href: http://pics.smeyer.ca/
+        description: photo curation
+        
 - Host:
+    - Nginx Proxy Manager:
+        icon: npm.png
+        href: http://proxy.smeyer.ca/
+        description: proxy management 
+
     - PiHole:
         icon: pi-hole.png
-        href: http://10.0.0.10/admin/
+        href: http://pihole.smeyer.ca/
         description: dns management  
     - Portainer:
         icon: portainer-alt.png
@@ -38,12 +48,17 @@
         description: dns management    
     - Proxmox:
         icon: proxmox.png
-        href: https://10.0.0.5:8006/
+        href: https://pve.smeyer.ca/
         description: proxmox host
     - Unifi Gateway:
        icon: ubiquiti-unifi.png
        href: https://unifi.smeyer.ca
-       description: unifi      
+       description: unifi
+    - Uptime Kuma:
+       icon: uptime-kuma.png
+       href: https://uptime.smeyer.ca
+       description: monitoring
+
 - Media: 
     - Sonarr:
         icon: sonarr.png
@@ -65,9 +80,9 @@
         href: https://books.smeyer.ca/
         description: Book reader
 
-    - LazyLibrarian:
-        icon: lazylibrarian.png
-        href: https://library.smeyer.ca
+    - Readarr:
+        icon: readarr.png
+        href: https://readarr.smeyer.ca
         description: books management
         
     - Transmission-vpn:
