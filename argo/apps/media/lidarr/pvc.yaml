@@ -11,20 +11,6 @@ spec:
     requests:
       storage: 1Gi
   storageClassName: nfs-client   # your dynamic provisioner
-
-# Dynamic PVC for /config_deemix
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: deemix-config-pvc
-spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 1Gi
-  storageClassName: nfs-client   # your dynamic provisioner
-
 ---
 # Static PV/PVC for /tv
 apiVersion: v1
