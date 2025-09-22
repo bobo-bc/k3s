@@ -15,10 +15,9 @@ spec:
     spec:
       containers:
       - name: lidarr
-        image: youegraillot/lidarr-on-steroids
+        image: lscr.io/linuxserver/lidarr:develop
         ports:
         - containerPort: 8686
-        - containerPort: 6595
         env:
         - name: PUID
           value: "1000"   # match your host user
@@ -29,8 +28,6 @@ spec:
         volumeMounts:
         - name: config
           mountPath: /config
-        - name: config_deemix
-          mountPath: /config_demix
         - name: music
           mountPath: /music
         - name: downloads
@@ -39,9 +36,6 @@ spec:
       - name: config
         persistentVolumeClaim:
           claimName: lidarr-config-pvc
-      - name: config_deemix
-        persistentVolumeClaim:
-          claimName: deemix-config-pvc
       - name: music
         persistentVolumeClaim:
           claimName: lidarr-music-pvc
