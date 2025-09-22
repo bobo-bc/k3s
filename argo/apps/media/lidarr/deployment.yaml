@@ -15,9 +15,10 @@ spec:
     spec:
       containers:
       - name: lidarr
-        image: lscr.io/linuxserver/lidarr:develop
+        image: youegraillot/lidarr-on-steroids
         ports:
         - containerPort: 8686
+        - containerPort: 6595
         env:
         - name: PUID
           value: "1000"   # match your host user
