@@ -49,7 +49,7 @@ spec:
             - name: DB_URL
               value: postgres://immich:Hurts2p33@immich-postgresql:5432/immich
             - name: REDIS_URL
-              value: redis://immich-redis-master:6379
+              value: redis://immich-redis-master.immich.svc.cluster.local:6379
             - name: IMMICH_MACHINE_LEARNING_URL
               value: http://immich-machine-learning:3003
             - name: NODE_ENV
