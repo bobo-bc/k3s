@@ -13,6 +13,26 @@ spec:
       labels:
         app: immich-server
     spec:
+      initContainers:   # 👈 ADD HERE
+        - name: init-upload-dirs
+          image: busybox:1.36
+          command:
+            - sh
+            - -c
+            - |
+              mkdir -p /usr/src/app/upload/{library,encoded-video,profile,thumbs,faces} && \
+              touch /usr/src/app/upload/library/.immich && \
+              touch /usr/src/app/upload/encoded-video/.immich && \
+              touch /usr/src/app/upload/profile/.immich && \
+              touch /usr/src/app/upload/thumbs/.immich && \
+              touch /usr/src/app/upload/faces/.immich
+          volumeMounts:
+            - name: immich-photos
+              mountPath: /usr/src/app/upload
+
+
+
+    
       containers:
       - name: immich-server
         image: ghcr.io/immich-app/immich-server:v1.119.0
