@@ -36,7 +36,7 @@ spec:
       volumes:
         - name: photos
           persistentVolumeClaim:
-            claimName: immich-photos-pvc
+            claimName: immich-pics-pvc
 ---
 apiVersion: v1
 kind: Service
