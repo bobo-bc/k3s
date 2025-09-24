@@ -28,7 +28,8 @@ spec:
       containers:
       - name: redis
         image: redis:7
-        args: ["redis-server", "/etc/redis/redis.conf"]
+        command: ["redis-server"]
+        args: ["--save", "", "--appendonly", "no"]
         ports:
           - containerPort: 6379
         volumeMounts:
