@@ -27,7 +27,7 @@ spec:
               touch /usr/src/app/upload/thumbs/.immich && \
               touch /usr/src/app/upload/faces/.immich
           volumeMounts:
-            - name: immich-photos
+            - name: photos
               mountPath: /usr/src/app/upload
       containers:
       - name: immich-server
