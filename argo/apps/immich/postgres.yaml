@@ -15,35 +15,35 @@ spec:
         app: immich-postgresql
     spec:
       containers:
-- name: postgres
-  image: tensorchord/pgvecto-rs:pg15-v0.2.0
-  ports:
-    - containerPort: 5432
-  env:
-    - name: POSTGRES_DB
-      valueFrom:
-        secretKeyRef:
-          name: immich-postgres-secret
-          key: postgres-db
-    - name: POSTGRES_USER
-      valueFrom:
-        secretKeyRef:
-          name: immich-postgres-secret
-          key: postgres-user
-    - name: POSTGRES_PASSWORD
-      valueFrom:
-        secretKeyRef:
-          name: immich-postgres-secret
-          key: postgres-password
-  volumeMounts:
-    - name: postgres-data
-      mountPath: /var/lib/postgresql/data
+        - name: postgres
+          image: tensorchord/pgvecto-rs:pg15-v0.2.0
+          ports:
+            - containerPort: 5432
+          env:
+            - name: POSTGRES_DB
+              valueFrom:
+                secretKeyRef:
+                  name: immich-postgres-secret
+                  key: postgres-db
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: immich-postgres-secret
+                  key: postgres-user
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: immich-postgres-secret
+                  key: postgres-password
+          volumeMounts:
+            - name: postgres-data
+              mountPath: /var/lib/postgresql/data
   volumeClaimTemplates:
-  - metadata:
-      name: postgres-data
-    spec:
-      accessModes: ["ReadWriteOnce"]
-      storageClassName: nfs-client
-      resources:
-        requests:
-          storage: 10Gi
+    - metadata:
+        name: postgres-data
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        storageClassName: nfs-client
+        resources:
+          requests:
+            storage: 10Gi
