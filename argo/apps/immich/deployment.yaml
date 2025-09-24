@@ -29,10 +29,6 @@ spec:
           volumeMounts:
             - name: immich-photos
               mountPath: /usr/src/app/upload
-
-
-
-    
       containers:
       - name: immich-server
         image: ghcr.io/immich-app/immich-server:v1.119.0
