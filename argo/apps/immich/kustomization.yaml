@@ -9,3 +9,4 @@ resources:
   - redis.yaml
   - mls.yaml
   - postgres.yaml
+  - postgres-service.yaml
