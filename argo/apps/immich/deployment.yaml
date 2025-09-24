@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: immich-server
+  namespace: immich
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: immich-server
+  template:
+    metadata:
+      labels:
+        app: immich-server
+    spec:
+      containers:
+      - name: immich-server
+        image: ghcr.io/immich-app/immich-server:v1.119.0
+        imagePullPolicy: IfNotPresent
+        ports:
+          - containerPort: 2283
+        env:
+          - name: DB_URL
+            value: postgres://immich:Hurts2p33@immich-postgresql:5432/immich
+          - name: REDIS_URL
+            value: redis://immich-redis-master:6379
+          - name: IMMICH_MACHINE_LEARNING_URL
+            value: http://immich-machine-learning:3003
+          - name: NODE_ENV
+            value: production
+        volumeMounts:
+          - name: photos
+            mountPath: /app/data/photos
+      volumes:
+        - name: photos
+          persistentVolumeClaim:
+            claimName: immich-photos-pvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: immich-server
+  namespace: immich
+spec:
+  type: ClusterIP
+  selector:
+    app: immich-server
+  ports:
+    - port: 2283
+      targetPort: 2283
