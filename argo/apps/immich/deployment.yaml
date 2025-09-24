@@ -30,13 +30,6 @@ spec:
             value: immich-redis-master
           - name: NODE_ENV
             value: production
-        volumeMounts:
-          - name: photos
-            mountPath: /app/data/photos
-      volumes:
-        - name: photos
-          persistentVolumeClaim:
-            claimName: immich-pics-pvc
 ---
 apiVersion: v1
 kind: Service
