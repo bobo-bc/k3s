@@ -1,15 +1,3 @@
-apiVersion: v1
-kind: Service
-metadata:
-  name: immich-postgresql
-  namespace: immich
-spec:
-  ports:
-    - port: 5432
-  clusterIP: None
-  selector:
-    app: immich-postgresql
----
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
@@ -26,48 +14,14 @@ spec:
       labels:
         app: immich-postgresql
     spec:
-      initContainers:
-      - name: init-wait
-        image: postgres:15
-        command:
-          - "sh"
-          - "-c"
-          - |
-            # wait for postgres to accept connections on localhost
-            until pg_isready -h 127.0.0.1 -p 5432; do sleep 2; done
-            psql -U "$POSTGRES_USER" -d "$POSTGRES_DB" -c "CREATE EXTENSION IF NOT EXISTS vector;"
-        env:
-          - name: POSTGRES_USER
-            valueFrom:
-              secretKeyRef:
-                name: immich-postgres-secret
-                key: postgres-user
-          - name: POSTGRES_DB
-            valueFrom:
-              secretKeyRef:
-                name: immich-postgres-secret
-                key: postgres-db
       containers:
       - name: postgres
-        image: postgres:15
-        env:
-          - name: POSTGRES_DB
-            valueFrom:
-              secretKeyRef:
-                name: immich-postgres-secret
-                key: postgres-db
-          - name: POSTGRES_USER
-            valueFrom:
-              secretKeyRef:
-                name: immich-postgres-secret
-                key: postgres-user
-          - name: POSTGRES_PASSWORD
-            valueFrom:
-              secretKeyRef:
-                name: immich-postgres-secret
-                key: postgres-password
+        image: tensorchord/pgvecto-rs:pg15-v0.2.0
         ports:
         - containerPort: 5432
+        envFrom:
+        - secretRef:
+            name: immich-postgres-secret
         volumeMounts:
         - name: postgres-data
           mountPath: /var/lib/postgresql/data
@@ -79,4 +33,4 @@ spec:
       storageClassName: nfs-client
       resources:
         requests:
-          storage: 20Gi
+          storage: 10Gi
