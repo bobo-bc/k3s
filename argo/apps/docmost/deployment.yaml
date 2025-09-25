@@ -15,14 +15,13 @@ spec:
     spec:
       containers:
         - name: docmost
-          image: jekyll/jekyll:4.3
-          command: ["jekyll", "serve", "--watch", "--host", "0.0.0.0"]
+          image: ghcr.io/docmost/docmost:latest
           ports:
-            - containerPort: 4000
+            - containerPort: 8080
           volumeMounts:
-            - name: content
-              mountPath: /srv/jekyll
+            - name: docmost-data
+              mountPath: /data
       volumes:
-        - name: content
+        - name: docmost-data
           persistentVolumeClaim:
-            claimName: docmost-content-pvc
+            claimName: docmost-data-pvc
