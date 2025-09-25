@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: docmost
+  namespace: docmost
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: docmost
+  template:
+    metadata:
+      labels:
+        app: docmost
+    spec:
+      containers:
+        - name: docmost
+          image: jekyll/jekyll:4.3
+          command: ["jekyll", "serve", "--watch", "--host", "0.0.0.0"]
+          ports:
+            - containerPort: 4000
+          volumeMounts:
+            - name: content
+              mountPath: /srv/jekyll
+      volumes:
+        - name: content
+          persistentVolumeClaim:
+            claimName: docmost-content-pvc
