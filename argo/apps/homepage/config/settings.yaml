@@ -27,6 +27,4 @@ layout:
     columns: 3
     style: column
     icon: mdi-folder-multiple-image
-providers:
-  longhorn:
-    url: http://10.0.0.20
+
