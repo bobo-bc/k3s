@@ -3,10 +3,18 @@
 # https://gethomepage.dev/latest/configs/services
       
 - Apps:
-    - Blog:
+    - GitHub Blog:
         icon: github-light.png
         href: https://smeyer.ca/
         description: my blog
+    - Docmost wiki:
+        icon: docmost.png
+        href: https://docs.smeyer.ca/
+        description: my wiki
+    - Immich:
+        icon: immich.png
+        href: http://pics.smeyer.ca/
+        description: photo curation
     - Drawio:
         icon: draw-io.png
         href: https://drawio.smeyer.ca/
@@ -23,14 +31,6 @@
         icon: home-assistant.png
         href: http://home.smeyer.ca/
         description: home automation
-    - Immich:
-        icon: immich.png
-        href: http://pics.smeyer.ca/
-        description: photo curation
-    - Argo-CD:
-        icon: argo-cd.png
-        href: https://argo.smeyer.ca/
-        description: dns management 
         
 - Host:
     - Nginx Proxy Manager:
@@ -46,7 +46,16 @@
         icon: portainer-alt.png
         href: https://portainer.smeyer.ca/
         description: k3s/docker management
-   
+    - CasaOS:
+        icon: casaos.png
+        href: http://10.0.0.14
+        description: docker host
+
+- Infra:
+    - Unifi Gateway:
+       icon: ubiquiti-unifi.png
+       href: https://unifi.smeyer.ca
+       description: unifi
     - Proxmox:
         icon: proxmox.png
         href: https://pve.smeyer.ca/
@@ -56,14 +65,21 @@
         icon: proxmox-light.png
         href: https://backup.smeyer.ca/
         description: proxmox backup
-    - Unifi Gateway:
-       icon: ubiquiti-unifi.png
-       href: https://unifi.smeyer.ca
-       description: unifi
+    - Argo-CD:
+        icon: argo-cd.png
+        href: https://argo.smeyer.ca/
+        description: dns management 
+
     - Uptime Kuma:
        icon: uptime-kuma.png
        href: https://uptime.smeyer.ca
        description: monitoring
+       
+    - Traefik Dashboard:
+        icon: traefik.png
+        href: http://traefik.smeyer.ca/
+        description: k3s reverse proxy 
+
 
 - Media: 
     - Sonarr:
