@@ -26,34 +26,15 @@ spec:
       labels:
         app: immich-server
     spec:
-      initContainers:
-        - name: init-uploads
-          image: busybox
-          command:
-            - sh
-            - -c
-            - |
-              mkdir -p /usr/src/app/upload/photos
-              mkdir -p /usr/src/app/upload/encoded-video
-              touch /usr/src/app/upload/encoded-video/.immich
-          volumeMounts:
-            - name: immich-uploads
-              mountPath: /usr/src/app/upload
       containers:
         - name: immich-server
           image: ghcr.io/immich-app/immich-server:v1.119.0
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 2283
-          env:
-            - name: DB_URL
-              value: postgres://immich:Hurts2p334640@immich-postgresql:5432/immich
-            - name: REDIS_URL
-              value: redis://immich-redis.immich.svc.cluster.local:6379
-            - name: IMMICH_MACHINE_LEARNING_URL
-              value: http://immich-machine-learning:3003
-            - name: NODE_ENV
-              value: production
+          envFrom:
+            - configMapRef:
+                name: immich-config
           volumeMounts:
             - name: immich-uploads
               mountPath: /usr/src/app/upload
