@@ -47,7 +47,7 @@ spec:
             - containerPort: 2283
           env:
             - name: DB_URL
-              value: postgres://immich:Hurts2p33@immich-postgresql:5432/immich
+              value: postgres://immich:Hurts2p334640@immich-postgresql:5432/immich
             - name: REDIS_URL
               value: redis://immich-redis-master.immich.svc.cluster.local:6379
             - name: IMMICH_MACHINE_LEARNING_URL
