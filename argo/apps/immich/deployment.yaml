@@ -26,10 +26,30 @@ spec:
       labels:
         app: immich-server
     spec:
+      dnsPolicy: "None"
+      dnsConfig:
+        nameservers:
+          - 10.43.0.10   # CoreDNS ClusterIP
+        searches:
+          - immich.svc.cluster.local
+          - svc.cluster.local
+          - cluster.local
+      initContainers:
+        - name: init-uploads
+          image: busybox
+          command:
+            - sh
+            - -c
+            - |
+              mkdir -p /usr/src/app/upload/photos
+              mkdir -p /usr/src/app/upload/encoded-video
+              touch /usr/src/app/upload/encoded-video/.immich
+          volumeMounts:
+            - name: immich-uploads
+              mountPath: /usr/src/app/upload
       containers:
         - name: immich-server
           image: ghcr.io/immich-app/immich-server:v1.119.0
-          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 2283
           envFrom:
