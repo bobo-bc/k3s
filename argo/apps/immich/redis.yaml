@@ -10,12 +10,11 @@ spec:
     app: immich-redis
 ---
 apiVersion: apps/v1
-kind: StatefulSet
+kind: Deployment
 metadata:
   name: immich-redis
   namespace: immich
 spec:
-  serviceName: immich-redis
   replicas: 1
   selector:
     matchLabels:
@@ -25,31 +24,17 @@ spec:
       labels:
         app: immich-redis
     spec:
-      dnsPolicy: "None"
-      dnsConfig:
-        nameservers:
-          - 10.43.0.10   # CoreDNS ClusterIP
-        searches:
-          - immich.svc.cluster.local
-          - svc.cluster.local
-          - cluster.local
       containers:
-      - name: redis
-        image: redis:7
-        command: ["redis-server"]
-        args: ["--save", "", "--appendonly", "no"]
-        ports:
-          - containerPort: 6379
-        volumeMounts:
-          - name: redis-data
-            mountPath: /data
-  volumeClaimTemplates:
-  - metadata:
-      name: redis-data
-    spec:
-      accessModes: ["ReadWriteOnce"]
-      storageClassName: nfs-client
-      resources:
-        requests:
-          storage: 5Gi
-          
+        - name: redis
+          image: redis:7
+          command: ["redis-server"]
+          args: ["--save", "", "--appendonly", "no"]
+          ports:
+            - containerPort: 6379
+          volumeMounts:
+            - name: redis-data
+              mountPath: /data
+      volumes:
+        - name: redis-data
+          persistentVolumeClaim:
+            claimName: immich-redis
