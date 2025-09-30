@@ -1,6 +1,28 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  name: immich-microservices
+  namespace: immich
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: immich-microservices
+  template:
+    metadata:
+      labels:
+        app: immich-microservices
+    spec:
+      containers:
+        - name: immich-microservices
+          image: ghcr.io/immich-app/immich-microservices:v1.119.0
+          envFrom:
+            - configMapRef:
+                name: immich-config
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
   name: immich-machine-learning
   namespace: immich
 spec:
@@ -14,10 +36,22 @@ spec:
         app: immich-machine-learning
     spec:
       containers:
-      - name: machine-learning
-        image: ghcr.io/immich-app/immich-machine-learning:v1.119.0
-        ports:
-          - containerPort: 3003
-        env:
-          - name: IMMICH_SERVER_BASE_URL
-            value: http://immich-server:2283
+        - name: immich-machine-learning
+          image: ghcr.io/immich-app/immich-machine-learning:v1.119.0
+          ports:
+            - containerPort: 3003
+          envFrom:
+            - configMapRef:
+                name: immich-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: immich-machine-learning
+  namespace: immich
+spec:
+  selector:
+    app: immich-machine-learning
+  ports:
+    - port: 3003
+      targetPort: 3003
