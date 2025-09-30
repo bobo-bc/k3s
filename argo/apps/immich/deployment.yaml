@@ -13,7 +13,6 @@ spec:
       labels:
         app: immich-server
     spec:
-      dnsPolicy: ClusterFirst  # use cluster DNS for service resolution
       initContainers:
         - name: init-uploads
           image: busybox
@@ -32,15 +31,9 @@ spec:
           image: ghcr.io/immich-app/immich-server:v1.119.0
           ports:
             - containerPort: 2283
-          env:
-            - name: DB_URL
-              value: postgres://immich:Hurts2p334640@immich-postgresql.immich.svc.cluster.local:5432/immich
-            - name: REDIS_URL
-              value: redis://immich-redis.immich.svc.cluster.local:6379
-            - name: IMMICH_MACHINE_LEARNING_URL
-              value: http://immich-machine-learning.immich.svc.cluster.local:3003
-            - name: NODE_ENV
-              value: production
+          envFrom:
+            - configMapRef:
+                name: immich-config
           volumeMounts:
             - name: immich-uploads
               mountPath: /usr/src/app/upload
