@@ -1,15 +1,45 @@
-# Example snippet from an Immich deployment manifest
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: immich-server
- spec:
-   template:
-     spec:
-       containers:
-       - name: immich-server
-        env:
-         - name: REDIS_HOSTNAME
-           value: immich-redis # Replace with your actual Redis service name
-         - name: REDIS_PORT
-           value: "6379" # Default Redis port
+  name: immich-redis
+  labels:
+    app: immich-redis
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: immich-redis
+  template:
+    metadata:
+      labels:
+        app: immich-redis
+    spec:
+      containers:
+      - name: redis
+        image: redis:7
+        ports:
+        - containerPort: 6379
+        readinessProbe:
+          tcpSocket:
+            port: 6379
+          initialDelaySeconds: 5
+          periodSeconds: 5
+        livenessProbe:
+          tcpSocket:
+            port: 6379
+          initialDelaySeconds: 10
+          periodSeconds: 10
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: immich-redis
+  labels:
+    app: immich-redis
+spec:
+  ports:
+  - port: 6379
+    targetPort: 6379
+  selector:
+    app: immich-redis
