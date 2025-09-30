@@ -10,4 +10,4 @@ resources:
   - mls.yaml
   - postgres.yaml
   - postgres-service.yaml
-  - redis-service.yaml
+
