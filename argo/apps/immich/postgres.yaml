@@ -1,10 +1,20 @@
-apiVersion: apps/v1
-kind: StatefulSet
+apiVersion: v1
+kind: Service
 metadata:
   name: immich-postgresql
   namespace: immich
 spec:
-  serviceName: immich-postgresql
+  ports:
+    - port: 5432
+  selector:
+    app: immich-postgresql
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: immich-postgresql
+  namespace: immich
+spec:
   replicas: 1
   selector:
     matchLabels:
@@ -16,34 +26,20 @@ spec:
     spec:
       containers:
         - name: postgres
-          image: tensorchord/pgvecto-rs:pg15-v0.2.0
+          image: postgres:15
+          env:
+            - name: POSTGRES_USER
+              value: immich
+            - name: POSTGRES_PASSWORD
+              value: Hurts2p334640
+            - name: POSTGRES_DB
+              value: immich
           ports:
             - containerPort: 5432
-          env:
-            - name: POSTGRES_DB
-              valueFrom:
-                secretKeyRef:
-                  name: immich-postgres-secret
-                  key: postgres-db
-            - name: POSTGRES_USER
-              valueFrom:
-                secretKeyRef:
-                  name: immich-postgres-secret
-                  key: postgres-user
-            - name: POSTGRES_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: immich-postgres-secret
-                  key: postgres-password
           volumeMounts:
             - name: postgres-data
               mountPath: /var/lib/postgresql/data
-  volumeClaimTemplates:
-    - metadata:
-        name: postgres-data
-      spec:
-        accessModes: ["ReadWriteOnce"]
-        storageClassName: nfs-client
-        resources:
-          requests:
-            storage: 10Gi
+      volumes:
+        - name: postgres-data
+          persistentVolumeClaim:
+            claimName: immich-postgresql
