@@ -4,9 +4,9 @@ kind: Kustomization
 namespace: immich
 
 resources:
+  - namespace.yaml
   - deployment.yaml
-  - redis-test.yaml
+  - redis.yaml
   - mls.yaml
   - postgres.yaml
-  - postgres-service.yaml
-
+  - immich-config.yaml
