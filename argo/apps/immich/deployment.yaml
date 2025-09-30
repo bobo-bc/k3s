@@ -5,7 +5,7 @@ metadata:
   namespace: immich
 spec:
   accessModes:
-    - ReadWriteMany
+    - ReadWriteMany   # ensure your nfs-client provisioner supports RWX
   storageClassName: nfs-client
   resources:
     requests:
@@ -26,14 +26,6 @@ spec:
       labels:
         app: immich-server
     spec:
-      dnsPolicy: "None"
-      dnsConfig:
-        nameservers:
-          - 10.43.0.10   # CoreDNS ClusterIP
-        searches:
-          - immich.svc.cluster.local
-          - svc.cluster.local
-          - cluster.local
       initContainers:
         - name: init-uploads
           image: busybox
@@ -43,7 +35,6 @@ spec:
             - |
               mkdir -p /usr/src/app/upload/photos
               mkdir -p /usr/src/app/upload/encoded-video
-              touch /usr/src/app/upload/encoded-video/.immich
           volumeMounts:
             - name: immich-uploads
               mountPath: /usr/src/app/upload
@@ -55,9 +46,24 @@ spec:
           envFrom:
             - configMapRef:
                 name: immich-config
+          env:
+            - name: REDIS_URL
+              value: redis://immich-redis:6379
           volumeMounts:
             - name: immich-uploads
               mountPath: /usr/src/app/upload
+          readinessProbe:
+            httpGet:
+              path: /api/ping
+              port: 2283
+            initialDelaySeconds: 10
+            periodSeconds: 15
+          livenessProbe:
+            httpGet:
+              path: /api/ping
+              port: 2283
+            initialDelaySeconds: 30
+            periodSeconds: 30
       volumes:
         - name: immich-uploads
           persistentVolumeClaim:
@@ -82,10 +88,10 @@ metadata:
   name: immich-server
   namespace: immich
   annotations:
-    kubernetes.io/ingress.class: "traefik"
     traefik.ingress.kubernetes.io/router.entrypoints: websecure
     traefik.ingress.kubernetes.io/router.tls.certresolver: letsencrypt
 spec:
+  ingressClassName: traefik
   rules:
     - host: pics.smeyer.ca
       http:
