@@ -5,6 +5,6 @@ metadata:
   namespace: immich
 data:
   DB_URL: postgres://immich:Hurts2p334640@immich-postgresql:5432/immich
-  REDIS_URL: redis://immich-redis.immich.svc.cluster.local:6379
+  REDIS_URL: redis://immich-redis:6379
   IMMICH_MACHINE_LEARNING_URL: http://immich-machine-learning:3003
   NODE_ENV: production
