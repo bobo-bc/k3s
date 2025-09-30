@@ -5,7 +5,7 @@ namespace: immich
 
 resources:
   - deployment.yaml
-  - redis.yaml
+  - redis-test.yaml
   - mls.yaml
   - postgres.yaml
   - postgres-service.yaml
