@@ -1,5 +1,6 @@
 resources:
   - ghost-deployment.yaml
   - ghost-service.yaml
+  - ghost-pvc.yaml
 
 
