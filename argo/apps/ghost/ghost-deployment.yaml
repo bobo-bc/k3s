@@ -34,9 +34,9 @@ spec:
             - name: database__connection__database
               value: ghost_db
           volumeMounts:
-            - name: ghost-content
+            - name: ghost
               mountPath: /var/lib/ghost/content
       volumes:
-        - name: ghost-content
+        - name: ghost
           persistentVolumeClaim:
-            claimName: ghost-config
+            claimName: ghost
