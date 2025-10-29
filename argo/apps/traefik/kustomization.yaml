@@ -2,3 +2,4 @@
 resources:
   - deployment.yaml
   - configmap.yaml
+  - traefik-service.yaml
