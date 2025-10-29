@@ -4,3 +4,4 @@ resources:
   - configmap.yaml
   - traefik-service.yaml
   - ingressroute.yaml
+  - traefik-rbac.yaml
