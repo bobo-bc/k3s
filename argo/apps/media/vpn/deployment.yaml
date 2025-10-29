@@ -62,7 +62,7 @@ spec:
       volumes:
         - name: config
           persistentVolumeClaim:
-            claimName: transmission-vpn-config
+            claimName: transmission-config
         - name: data
           persistentVolumeClaim:
-            claimName: nfs-pvc-torrents
+            claimName: nfs-downloads
