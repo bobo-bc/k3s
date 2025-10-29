@@ -27,6 +27,8 @@ spec:
           env:
             - name: OPENVPN_PROVIDER
               value: nordvpn
+            - name: OPENVPN_AUTH
+              value: env
             - name: OPENVPN_CONFIG
               value: canada
             - name: OPENVPN_USERNAME
