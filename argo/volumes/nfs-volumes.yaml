@@ -21,6 +21,8 @@ kind: PersistentVolumeClaim
 metadata:
   name: nfs-downloads
   namespace: media
+  annotations:
+    argocd.argoproj.io/sync-options: Prune=false
 spec:
   accessModes:
     - ReadWriteMany
@@ -54,6 +56,8 @@ kind: PersistentVolumeClaim
 metadata:
   name: nfs-tvshows
   namespace: media
+  annotations:
+    argocd.argoproj.io/sync-options: Prune=false
 spec:
   accessModes:
     - ReadWriteMany
@@ -86,6 +90,8 @@ kind: PersistentVolumeClaim
 metadata:
   name: nfs-movies
   namespace: media
+  annotations:
+    argocd.argoproj.io/sync-options: Prune=false
 spec:
   accessModes:
     - ReadWriteMany
@@ -119,6 +125,8 @@ kind: PersistentVolumeClaim
 metadata:
   name: nfs-music
   namespace: media
+  annotations:
+    argocd.argoproj.io/sync-options: Prune=false
 spec:
   accessModes:
     - ReadWriteMany
@@ -151,6 +159,8 @@ kind: PersistentVolumeClaim
 metadata:
   name: nfs-books
   namespace: media
+  annotations:
+    argocd.argoproj.io/sync-options: Prune=false
 spec:
   accessModes:
     - ReadWriteMany
