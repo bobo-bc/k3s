@@ -18,6 +18,10 @@ spec:
       labels:
         app: transmission-vpn
     spec:
+      securityContext:
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
       containers:
         - name: transmission-vpn
           image: haugene/transmission-openvpn:latest
@@ -27,8 +31,6 @@ spec:
           env:
             - name: OPENVPN_PROVIDER
               value: nordvpn
-            - name: OPENVPN_AUTH
-              value: env
             - name: OPENVPN_CONFIG
               value: canada
             - name: OPENVPN_USERNAME
