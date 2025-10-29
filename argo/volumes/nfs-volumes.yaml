@@ -9,6 +9,12 @@ spec:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Retain
   storageClassName: nfs
+  mountOptions:
+    - nfsvers=4.2
+    - noatime
+    - rsize=131072
+    - wsize=131072
+    - tcp
   nfs:
     path: /media/Main
     server: 10.0.0.10
