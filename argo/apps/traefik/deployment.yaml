@@ -189,6 +189,19 @@ spec:
       targetPort: 443
 ---
 # =========================
+# middleware redirect
+# =========================
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: redirect-to-https
+  namespace: kube-system
+spec:
+  redirectScheme:
+    scheme: https
+    permanent: true
+---
+# =========================
 # IngressRoute for Dashboard
 # =========================
 apiVersion: traefik.io/v1alpha1
