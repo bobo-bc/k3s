@@ -37,7 +37,7 @@ subjects:
   - kind: ServiceAccount
     name: traefik
     namespace: kube-system
-
+---
 # =========================
 # Cloudflare API Token Secret
 # =========================
@@ -65,7 +65,7 @@ spec:
     requests:
       storage: 1Gi
   storageClassName: longhorn
-
+---
 # =========================
 # ConfigMap for Traefik
 # =========================
@@ -103,7 +103,7 @@ data:
           dnsChallenge:
             provider: cloudflare
             delayBeforeCheck: 0
-
+---
 # =========================
 # Traefik Deployment
 # =========================
@@ -152,7 +152,7 @@ spec:
         - name: acme
           persistentVolumeClaim:
             claimName: traefik-acme
-
+---
 # =========================
 # MetalLB LoadBalancer Service
 # =========================
@@ -173,7 +173,7 @@ spec:
     - name: websecure
       port: 443
       targetPort: 443
-
+---
 # =========================
 # IngressRoute for Dashboard
 # =========================
