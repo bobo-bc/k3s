@@ -39,7 +39,7 @@ spec:
       - name: tv
         persistentVolumeClaim:
           claimName: nfs-tvshows
-      - name: downloads
+      - name: data
         persistentVolumeClaim:
           claimName: nfs-downloads
 
