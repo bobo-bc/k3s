@@ -1,35 +1,164 @@
 apiVersion: v1
+#===========================
+# downloads
+#===========================
+apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: nfs-media
+  name: nfs-downloads
 spec:
   capacity:
-    storage: 100Gi
+    storage: 500Gi
   accessModes:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Retain
   storageClassName: nfs
-  mountOptions:
-    - nfsvers=4.2
-    - noatime
-    - rsize=131072
-    - wsize=131072
-    - tcp
   nfs:
-    path: /media/Main
+    path: /media/Main/Downloads
     server: 10.0.0.10
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: nfs-media
+  name: nfs-downloads
   namespace: media
 spec:
   accessModes:
     - ReadWriteMany
   resources:
     requests:
-      storage: 100Gi
-  volumeName: nfs-media
+      storage: 500Gi
+  volumeName: nfs-downloads
   storageClassName: nfs
-  
+
+---
+#===========================
+# tvshows
+#===========================
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: nfs-tvshows
+spec:
+  capacity:
+    storage: 500Gi
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: nfs
+  nfs:
+    path: /media/Main/Media/TV Shows
+    server: 10.0.0.10
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: nfs-tvshows
+  namespace: media
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 500Gi
+  volumeName: nfs-tvshows
+  storageClassName: nfs
+---
+#===========================
+# movies
+#===========================
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: nfs-movies
+spec:
+  capacity:
+    storage: 500Gi
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: nfs
+  nfs:
+    path: /media/Main/Media/Movies
+    server: 10.0.0.10
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: nfs-movies
+  namespace: media
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 500Gi
+  volumeName: nfs-movies
+  storageClassName: nfs
+
+---
+#===========================
+# music
+#===========================
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: nfs-music
+spec:
+  capacity:
+    storage: 500Gi
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: nfs
+  nfs:
+    path: /media/Main/Media/Music
+    server: 10.0.0.10
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: nfs-music
+  namespace: media
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 500Gi
+  volumeName: nfs-music
+  storageClassName: nfs
+---
+#===========================
+# books
+#===========================
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: nfs-books
+spec:
+  capacity:
+    storage: 500Gi
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: nfs
+  nfs:
+    path: /media/Main/Media/Books
+    server: 10.0.0.10
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: nfs-books
+  namespace: media
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 500Gi
+  volumeName: nfs-books
+  storageClassName: nfs
+
+
