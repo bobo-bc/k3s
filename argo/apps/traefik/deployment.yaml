@@ -1,3 +1,112 @@
+# =========================
+# Traefik ServiceAccount + RBAC
+# =========================
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: traefik
+  namespace: kube-system
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: traefik
+rules:
+  - apiGroups: [""]
+    resources: ["services", "endpoints", "secrets", "configmaps"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: ["extensions", "networking.k8s.io"]
+    resources: ["ingresses", "ingressclasses"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: ["traefik.io"]
+    resources: ["middlewares", "middlewaretcps", "ingressroutes", "ingressroutetcps", "ingressrouteudps", "tlsoptions", "tlsstores", "serverstransports"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: ["discovery.k8s.io"]
+    resources: ["endpointslices"]
+    verbs: ["get", "list", "watch"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: traefik
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: traefik
+subjects:
+  - kind: ServiceAccount
+    name: traefik
+    namespace: kube-system
+
+# =========================
+# Cloudflare API Token Secret
+# =========================
+#apiVersion: v1
+#kind: Secret
+#metadata:
+#  name: traefik-cloudflare
+#  namespace: kube-system
+#type: Opaque
+#stringData:
+#  CF_API_TOKEN: "<your-cloudflare-token-here>"
+
+# =========================
+# Longhorn PVC for ACME Data
+# =========================
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: traefik-acme
+  namespace: kube-system
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: longhorn
+
+# =========================
+# ConfigMap for Traefik
+# =========================
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: traefik-config
+  namespace: kube-system
+data:
+  traefik.yml: |
+    entryPoints:
+      web:
+        address: ":80"
+        http:
+          redirections:
+            entryPoint:
+              to: websecure
+              scheme: https
+      websecure:
+        address: ":443"
+
+    providers:
+      kubernetesCRD: {}
+      kubernetesIngress: {}
+
+    api:
+      dashboard: true
+      insecure: false
+
+    certificatesResolvers:
+      letsencrypt-dns:
+        acme:
+          email: me@smeyer.ca
+          storage: /data/acme.json
+          dnsChallenge:
+            provider: cloudflare
+            delayBeforeCheck: 0
+
+# =========================
+# Traefik Deployment
+# =========================
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -13,21 +122,29 @@ spec:
       labels:
         app: traefik
     spec:
+      serviceAccountName: traefik
       containers:
       - name: traefik
-        image: traefik:v3.5 # or your chosen version
-        volumeMounts:
-          - name: traefik-config
-            mountPath: /etc/traefik/traefik.yml
-            subPath: traefik.yml
-          - name: acme
-            mountPath: /data
+        image: traefik:v3.1
+        args:
+          - "--configFile=/etc/traefik/traefik.yml"
+        ports:
+          - name: web
+            containerPort: 80
+          - name: websecure
+            containerPort: 443
         env:
           - name: CF_API_TOKEN
             valueFrom:
               secretKeyRef:
                 name: traefik-cloudflare
                 key: CF_API_TOKEN
+        volumeMounts:
+          - name: traefik-config
+            mountPath: /etc/traefik/traefik.yml
+            subPath: traefik.yml
+          - name: acme
+            mountPath: /data
       volumes:
         - name: traefik-config
           configMap:
@@ -35,3 +152,44 @@ spec:
         - name: acme
           persistentVolumeClaim:
             claimName: traefik-acme
+
+# =========================
+# MetalLB LoadBalancer Service
+# =========================
+apiVersion: v1
+kind: Service
+metadata:
+  name: traefik
+  namespace: kube-system
+spec:
+  type: LoadBalancer
+  loadBalancerIP: 10.0.0.25
+  selector:
+    app: traefik
+  ports:
+    - name: web
+      port: 80
+      targetPort: 80
+    - name: websecure
+      port: 443
+      targetPort: 443
+
+# =========================
+# IngressRoute for Dashboard
+# =========================
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: traefik-dashboard
+  namespace: kube-system
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`traefik.smeyer.ca`) && (PathPrefix(`/dashboard`) || PathPrefix(`/api`))
+      kind: Rule
+      services:
+        - name: api@internal
+          kind: TraefikService
+  tls:
+    certResolver: letsencrypt-dns
