@@ -33,7 +33,7 @@ spec:
       volumes:
       - name: config
         persistentVolumeClaim:
-          claimName: prowlarr-config-pvc
+          claimName: prowlarr-config
       - name: downloads
         persistentVolumeClaim:
-          claimName: prowlarr-downloads-pvc
+          claimName: nfs-downloads
