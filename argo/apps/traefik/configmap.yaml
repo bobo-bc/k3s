@@ -28,13 +28,11 @@ data:
 
     providers:
       kubernetesCRD: {}
-      kubernetesIngress:
-        publishedService:
-          enabled: true
+      kubernetesIngress: {}
 
     api:
       dashboard: true
-      insecure: true  # ⚠️ Use only for testing; remove in production
+      insecure: true  # ⚠️ Only for testing
 
     log:
       level: INFO
@@ -44,7 +42,7 @@ data:
     certificatesResolvers:
       letsencrypt-dns:
         acme:
-          email: stevenfmeyer@me.com
+          email: me@smeyer.ca
           storage: /data/acme.json
           dnsChallenge:
             provider: cloudflare
