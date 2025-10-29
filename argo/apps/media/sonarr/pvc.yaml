@@ -3,21 +3,21 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: sonarr-config-pvc
+  name: sonarr-config
 spec:
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
       storage: 1Gi
-  storageClassName: nfs-client   # your dynamic provisioner
+  storageClassName: longhorn  # your dynamic provisioner
 
 ---
 # Static PV/PVC for /tv
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: sonarr-tv-pv
+  name: nfs-tv
 spec:
   capacity:
     storage: 100Gi
@@ -25,13 +25,13 @@ spec:
     - ReadWriteMany
   storageClassName: ""   # important for static
   nfs:
-    server: 10.0.0.5
-    path: /tank/media/tv
+    server: 10.0.0.10
+    path: "/media/Main/Media/TV Shows"
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: sonarr-tv-pvc
+  name: nfs-tv
 spec:
   accessModes:
     - ReadWriteMany
@@ -39,33 +39,33 @@ spec:
     requests:
       storage: 100Gi
   volumeName: sonarr-tv-pv
-  storageClassName: ""   # must match PV
+  storageClassName: nfs   # must match PV
 
 ---
 # Static PV/PVC for /downloads
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: sonarr-downloads-pv
+  name: nfs-downloads
 spec:
   capacity:
     storage: 100Gi
   accessModes:
     - ReadWriteMany
-  storageClassName: ""   # must match PV
+  storageClassName: nfs   # must match PV
   nfs:
-    server: 10.0.0.5
-    path: /tank/media/torrents
+    server: 10.0.0.10
+    path: /media/Main/Downloads
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: sonarr-downloads-pvc
+  name: nfs-downloads
 spec:
   accessModes:
     - ReadWriteMany
   resources:
     requests:
       storage: 100Gi
-  volumeName: sonarr-downloads-pv
-  storageClassName: ""   # must match PV
+  volumeName: nfs-downloads
+  storageClassName: nfs   # must match PV
