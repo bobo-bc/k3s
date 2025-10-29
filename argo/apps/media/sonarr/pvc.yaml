@@ -1,71 +1,57 @@
----
-# Dynamic PVC for /config
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: sonarr-config
-spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 1Gi
-  storageClassName: longhorn  # your dynamic provisioner
-
----
-# Static PV/PVC for /tv
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: nfs-tv
-spec:
-  capacity:
-    storage: 100Gi
-  accessModes:
-    - ReadWriteMany
-  storageClassName: ""   # important for static
-  nfs:
-    server: 10.0.0.10
-    path: "/media/Main/Media/TV Shows"
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: nfs-tv
-spec:
-  accessModes:
-    - ReadWriteMany
-  resources:
-    requests:
-      storage: 100Gi
-  volumeName: sonarr-tv-pv
-  storageClassName: nfs   # must match PV
-
----
-# Static PV/PVC for /downloads
 apiVersion: v1
 kind: PersistentVolume
 metadata:
   name: nfs-downloads
 spec:
   capacity:
-    storage: 100Gi
+    storage: 500Gi
   accessModes:
     - ReadWriteMany
-  storageClassName: nfs   # must match PV
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: nfs
   nfs:
-    server: 10.0.0.10
     path: /media/Main/Downloads
+    server: 10.0.0.10
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: nfs-tvshows
+spec:
+  capacity:
+    storage: 500Gi
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: nfs
+  nfs:
+    path: /media/Main/Media/TV Shows
+    server: 10.0.0.10
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: nfs-downloads
+  namespace: media
 spec:
   accessModes:
     - ReadWriteMany
   resources:
     requests:
-      storage: 100Gi
+      storage: 500Gi
   volumeName: nfs-downloads
-  storageClassName: nfs   # must match PV
+  storageClassName: nfs
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: nfs-tvshows
+  namespace: media
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 500Gi
+  volumeName: nfs-tvshows
+  storageClassName: nfs
