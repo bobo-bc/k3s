@@ -207,3 +207,7 @@ spec:
           kind: TraefikService
   tls:
     certResolver: letsencrypt-dns
+    domains:
+      - main: "*.smeyer.ca"
+        sans:
+          - "smeyer.ca"
