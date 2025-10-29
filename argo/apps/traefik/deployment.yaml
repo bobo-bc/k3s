@@ -198,7 +198,15 @@ metadata:
   namespace: kube-system
 spec:
   entryPoints:
-    - websecure
+    web:
+      address: ":80"
+      http:
+        redirections:
+          entryPoint:
+            to: websecure
+            scheme: https
+    websecure:
+      address: ":443"
   routes:
     - match: Host(`traefik.smeyer.ca`) && (PathPrefix(`/dashboard`) || PathPrefix(`/api`))
       kind: Rule
