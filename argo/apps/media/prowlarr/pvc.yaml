@@ -46,5 +46,3 @@ spec:
       storage: 500Gi
   volumeName: nfs-downloads
   storageClassName: nfs
-s
-  storageClassName: nfs
