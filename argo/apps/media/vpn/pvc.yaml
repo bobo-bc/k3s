@@ -1,43 +1,48 @@
----
-# Dynamic PVC for /config
+# ==========================
+# longhorn dynamic storage provisioning
+# ==========================
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: transmission-vpn-config
+  name: transmission-config
+  namespace: media
 spec:
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
       storage: 1Gi
-  storageClassName: nfs-client   # your dynamic provisioner
-
-
+  storageClassName: longhorn
 ---
-# Static PV/PVC for /downloads
+#===========================
+# static nfs provisioning
+#===========================
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: nfs-pvc-torrents
+  name: nfs-downloads
 spec:
   capacity:
-    storage: 100Gi
+    storage: 500Gi
   accessModes:
     - ReadWriteMany
-  storageClassName: ""   # must match PV
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: nfs
   nfs:
-    server: 10.0.0.5
-    path: /tank/media/torrents
+    path: /media/Main/Downloads
+    server: 10.0.0.10
+
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: nfs-pvc-torrents
+  name: nfs-downloads
+  namespace: media
 spec:
   accessModes:
     - ReadWriteMany
   resources:
     requests:
-      storage: 100Gi
-  volumeName: nfs-pvc-torrents
-  storageClassName: ""   # must match PV
+      storage: 500Gi
+  volumeName: nfs-downloads
+  storageClassName: nfs
