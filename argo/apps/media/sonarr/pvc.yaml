@@ -1,5 +1,5 @@
 # ==========================
-# longhorn dynamic storage proviosing
+# longhorn dynamic storage provisoning
 # ==========================
 apiVersion: v1
 kind: PersistentVolumeClaim
