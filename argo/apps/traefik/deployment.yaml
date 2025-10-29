@@ -148,11 +148,11 @@ spec:
           - name: websecure
             containerPort: 443
         env:
-          - name: CF_API_TOKEN
+          - name: CLOUDFLARE_DNS_API_TOKEN
             valueFrom:
               secretKeyRef:
                 name: traefik-cloudflare
-                key: CF_API_TOKEN
+                key: CLOUDFLARE_DNS_API_TOKEN
         volumeMounts:
           - name: traefik-config
             mountPath: /etc/traefik/traefik.yml
