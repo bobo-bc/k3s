@@ -89,7 +89,7 @@ metadata:
   name: traefik-config
   namespace: kube-system
 data:
-  traefik.yml: |
+  traefik.yml:
     entryPoints:
       web:
         address: ":80"
