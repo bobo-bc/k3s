@@ -44,7 +44,7 @@ data:
     certificatesResolvers:
       letsencrypt-dns:
         acme:
-          email: me@smeyer.ca
+          email: stevenfmeyer@me.com
           storage: /data/acme.json
           dnsChallenge:
             provider: cloudflare
