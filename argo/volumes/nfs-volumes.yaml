@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: nfs-pv-tv
+  name: nfs-media
 spec:
   capacity:
     storage: 100Gi
@@ -10,13 +10,13 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   storageClassName: nfs
   nfs:
-    path: /mnt/tank/media/tv
-    server: 10.0.0.3
+    path: /media/Main
+    server: 10.0.0.10
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: nfs-pvc-tv
+  name: nfs-media
   namespace: media
 spec:
   accessModes:
@@ -24,151 +24,6 @@ spec:
   resources:
     requests:
       storage: 100Gi
-  volumeName: nfs-pv-tv
+  volumeName: nfs-media
   storageClassName: nfs
   
----
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: nfs-pv-torrents
-spec:
-  capacity:
-    storage: 100Gi
-  accessModes:
-    - ReadWriteMany
-  persistentVolumeReclaimPolicy: Retain
-  storageClassName: nfs
-  nfs:
-    path: /mnt/tank/media/torrents
-    server: 10.0.0.3
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: nfs-pvc-torrents
-  namespace: media
-spec:
-  accessModes:
-    - ReadWriteMany
-  resources:
-    requests:
-      storage: 100Gi
-  volumeName: nfs-pv-torrents
-  storageClassName: nfs
----
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: nfs-pv-movies
-spec:
-  capacity:
-    storage: 100Gi
-  accessModes:
-    - ReadWriteMany
-  persistentVolumeReclaimPolicy: Retain
-  storageClassName: nfs
-  nfs:
-    path: /mnt/tank/media/movies
-    server: 10.0.0.3
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: nfs-pvc-movies
-  namespace: media
-spec:
-  accessModes:
-    - ReadWriteMany
-  resources:
-    requests:
-      storage: 100Gi
-  volumeName: nfs-pv-movies
-  storageClassName: nfs
----
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: nfs-pv-music
-spec:
-  capacity:
-    storage: 100Gi
-  accessModes:
-    - ReadWriteMany
-  persistentVolumeReclaimPolicy: Retain
-  storageClassName: nfs
-  nfs:
-    path: /mnt/tank/media/music
-    server: 10.0.0.3
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: nfs-pvc-music
-  namespace: media
-spec:
-  accessModes:
-    - ReadWriteMany
-  resources:
-    requests:
-      storage: 100Gi
-  volumeName: nfs-pv-music
-  storageClassName: nfs
----
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: nfs-pv-books
-spec:
-  capacity:
-    storage: 100Gi
-  accessModes:
-    - ReadWriteMany
-  persistentVolumeReclaimPolicy: Retain
-  storageClassName: nfs
-  nfs:
-    path: /mnt/tank/media/books
-    server: 10.0.0.3
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: nfs-pvc-books
-  namespace: media
-spec:
-  accessModes:
-    - ReadWriteMany
-  resources:
-    requests:
-      storage: 100Gi
-  volumeName: nfs-pv-books
-  storageClassName: nfs
----
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: nfs-pv-wiki
-spec:
-  capacity:
-    storage: 5Gi
-  accessModes:
-    - ReadWriteMany
-  persistentVolumeReclaimPolicy: Retain
-  storageClassName: nfs
-  nfs:
-    server: 10.0.0.3
-    path: /mnt/tank/media/wiki
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: nfs-pvc-wiki
-  namespace: media
-spec:
-  accessModes:
-    - ReadWriteMany
-  resources:
-    requests:
-      storage: 5Gi
-  volumeName: nfs-pv-wiki
-  storageClassName: nfs
