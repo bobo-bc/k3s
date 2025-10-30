@@ -42,7 +42,7 @@ spec:
         - name: gluetun-config
           persistentVolumeClaim:
             claimName: transmission-config
-  ---
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
