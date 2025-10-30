@@ -9,7 +9,7 @@ spec:
   resources:
     requests:
       storage: 1Gi
-  storageClassName: nfs-client   # your dynamic provisioner
+  storageClassName: longhorn  # your dynamic provisioner
 
 ---
 
@@ -50,10 +50,10 @@ spec:
       volumes:
       - name: config
         persistentVolumeClaim:
-          claimName: radarr-config-pvc
+          claimName: radarr-config
       - name: movies
         persistentVolumeClaim:
-          claimName: radarr-movies-pvc
+          claimName: nfs-movies
       - name: downloads
         persistentVolumeClaim:
-          claimName: radarr-downloads-pvc
+          claimName: nfs-downloads
