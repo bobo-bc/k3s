@@ -47,7 +47,7 @@ spec:
       volumes:
       - name: config
         persistentVolumeClaim:
-          claimName: radarr-config
+          claimName: lidarr-config
       - name: music
         persistentVolumeClaim:
           claimName: nfs-music
