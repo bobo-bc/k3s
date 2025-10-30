@@ -10,9 +10,6 @@ spec:
     requests:
       storage: 1Gi
   storageClassName: longhorn  # your dynamic provisioner
-
----
-
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -45,7 +42,7 @@ spec:
           mountPath: /config
         - name: movies
           mountPath: /movies
-        - name: downloads
+        - name: data
           mountPath: /downloads
       volumes:
       - name: config
@@ -54,6 +51,6 @@ spec:
       - name: movies
         persistentVolumeClaim:
           claimName: nfs-movies
-      - name: downloads
+      - name: data
         persistentVolumeClaim:
           claimName: nfs-downloads
