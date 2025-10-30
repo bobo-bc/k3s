@@ -39,45 +39,45 @@ spec:
           capabilities:
             add:
               - NET_ADMIN
-          env:
-            - name: OPENVPN_PROVIDER
-              value: nordvpn
-            - name: OPENVPN_CONFIG
-              value: canada
-            - name: OPENVPN_USERNAME
-              valueFrom:
-                secretKeyRef:
-                  name: vpn-creds
-                  key: username
-            - name: OPENVPN_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: vpn-creds
-                  key: password
-            - name: PUID
-              value: "1000"
-            - name: PGID
-              value: "1000"
-            - name: TZ
-              value: America/Vancouver
-            - name: LOCAL_NETWORK
-              value: 10.0.0.0/8
-            - name: TRANSMISSION_RPC_BIND_ADDRESS
-              value: 0.0.0.0
-            - name: TRANSMISSION_DOWNLOAD_DIR
-              value: /data/completed
-            - name: TRANSMISSION_INCOMPLETE_DIR
-              value: /data/incomplete
-          ports:
-            - containerPort: 9091
-              protocol: TCP
-          volumeMounts:
-            - name: config
-              mountPath: /config
-            - name: data
-              mountPath: /data
-            - name: dev-net-tun
-              mountPath: /dev/net/tun
+        env:
+          - name: OPENVPN_PROVIDER
+            value: nordvpn
+          - name: OPENVPN_CONFIG
+            value: canada
+          - name: OPENVPN_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: vpn-creds
+                key: username
+          - name: OPENVPN_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: vpn-creds
+                key: password
+          - name: PUID
+            value: "1000"
+          - name: PGID
+            value: "1000"
+          - name: TZ
+            value: America/Vancouver
+          - name: LOCAL_NETWORK
+            value: 10.0.0.0/8
+          - name: TRANSMISSION_RPC_BIND_ADDRESS
+            value: 0.0.0.0
+          - name: TRANSMISSION_DOWNLOAD_DIR
+            value: /data/completed
+          - name: TRANSMISSION_INCOMPLETE_DIR
+            value: /data/incomplete
+        ports:
+          - containerPort: 9091
+            protocol: TCP
+        volumeMounts:
+          - name: config
+            mountPath: /config
+          - name: data
+            mountPath: /data
+          - name: dev-net-tun
+            mountPath: /dev/net/tun
       volumes:
         - name: config
           persistentVolumeClaim:
