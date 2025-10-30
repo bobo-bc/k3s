@@ -21,11 +21,6 @@ metadata:
   namespace: media
 spec:
   replicas: 1
-  strategy:
-    type: RollingUpdate
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
   selector:
     matchLabels:
       app: transmission-vpn
@@ -34,19 +29,16 @@ spec:
       labels:
         app: transmission-vpn
     spec:
-      securityContext:
-        runAsUser: 1000
-        runAsGroup: 1000
-        fsGroup: 1000
+      nodeSelector:
+        vpn-dedicated: "true"        # 👈 pin to your dedicated node
       containers:
-        - name: transmission-vpn
-          image: haugene/transmission-openvpn:latest
-          imagePullPolicy: Always
-          securityContext:
-            privileged: true
-            capabilities:
-              add:
-                - NET_ADMIN
+      - name: transmission-vpn
+        image: haugene/transmission-openvpn:latest
+        securityContext:
+          privileged: true           # 👈 required for /dev/net/tun
+          capabilities:
+            add:
+              - NET_ADMIN
           env:
             - name: OPENVPN_PROVIDER
               value: nordvpn
