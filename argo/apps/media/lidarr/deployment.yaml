@@ -37,3 +37,20 @@ spec:
           value: "1000"
         - name: TZ
           value: "America/Vancouver"
+        volumeMounts:
+        - name: config
+          mountPath: /config
+        - name: music
+          mountPath: /music
+        - name: data
+          mountPath: /downloads
+      volumes:
+      - name: config
+        persistentVolumeClaim:
+          claimName: radarr-config
+      - name: music
+        persistentVolumeClaim:
+          claimName: nfs-music
+      - name: data
+        persistentVolumeClaim:
+          claimName: nfs-downloads
