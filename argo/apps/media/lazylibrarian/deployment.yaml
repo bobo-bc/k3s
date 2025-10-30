@@ -1,4 +1,18 @@
 ---
+# Dynamic PVC for /config
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: lazylibrarian-config
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: longhorn   # your dynamic provisioner
+
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
