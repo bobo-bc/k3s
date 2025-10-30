@@ -44,7 +44,7 @@ spec:
           mountPath: /config
         - name: books
           mountPath: /books
-        - name: downloads
+        - name: data
           mountPath: /downloads
       volumes:
       - name: config
@@ -52,7 +52,7 @@ spec:
           claimName: lazylibrarian-config
       - name: books
         persistentVolumeClaim:
-          claimName: lazylibrarian-books-pvc
-      - name: downloads
+          claimName: nfs-books
+      - name: data
         persistentVolumeClaim:
-          claimName: lazylibrarian-downloads-pvc
+          claimName: nfs-downloads
