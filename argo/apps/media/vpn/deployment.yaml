@@ -1,5 +1,5 @@
 # ==========================
-# Longhorn dynamic storage for Transmission config
+# Transmission Config PVC (Longhorn)
 # ==========================
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -13,9 +13,10 @@ spec:
     requests:
       storage: 1Gi
   storageClassName: longhorn
+
 ---
 # ==========================
-# Transmission + OpenVPN Deployment
+# Transmission-VPN Deployment
 # ==========================
 apiVersion: apps/v1
 kind: Deployment
@@ -33,56 +34,48 @@ spec:
         app: transmission-vpn
     spec:
       nodeSelector:
-        vpn-dedicated: "true"       # pin to your dedicated VPN node
+        vpn-dedicated: "true"        # 👈 pin to your dedicated node
       containers:
-        - name: transmission-vpn
-          image: haugene/transmission-openvpn:latest
-          securityContext:
-            privileged: true        # required for /dev/net/tun
-            capabilities:
-              add:
-                - NET_ADMIN
-          env:
-            - name: OPENVPN_PROVIDER
-              value: nordvpn
-            - name: OPENVPN_USER
-              value: root
-            - name: OPENVPN_CONFIG
-              value: canada
-            - name: OPENVPN_USERNAME
-              valueFrom:
-                secretKeyRef:
-                  name: vpn-creds
-                  key: username
-            - name: OPENVPN_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: vpn-creds
-                  key: password
-            - name: PUID
-              value: "1000"
-            - name: PGID
-              value: "1000"
-            - name: TZ
-              value: America/Vancouver
-            - name: LOCAL_NETWORK
-              value: 10.0.0.0/8
-            - name: TRANSMISSION_RPC_BIND_ADDRESS
-              value: 0.0.0.0
-            - name: TRANSMISSION_DOWNLOAD_DIR
-              value: /data/completed
-            - name: TRANSMISSION_INCOMPLETE_DIR
-              value: /data/incomplete
-          ports:
-            - containerPort: 9091
-              protocol: TCP
-          volumeMounts:
-            - name: config
-              mountPath: /config
-            - name: data
-              mountPath: /data
-            - name: dev-net
-              mountPath: /dev/net                # 👈 mount entire /dev/net, not just /dev/net/tun
+      - name: transmission-vpn
+        image: haugene/transmission-openvpn:latest
+        imagePullPolicy: Always
+        securityContext:
+          privileged: true           # 👈 required for /dev/net/tun
+          capabilities:
+            add:
+              - NET_ADMIN
+        env:
+          - name: OPENVPN_PROVIDER
+            value: nordvpn
+          - name: OPENVPN_CONFIG
+            value: canada
+          - name: PUID
+            value: "1000"
+          - name: PGID
+            value: "1000"
+          - name: TZ
+            value: America/Vancouver
+          - name: LOCAL_NETWORK
+            value: 10.0.0.0/8
+          - name: TRANSMISSION_RPC_BIND_ADDRESS
+            value: 0.0.0.0
+          - name: TRANSMISSION_DOWNLOAD_DIR
+            value: /data/completed
+          - name: TRANSMISSION_INCOMPLETE_DIR
+            value: /data/incomplete
+        ports:
+          - containerPort: 9091
+            protocol: TCP
+        volumeMounts:
+          - name: config
+            mountPath: /config
+          - name: data
+            mountPath: /data
+          - name: dev-net-tun
+            mountPath: /dev/net/tun
+          - name: vpn-creds
+            mountPath: /config/openvpn-credentials.txt
+            subPath: openvpn-credentials.txt   # 👈 ensures single file
       volumes:
         - name: config
           persistentVolumeClaim:
@@ -90,7 +83,10 @@ spec:
         - name: data
           persistentVolumeClaim:
             claimName: nfs-downloads
-        - name: dev-net
+        - name: dev-net-tun
           hostPath:
-            path: /dev/net                       # 👈 mount directory, not char device
-            type: Directory
+            path: /dev/net/tun
+            type: CharDevice
+        - name: vpn-creds
+          secret:
+            secretName: vpn-creds   # 👈 secret with keys username & password
