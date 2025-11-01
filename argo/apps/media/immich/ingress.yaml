@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: immich-ingress
+  namespace: media
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-production"
+spec:
+  ingressClassName: traefik
+  tls:
+  - hosts:
+      - photos.smeyer.ca
+    secretName: immich-tls
+  rules:
+  - host: photos.smeyer.ca
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: immich-server
+            port:
+              number: 2283
