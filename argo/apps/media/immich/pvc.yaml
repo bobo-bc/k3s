@@ -37,3 +37,16 @@ spec:
     requests:
       storage: 5Gi
   storageClassName: longhorn
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: immich-nfs-pvc
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 200Gi
+  storageClassName: immich-nfs
