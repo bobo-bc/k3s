@@ -8,4 +8,4 @@ resources:
   - ingress.yaml
   - machinelearning.yaml
   - redis.yaml
-  - server-services.yaml
+  - server-service.yaml
