@@ -24,11 +24,13 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: immich-db-secret
-                  key: DATABASE_URL
-            - name: REDIS_HOSTNAME
+                  key: DB_URL_URL
+            - name: REDIS_HOST
               value: immich-redis
             - name: REDIS_PORT
               value: "6379"
+            - name: IMMICH_PORT
+              value: "3001"
             - name: NODE_ENV
               value: production
             - name: IMMICH_LOG_LEVEL
