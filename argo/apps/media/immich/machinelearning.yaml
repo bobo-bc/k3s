@@ -16,11 +16,11 @@ spec:
     spec:
       containers:
         - name: immich-machine-learning
-          image: ghcr.io/immich-app/immich-machine-learning:release
+          image: ghcr.io/immich-app/immich-machine-learning:v2.1.0
           ports:
             - containerPort: 3003
           env:
-            - name: IMMICH_ENV
+            - name: NODE_ENV
               value: production
             - name: TZ
               value: America/Vancouver
