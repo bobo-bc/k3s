@@ -23,7 +23,7 @@ spec:
                 secretKeyRef:
                   name: immich-db-secret
                   key: DB_URL
-            - name: REDIS_HOSTNAME
+            - name: REDIS_HOST
               value: immich-redis
             - name: REDIS_PORT
               value: "6379"
