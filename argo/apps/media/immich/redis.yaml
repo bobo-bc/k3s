@@ -15,7 +15,7 @@ spec:
         app: immich-redis
     spec:
       containers:
-        - name: redis
+        - name: immich-redis
           image: redis:7-alpine
           ports:
             - containerPort: 6379
