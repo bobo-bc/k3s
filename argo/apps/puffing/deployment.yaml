@@ -1,4 +1,3 @@
-# Deployment
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -14,6 +13,22 @@ spec:
       labels:
         app: pdfding
     spec:
+      initContainers:
+        - name: init-pvc
+          image: busybox
+          command:
+            - sh
+            - -c
+            - |
+              mkdir -p /home/nonroot/pdfding/db
+              mkdir -p /home/nonroot/pdfding/media
+              chown -R 1000:1000 /home/nonroot/pdfding/db
+              chown -R 1000:1000 /home/nonroot/pdfding/media
+          volumeMounts:
+            - name: pdfding-db
+              mountPath: /home/nonroot/pdfding/db
+            - name: pdfding-media
+              mountPath: /home/nonroot/pdfding/media
       containers:
         - name: pdfding
           image: mrmn/pdfding:v1.3.1
