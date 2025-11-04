@@ -11,19 +11,31 @@ spec:
       storage: 10Gi
   storageClassName: longhorn
 ---
-# Persistent Volumes
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: immich-nfs-library
+spec:
+  capacity:
+    storage: 200Gi
+  accessModes:
+    - ReadWriteMany
+  nfs:
+    path: /media/Main/Pics
+    server: 10.0.0.10  # your NAS IP
+---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: immich-library
+  name: immich-nfs-library
   namespace: immich
 spec:
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   resources:
     requests:
-      storage: 20Gi
-  storageClassName: longhorn
+      storage: 200Gi
+  volumeName: immich-nfs-library
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
