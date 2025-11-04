@@ -1,0 +1,44 @@
+# Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pdfding
+  namespace: pdfding
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pdfding
+  template:
+    metadata:
+      labels:
+        app: pdfding
+    spec:
+      containers:
+        - name: pdfding
+          image: mrmn/pdfding:v1.3.1
+          ports:
+            - containerPort: 8000
+          env:
+            - name: CSRF_COOKIE_SECURE
+              value: "FALSE"
+            - name: DEBUG
+              value: "FALSE"
+            - name: HOST_NAME
+              value: "*"
+            - name: SECRET_KEY
+              value: "your_secret_key_here"
+            - name: SESSION_COOKIE_SECURE
+              value: "FALSE"
+          volumeMounts:
+            - name: pdfding-db
+              mountPath: /home/nonroot/pdfding/db
+            - name: pdfding-media
+              mountPath: /home/nonroot/pdfding/media
+      volumes:
+        - name: pdfding-db
+          persistentVolumeClaim:
+            claimName: pdfding-db
+        - name: pdfding-media
+          persistentVolumeClaim:
+            claimName: pdfding-media
