@@ -1,0 +1,16 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: pdfding
+  namespace: pdfding
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`pdf.smeyer.ca`)
+      kind: Rule
+      services:
+        - name: pdfding
+          port: 8000
+  tls:
+    certResolver: letsencrypt
