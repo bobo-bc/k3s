@@ -36,6 +36,7 @@ spec:
     requests:
       storage: 200Gi
   volumeName: immich-nfs-library
+  storageClassName: nfs-static
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
