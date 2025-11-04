@@ -1,0 +1,26 @@
+# PersistentVolumeClaims for DB and Media
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pdfding-db
+  namespace: pdfding
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+  storageClassName: longhorn
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pdfding-media
+  namespace: pdfding
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+  storageClassName: longhorn
