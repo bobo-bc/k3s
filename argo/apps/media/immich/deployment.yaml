@@ -14,6 +14,20 @@ spec:
       labels:
         app: immich-server
     spec:
+      # 👇 ADD THIS SECTION
+      initContainers:
+        - name: setup-upload-dirs
+          image: busybox
+          command:
+            - sh
+            - -c
+            - |
+              mkdir -p /usr/src/app/upload/{encoded-video,library,profile,thumbs,backups,upload} && \
+              touch /usr/src/app/upload/{encoded-video,library,profile,thumbs,backups,upload}/.immich
+          volumeMounts:
+            - name: library
+              mountPath: /usr/src/app/upload
+      # 👆 END OF NEW SECTIO  
       containers:
         - name: immich-server
           image: ghcr.io/immich-app/immich-server:v2.1.0
