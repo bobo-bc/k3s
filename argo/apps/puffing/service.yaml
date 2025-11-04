@@ -1,0 +1,13 @@
+# Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: pdfding
+  namespace: pdfding
+spec:
+  selector:
+    app: pdfding
+  ports:
+    - port: 8000
+      targetPort: 8000
+  type: ClusterIP
