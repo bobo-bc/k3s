@@ -36,15 +36,23 @@ spec:
             - containerPort: 8000
           env:
             - name: CSRF_COOKIE_SECURE
-              value: "FALSE"
+              value: "TRUE"
             - name: DEBUG
               value: "FALSE"
             - name: HOST_NAME
-              value: "*"
+              value: "pdf.smeyer.ca"
             - name: SECRET_KEY
               value: "your_secret_key_here"
             - name: SESSION_COOKIE_SECURE
-              value: "FALSE"
+              value: "TRUE"
+            - name: CSRF_TRUSTED_ORIGINS
+              value: "https://pdf.smeyer.ca"
+            - name: USE_X_FORWARDED_HOST
+              value: "True"
+            - name: SECURE_PROXY_SSL_HEADER
+              value: "HTTP_X_FORWARDED_PROTO,https"
+            - name: ALLOWED_HOSTS
+              value: "pdf.smeyer.ca,localhost,127.0.0.1"
           volumeMounts:
             - name: pdfding-db
               mountPath: /home/nonroot/pdfding/db
