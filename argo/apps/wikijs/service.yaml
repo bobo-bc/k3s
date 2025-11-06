@@ -1,0 +1,13 @@
+# wikijs-service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: wikijs
+  namespace: wiki
+spec:
+  selector:
+    app: wikijs
+  ports:
+    - port: 80
+      targetPort: 3000
+      protocol: TCP
