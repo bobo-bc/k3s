@@ -1,0 +1,17 @@
+# wikijs-ingress.yaml
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: wikijs
+  namespace: wiki
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`wiki.smeyer.ca`)
+      kind: Rule
+      services:
+        - name: wikijs
+          port: 80
+  tls:
+    certResolver: letsencrypt
