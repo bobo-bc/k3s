@@ -82,7 +82,7 @@
        
     - Traefik Dashboard:
         icon: traefik.png
-        href: http://traefik.smeyer.ca/
+        href: https://traefik.smeyer.ca/dashboard/#/
         description: k3s reverse proxy 
 
 
