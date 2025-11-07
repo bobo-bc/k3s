@@ -1,0 +1,39 @@
+# Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: composetoolbox
+  namespace: composetoolbox
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: composetoolbox
+  template:
+    metadata:
+      labels:
+        app: composetoolbox
+    spec:
+      initContainers:
+        - name: fix-permissions
+          image: busybox
+          command: ['sh', '-c', 'chmod -R 777 /app/data || true']
+          volumeMounts:
+            - name: data
+              mountPath: /app/data
+      containers:
+        - name: composetoolbox
+          image: ghcr.io/bluegoosemedia/composetoolbox:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000
+          env:
+            - name: NODE_ENV
+              value: production
+          volumeMounts:
+            - name: data
+              mountPath: /app/data
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: composetoolbox-data
