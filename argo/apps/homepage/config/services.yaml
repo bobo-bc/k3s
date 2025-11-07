@@ -23,12 +23,9 @@
         icon: it-tools.png
         href: https://tools.smeyer.ca/
         description: Handy IT tools
-    - Plex:
-        icon: plex.png
-        href: http://plex.smeyer.ca/
-        description: Media Viewer
+
     - Compose Tool Box:
-        icon: //cdn.jhttpssdelivr.net/gh/bluegoosemedia/composetoolbox@498d1527dcf9cc6422300216df6244ea79ae3630/public/favicon.png
+        icon: http://cdn.jhttpssdelivr.net/gh/bluegoosemedia/composetoolbox@498d1527dcf9cc6422300216df6244ea79ae3630/public/favicon.png
         href: https://compose.smeyer.ca
 
 
@@ -47,16 +44,22 @@
         icon: portainer-alt.png
         href: https://portainer.smeyer.ca/
         description: k3s/docker management
-    - CasaOS:
-        icon: casaos.png
-        href: http://10.0.0.14
-        description: docker host
+    - ZimaOS:
+        icon: zima-os.png
+        href: http://10.0.0.10
+        description: Nas host with docker store
 
 - Infra:
     - Unifi Gateway:
        icon: ubiquiti-unifi.png
        href: https://unifi.smeyer.ca
        description: unifi
+       
+    - Traefik Dashboard:
+        icon: traefik.png
+        href: https://traefik.smeyer.ca/dashboard/#/
+        description: k3s reverse proxy 
+        
     - HomeAssistant:
         icon: home-assistant.png
         href: http://home.smeyer.ca/
@@ -67,26 +70,23 @@
         description: dns management 
     - Proxmox:
         icon: proxmox.png
-        href: https://pve.smeyer.ca/
+        href: https://pve2.smeyer.ca/
         description: proxmox host
-
-    - Proxmox backup server:
-        icon: proxmox-light.png
-        href: https://backup.smeyer.ca/
-        description: proxmox backup
 
     - Uptime Kuma:
        icon: uptime-kuma.png
        href: https://uptime.smeyer.ca
        description: monitoring
        
-    - Traefik Dashboard:
-        icon: traefik.png
-        href: https://traefik.smeyer.ca/dashboard/#/
-        description: k3s reverse proxy 
+
 
 
 - Media: 
+    - Plex:
+        icon: plex.png
+        href: http://plex.smeyer.ca/
+        description: Media Viewer
+        
     - Sonarr:
         icon: sonarr.png
         href: https://tv.smeyer.ca/
@@ -107,9 +107,9 @@
         href: https://books.smeyer.ca/
         description: Book reader
 
-    - Readarr:
-        icon: readarr.png
-        href: https://readarr.smeyer.ca
+    - LazyLibrarian:
+        icon: lazylibrarian.png
+        href: https://library.smeyer.ca
         description: books management
         
     - Transmission-vpn:
