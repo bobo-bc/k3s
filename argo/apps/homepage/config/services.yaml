@@ -7,14 +7,10 @@
         icon: github-light.png
         href: https://smeyer.ca/
         description: my blog
-    - Docmost wiki:
-        icon: docmost.png
-        href: https://docs.smeyer.ca/
+    - Wikijs:
+        icon: wikijs-light.png
+        href: https://wiki.smeyer.ca/
         description: my wiki
-    - Ghost blog:
-        icon: ghost-light.png
-        href: https://stevenfmeyer.me/
-        description: ghost blog 
     - Immich:
         icon: immich.png
         href: http://pics.smeyer.ca/
@@ -31,6 +27,10 @@
         icon: plex.png
         href: http://plex.smeyer.ca/
         description: Media Viewer
+    - Compose Tool Box:
+        icon: //cdn.jhttpssdelivr.net/gh/bluegoosemedia/composetoolbox@498d1527dcf9cc6422300216df6244ea79ae3630/public/favicon.png
+        href: https://compose.smeyer.ca
+
 
         
 - Host:
