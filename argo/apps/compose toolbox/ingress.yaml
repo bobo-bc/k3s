@@ -1,0 +1,17 @@
+# IngressRoute (Traefik)
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: composetoolbox
+  namespace: composetoolbox
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`compose.smeyer.ca`)
+      kind: Rule
+      services:
+        - name: composetoolbox
+          port: 3000
+  tls:
+    certResolver: letsencrypt
