@@ -8,7 +8,7 @@
         href: https://smeyer.ca/
         description: my blog
     - Wikijs:
-        icon: wikijs-alt.png
+        icon: wikijs.png
         href: https://wiki.smeyer.ca/
         description: my wiki
     - Immich:
@@ -25,7 +25,7 @@
         description: Handy IT tools
 
     - Compose Tool Box:
-        icon: docker-compose.webp
+        icon: docker-moby.png
         href: https://compose.smeyer.ca
         description: compose file review tool
     - PDFding:
