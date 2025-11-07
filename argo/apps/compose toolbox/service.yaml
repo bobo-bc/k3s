@@ -1,0 +1,14 @@
+# Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: composetoolbox
+  namespace: composetoolbox
+spec:
+  type: ClusterIP
+  selector:
+    app: composetoolbox
+  ports:
+    - name: http
+      port: 3000
+      targetPort: 3000
