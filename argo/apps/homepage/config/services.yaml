@@ -13,7 +13,7 @@
         description: my wiki
     - Immich:
         icon: immich.png
-        href: http://pics.smeyer.ca/
+        href: https://pics.smeyer.ca/
         description: photo curation
     - Drawio:
         icon: draw-io.png
@@ -25,29 +25,36 @@
         description: Handy IT tools
 
     - Compose Tool Box:
-        icon: http://cdn.jhttpssdelivr.net/gh/bluegoosemedia/composetoolbox@498d1527dcf9cc6422300216df6244ea79ae3630/public/favicon.png
+        icon: docker-compose.webp
         href: https://compose.smeyer.ca
+        description: compose file review tool
+    - PDFding:
+        icon: pdfding.png
+        href: https://pdf.smeyer.ca
+        description: pdf editing tool 
 
 
         
 - Host:
-    - Nginx Proxy Manager:
-        icon: npm.png
-        href: http://proxy.smeyer.ca/
-        description: proxy management 
-
-    - PiHole:
-        icon: pi-hole.png
-        href: http://pihole.smeyer.ca/
-        description: dns management  
-    - Portainer:
-        icon: portainer-alt.png
-        href: https://portainer.smeyer.ca/
-        description: k3s/docker management
     - ZimaOS:
         icon: zima-os.png
         href: http://10.0.0.10
         description: Nas host with docker store
+    - PiHole:
+        icon: pi-hole.png
+        href: http://10.0.0.10:8080/admin/
+        description: dns management
+        
+    - Nginx Proxy Manager:
+        icon: npm.png
+        href: http://proxy.smeyer.ca/
+        description: proxy management 
+  
+    - Portainer:
+        icon: portainer-alt.png
+        href: https://portainer.smeyer.ca/
+        description: k3s/docker management
+
 
 - Infra:
     - Unifi Gateway:
@@ -73,10 +80,16 @@
         href: https://pve2.smeyer.ca/
         description: proxmox host
 
-    - Uptime Kuma:
-       icon: uptime-kuma.png
-       href: https://uptime.smeyer.ca
-       description: monitoring
+    - Longhorn:
+       icon: longhorn.png
+       href: https://longhorn.smeyer.ca
+       description: storage
+
+    - Adminer:
+       icon: adminer.png
+       href: http://10.0.0.10:8082
+       description: database management interface
+       
        
 
 
