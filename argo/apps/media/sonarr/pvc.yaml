@@ -44,4 +44,4 @@ spec:
     requests:
       storage: 500Gi
   volumeName: nfs-tvshows
-  storageClassName: nfs=storage
+  storageClassName: nfs-storage
