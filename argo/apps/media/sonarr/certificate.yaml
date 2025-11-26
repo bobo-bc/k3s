@@ -1,0 +1,12 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: tv-smeyer-ca
+  namespace: media
+spec:
+  secretName: tv-smeyer-ca-tls
+  issuerRef:
+    name: cloudflare-dns
+    kind: ClusterIssuer
+  dnsNames:
+    - tv.smeyer.ca
