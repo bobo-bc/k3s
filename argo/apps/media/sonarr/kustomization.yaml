@@ -7,4 +7,6 @@ resources:
   - deployment.yaml
   - ingress.yaml
   - service.yaml
+  - certificate.yaml
+  - pvc.yaml
 
