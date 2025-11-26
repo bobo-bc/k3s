@@ -30,7 +30,7 @@ spec:
     requests:
       storage: 500Gi
   volumeName: nfs-downloads
-  storageClassName: nfs
+  storageClassName: nfs-storage
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -44,4 +44,4 @@ spec:
     requests:
       storage: 500Gi
   volumeName: nfs-tvshows
-  storageClassName: nfs
+  storageClassName: nfs=storage
