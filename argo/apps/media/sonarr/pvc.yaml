@@ -11,42 +11,13 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 5Gi
+      storage: 2Gi
   storageClassName: longhorn
 ---
 #===========================
 # static nfs provisioning
 #===========================
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: nfs-downloads
-spec:
-  capacity:
-    storage: 500Gi
-  accessModes:
-    - ReadWriteMany
-  persistentVolumeReclaimPolicy: Retain
-  storageClassName: nfs
-  nfs:
-    path: /media/Main/Downloads
-    server: 10.0.0.10
----
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: nfs-tvshows
-spec:
-  capacity:
-    storage: 500Gi
-  accessModes:
-    - ReadWriteMany
-  persistentVolumeReclaimPolicy: Retain
-  storageClassName: nfs
-  nfs:
-    path: /media/Main/Media/TV Shows
-    server: 10.0.0.10
----
+
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
