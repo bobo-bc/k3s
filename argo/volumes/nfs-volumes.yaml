@@ -16,23 +16,6 @@ spec:
     path: /mnt/data/Downloads
     server: 10.0.0.5
 ---
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: nfs-downloads
-  namespace: media
-  annotations:
-    argocd.argoproj.io/sync-options: Prune=false
-spec:
-  accessModes:
-    - ReadWriteMany
-  resources:
-    requests:
-      storage: 500Gi
-  volumeName: nfs-downloads
-  storageClassName: nfs-static
-
----
 #===========================
 # tvshows
 #===========================
@@ -50,22 +33,6 @@ spec:
   nfs:
     path: "/mnt/data/media/tv"
     server: 10.0.0.5
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: nfs-tvshows
-  namespace: media
-  annotations:
-    argocd.argoproj.io/sync-options: Prune=false
-spec:
-  accessModes:
-    - ReadWriteMany
-  resources:
-    requests:
-      storage: 500Gi
-  volumeName: nfs-tvshows
-  storageClassName: nfs-static
 ---
 #===========================
 # movies
@@ -85,23 +52,6 @@ spec:
     path: /mnt/data/media/movies
     server: 10.0.0.5
 ---
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: nfs-movies
-  namespace: media
-  annotations:
-    argocd.argoproj.io/sync-options: Prune=false
-spec:
-  accessModes:
-    - ReadWriteMany
-  resources:
-    requests:
-      storage: 500Gi
-  volumeName: nfs-movies
-  storageClassName: nfs-static
-
----
 #===========================
 # music
 #===========================
@@ -120,22 +70,6 @@ spec:
     path: /mnt/data/media/music
     server: 10.0.0.5
 ---
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: nfs-music
-  namespace: media
-  annotations:
-    argocd.argoproj.io/sync-options: Prune=false
-spec:
-  accessModes:
-    - ReadWriteMany
-  resources:
-    requests:
-      storage: 500Gi
-  volumeName: nfs-music
-  storageClassName: nfs-static
----
 #===========================
 # books
 #===========================
@@ -153,21 +87,4 @@ spec:
   nfs:
     path: /mnt/data/media/books
     server: 10.0.0.5
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: nfs-books
-  namespace: media
-  annotations:
-    argocd.argoproj.io/sync-options: Prune=false
-spec:
-  accessModes:
-    - ReadWriteMany
-  resources:
-    requests:
-      storage: 500Gi
-  volumeName: nfs-books
-  storageClassName: nfs-static
-
 
