@@ -80,12 +80,12 @@ spec:
             - name: NFS_SERVER
               value: 10.0.0.5
             - name: NFS_PATH
-              value: /tank/k8s-nfs
+              value: /mnt/data
       volumes:
         - name: nfs-client-root
           nfs:
             server: 10.0.0.5
-            path: /tank/k8s-nfs
+            path: /mnt/data
 ---
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
@@ -112,7 +112,7 @@ spec:
     - ReadWriteMany
   nfs:
     server: 10.0.0.5
-    path: /tank/media/music
+    path: /mnt/data/media/music
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -125,7 +125,7 @@ spec:
     - ReadWriteMany
   nfs:
     server: 10.0.0.5
-    path: /tank/media/movies
+    path: /mnt/data/media/movies
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -138,7 +138,7 @@ spec:
     - ReadWriteMany
   nfs:
     server: 10.0.0.5
-    path: /tank/media/tv
+    path: /mnt/data/media/tv
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -151,20 +151,7 @@ spec:
     - ReadWriteMany
   nfs:
     server: 10.0.0.5
-    path: /tank/media/books
----
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: nfs-wiki
-spec:
-  capacity:
-    storage: 50Gi
-  accessModes:
-    - ReadWriteMany
-  nfs:
-    server: 10.0.0.5
-    path: /tank/media/wiki
+    path: /mnt/data/media/books
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -177,4 +164,4 @@ spec:
     - ReadWriteMany
   nfs:
     server: 10.0.0.5
-    path: /tank/media/torrents
+    path: /mnt/data/Downloads
