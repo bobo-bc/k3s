@@ -1,0 +1,63 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: transmission
+  namespace: media
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: transmission
+  template:
+    metadata:
+      labels:
+        app: transmission
+    spec:
+      # required for VPN container
+      securityContext:
+        capabilities:
+          add: ["NET_ADMIN"]
+      containers:
+      - name: gluetun
+        image: qmcgaw/gluetun:latest
+        env:
+          - name: VPN_SERVICE_PROVIDER
+            value: "nordvpn"
+          - name: OPENVPN_USER
+            valueFrom:
+              secretKeyRef:
+                name: nordvpn
+                key: USER
+          - name: OPENVPN_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: nordvpn
+                key: PASS
+          - name: TZ
+            value: "America/Vancouver"
+        ports:
+          - name: transmission
+            containerPort: 9091
+        volumeMounts:
+          - name: config
+            mountPath: /gluetun
+      - name: transmission
+        image: linuxserver/transmission:latest
+        env:
+          - name: PUID
+            value: "1000"
+          - name: PGID
+            value: "1000"
+          - name: TZ
+            value: "America/Vancouver"
+          - name: TRANSMISSION_RPC_PORT
+            value: "9091"
+        ports:
+          - name: rpc
+            containerPort: 9091
+        volumeMounts:
+          - name: config
+            mountPath: /config
+      volumes:
+        - name: config
+          emptyDir: {}
