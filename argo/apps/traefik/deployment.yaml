@@ -166,7 +166,7 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`traefik.smeyer.ca`) && (PathPrefix(`/dashboard`) || PathPrefix(`/api`))
+    - match: Host(`traefik.smeyer.ca`) && (PathPrefix(`/`)
       kind: Rule
       services:
         - name: api@internal
