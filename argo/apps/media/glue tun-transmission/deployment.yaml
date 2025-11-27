@@ -14,35 +14,37 @@ spec:
         app: transmission
     spec:
       # required for VPN container
-      securityContext:
-        capabilities:
-          add: ["NET_ADMIN"]
       containers:
-      - name: gluetun
-        image: qmcgaw/gluetun:latest
-        env:
-          - name: VPN_SERVICE_PROVIDER
-            value: "nordvpn"
-          - name: OPENVPN_USER
-            valueFrom:
-              secretKeyRef:
-                name: nordvpn
-                key: USER
-          - name: OPENVPN_PASSWORD
-            valueFrom:
-              secretKeyRef:
-                name: nordvpn
-                key: PASS
-          - name: TZ
-            value: "America/Vancouver"
-        ports:
-          - name: transmission
-            containerPort: 9091
-        volumeMounts:
-          - name: config
-            mountPath: /gluetun
-      - name: transmission
-        image: linuxserver/transmission:latest
+        - name: gluetun
+          image: qmcgaw/gluetun:latest
+          securityContext:
+            capabilities:
+             add: ["NET_ADMIN"]
+            privelaged: true
+            runAsUser: 0
+          env:
+            - name: VPN_SERVICE_PROVIDER
+              value: "nordvpn"
+            - name: OPENVPN_USER
+              valueFrom:
+                secretKeyRef:
+                  name: nordvpn
+                  key: USER
+            - name: OPENVPN_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: nordvpn
+                  key: PASS
+            - name: TZ
+              value: "America/Vancouver"
+          ports:
+            - name: transmission
+              containerPort: 9091
+          volumeMounts:
+            - name: config
+              mountPath: /gluetun
+        - name: transmission
+          image: linuxserver/transmission:latest
         env:
           - name: PUID
             value: "1000"
