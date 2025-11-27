@@ -52,34 +52,7 @@ subjects:
     name: traefik
     namespace: traefik
 ---
-# =========================
-# Cloudflare API Token Secret
-# =========================
-#apiVersion: v1
-#kind: Secret
-#metadata:
-#  name: traefik-cloudflare
-#  namespace: traefik
-#type: Opaque
-#stringData:
-#  CF_API_TOKEN: "<your-cloudflare-token-here>"
 
-# =========================
-# Longhorn PVC for ACME Data
-# =========================
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: traefik-acme
-  namespace: traefik
-spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 1Gi
-  storageClassName: longhorn
----
 # =========================
 # ConfigMap for Traefik
 # =========================
@@ -108,15 +81,6 @@ data:
     api:
       dashboard: true
       insecure: false
-
-   # certificatesResolvers:
-   #   letsencrypt-dns:
-   #     acme:
-   #       email: me@smeyer.ca
-   #       storage: /data/acme.json
-   #       dnsChallenge:
-   #         provider: cloudflare
-   #         delayBeforeCheck: 0
 ---
 # =========================
 # Traefik Deployment
@@ -147,25 +111,14 @@ spec:
             containerPort: 80
           - name: websecure
             containerPort: 443
-        env:
-          - name: CLOUDFLARE_DNS_API_TOKEN
-            valueFrom:
-              secretKeyRef:
-                name: traefik-cloudflare
-                key: CLOUDFLARE_DNS_API_TOKEN
         volumeMounts:
           - name: traefik-config
             mountPath: /etc/traefik/traefik.yml
             subPath: traefik.yml
-          - name: acme
-            mountPath: /data
       volumes:
         - name: traefik-config
           configMap:
             name: traefik-config
-        - name: acme
-          persistentVolumeClaim:
-            claimName: traefik-acme
 ---
 # =========================
 # MetalLB LoadBalancer Service
@@ -219,7 +172,7 @@ spec:
         - name: api@internal
           kind: TraefikService
   tls:
-    certResolver: letsencrypt-dns
+    secretName: traefik-smeyer-ca-tls
     domains:
       - main: "*.smeyer.ca"
         sans:
