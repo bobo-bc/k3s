@@ -13,14 +13,13 @@ spec:
       labels:
         app: transmission
     spec:
-      # required for VPN container
       containers:
         - name: gluetun
           image: qmcgaw/gluetun:latest
           securityContext:
             capabilities:
-             add: ["NET_ADMIN"]
-            privelaged: true
+              add: ["NET_ADMIN"]
+            privileged: true
             runAsUser: 0
           env:
             - name: VPN_SERVICE_PROVIDER
@@ -43,23 +42,25 @@ spec:
           volumeMounts:
             - name: config
               mountPath: /gluetun
+
         - name: transmission
           image: linuxserver/transmission:latest
-        env:
-          - name: PUID
-            value: "1000"
-          - name: PGID
-            value: "1000"
-          - name: TZ
-            value: "America/Vancouver"
-          - name: TRANSMISSION_RPC_PORT
-            value: "9091"
-        ports:
-          - name: rpc
-            containerPort: 9091
-        volumeMounts:
-          - name: config
-            mountPath: /config
+          env:
+            - name: PUID
+              value: "1000"
+            - name: PGID
+              value: "1000"
+            - name: TZ
+              value: "America/Vancouver"
+            - name: TRANSMISSION_RPC_PORT
+              value: "9091"
+          ports:
+            - name: rpc
+              containerPort: 9091
+          volumeMounts:
+            - name: config
+              mountPath: /config
+
       volumes:
         - name: config
           emptyDir: {}
