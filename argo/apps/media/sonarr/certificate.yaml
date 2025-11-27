@@ -6,7 +6,7 @@ metadata:
 spec:
   secretName: tv-smeyer-ca-tls
   issuerRef:
-    name: cloudflare-dns
+    name: letsencrypt-cloudflare
     kind: ClusterIssuer
   dnsNames:
-    - tv.smeyer.ca
+    - *.smeyer.ca
