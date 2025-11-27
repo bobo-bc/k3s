@@ -9,4 +9,4 @@ spec:
     name: letsencrypt-cloudflare
     kind: ClusterIssuer
   dnsNames:
-    - *.smeyer.ca
+    - "*.smeyer.ca"
