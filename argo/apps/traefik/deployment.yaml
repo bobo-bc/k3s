@@ -173,7 +173,3 @@ spec:
           kind: TraefikService
   tls:
     secretName: traefik-smeyer-ca-tls
-    domains:
-      - main: "*.smeyer.ca"
-        sans:
-          - "smeyer.ca"
