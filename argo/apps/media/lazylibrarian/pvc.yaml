@@ -1,8 +1,10 @@
-# Dynamic PVC for /config
+# ==========================
+# longhorn dynamic storage provisioning
+# ==========================
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: lazylibrarian-config
+  name: library-config
   namespace: media
 spec:
   accessModes:
@@ -10,4 +12,4 @@ spec:
   resources:
     requests:
       storage: 2Gi
-  storageClassName: longhorn   # your dynamic provisioner
+  storageClassName: longhorn
