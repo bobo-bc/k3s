@@ -1,36 +1,16 @@
-service:
-  type: ClusterIP
-
-ingress:
-  enabled: true
-  ingressClassName: traefik
-  hosts:
-    - host: portainer.lan
-      paths:
-        - path: /
-          pathType: Prefix
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: portainer
+  namespace: portainer
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`portainer.smeyer.ca`)
+      kind: Rule
+      services:
+        - name: portainer
+          port: 9000
   tls:
-    - hosts:
-        - portainer.lan
-      secretName: wildcard-lan-tls
-
-persistence:
-  enabled: false    # disable default PVC creation
-
-extraVolumes:
-  - name: app-storage
-    persistentVolumeClaim:
-      claimName: iscsi-pvc-1
-
-extraVolumeMounts:
-  - name: app-storage
-    mountPath: /data
-    subPath: portainer
-
-resources:
-  requests:
-    cpu: 100m
-    memory: 128Mi
-  limits:
-    cpu: 250m
-    memory: 256Mi
+    certResolver: cloudflare
