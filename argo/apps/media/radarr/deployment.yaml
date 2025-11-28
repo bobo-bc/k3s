@@ -30,7 +30,7 @@ spec:
         - name: movies
           mountPath: /movies
         - name: data
-          mountPath: /downloads
+          mountPath: /data
       volumes:
       - name: config
         persistentVolumeClaim:
