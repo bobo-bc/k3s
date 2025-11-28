@@ -64,7 +64,12 @@ spec:
           volumeMounts:
             - name: config
               mountPath: /config
+            - name: downloads
+              mountPath: /data
 
       volumes:
         - name: config
           emptyDir: {}
+        - name: downloads
+          persistentVolumeClaim:
+            claimName: nfs-downloads
