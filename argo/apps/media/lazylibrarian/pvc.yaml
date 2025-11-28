@@ -1,4 +1,3 @@
----
 # Dynamic PVC for /config
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -9,63 +8,5 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 1Gi
-  storageClassName: nfs-client   # your dynamic provisioner
-
----
-# Static PV/PVC for /tv
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: lazylibrarian-books-pv
-spec:
-  capacity:
-    storage: 100Gi
-  accessModes:
-    - ReadWriteMany
-  storageClassName: ""   # important for static
-  nfs:
-    server: 10.0.0.5
-    path: /tank/media/books
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: lazylibrarian-books-pvc
-spec:
-  accessModes:
-    - ReadWriteMany
-  resources:
-    requests:
-      storage: 100Gi
-  volumeName: lazylibrarian-books-pv
-  storageClassName: ""   # must match PV
-
----
-# Static PV/PVC for /downloads
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: lazylibrarian-downloads-pv
-spec:
-  capacity:
-    storage: 100Gi
-  accessModes:
-    - ReadWriteMany
-  storageClassName: ""   # must match PV
-  nfs:
-    server: 10.0.0.5
-    path: /tank/media/torrents
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: lazylibrarian-downloads-pvc
-spec:
-  accessModes:
-    - ReadWriteMany
-  resources:
-    requests:
-      storage: 100Gi
-  volumeName: lazylibrarian-downloads-pv
-  storageClassName: ""   # must match PV
+      storage: 2Gi
+  storageClassName: longhorn   # your dynamic provisioner
