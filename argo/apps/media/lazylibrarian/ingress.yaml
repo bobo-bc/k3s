@@ -25,7 +25,7 @@ spec:
         - name: lazylibrarian
           port: 80
   tls:
-    certResolver: letsencrypt
+    secretName: wildcard-smeyer-ca-tls
 ---
 # IngressRoute for HTTP (only used for redirect)
 apiVersion: traefik.io/v1alpha1
