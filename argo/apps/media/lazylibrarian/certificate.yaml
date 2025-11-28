@@ -4,7 +4,7 @@ metadata:
   name: library-smeyer-ca
   namespace: media
 spec:
-  secretName: library-smeyer-ca-tls
+  secretName: wildcard-smeyer-ca-tls
   issuerRef:
     name: letsencrypt-cloudflare
     kind: ClusterIssuer
