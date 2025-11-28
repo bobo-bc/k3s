@@ -43,5 +43,5 @@ spec:
       volumes:
         - name: library
           persistentVolumeClaim:
-            claimName: nfs-pics
+            claimName: nfs-photos
 
