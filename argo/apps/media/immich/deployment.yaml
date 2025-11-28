@@ -43,5 +43,5 @@ spec:
       volumes:
         - name: library
           persistentVolumeClaim:
-            claimName: immich-nfs-library
+            claimName: nfs-pics
 
