@@ -58,6 +58,10 @@ spec:
               value: "America/Vancouver"
             - name: TRANSMISSION_RPC_PORT
               value: "9091"
+            - name: TRANSMISSION_DOWNLOAD_DIR
+              value: "/data/completed"
+            - name: TRANSMISSION_INCOMPLETE_DIR
+              value: "/data/incomplete"
           ports:
             - name: rpc
               containerPort: 9091
