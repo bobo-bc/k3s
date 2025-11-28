@@ -8,5 +8,4 @@ resources:
   - ingress.yaml
   - service.yaml
   - pvc.yaml
-  - certificate.yaml
 
