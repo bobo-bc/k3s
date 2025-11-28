@@ -16,9 +16,6 @@ spec:
       containers:
         - name: portainer
           image: portainer/portainer-ce:latest
-          args:
-            - "--admin-password-file"
-            - "/run/secrets/admin-password"
           ports:
             - containerPort: 9000
               name: http
