@@ -26,5 +26,5 @@ spec:
         - name: ghost
           port: 80
   tls:
-    certResolver: letsencypt
+    certResolver: letsencrypt  # fix typo
 
