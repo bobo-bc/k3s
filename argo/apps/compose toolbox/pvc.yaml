@@ -3,7 +3,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: composetoolbox-data
-  namespace: ctools
+  namespace: tools
 spec:
   accessModes:
     - ReadWriteOnce
