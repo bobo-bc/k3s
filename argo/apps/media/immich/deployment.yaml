@@ -3,7 +3,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: immich-server
-  namespace: immich
+  namespace: media
 spec:
   replicas: 1
   selector:
