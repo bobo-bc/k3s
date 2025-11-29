@@ -3,7 +3,7 @@ apiVersion: traefik.io/v1alpha1
 kind: Middleware
 metadata:
   name: immich-redirect-https
-  namespace: immich
+  namespace: media
 spec:
   redirectScheme:
     scheme: https
@@ -14,7 +14,7 @@ apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
   name: immich
-  namespace: immich
+  namespace: media
 spec:
   entryPoints:
     - websecure
@@ -32,7 +32,7 @@ apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
   name: immich-http
-  namespace: immich
+  namespace: media
 spec:
   entryPoints:
     - web
