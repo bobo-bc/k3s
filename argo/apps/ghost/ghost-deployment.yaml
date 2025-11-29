@@ -22,7 +22,7 @@ spec:
             - containerPort: 2368
           env:
             - name: url
-              value: https://ghost.smeyer.ca
+              value: http://ghost.smeyer.ca
             - name: database__client
               value: mysql
           envFrom:
