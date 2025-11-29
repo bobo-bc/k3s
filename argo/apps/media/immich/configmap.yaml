@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: immich-config
-  namespace: immich
+  namespace: media
 data:
   NODE_ENV: production
   IMMICH_LOG_LEVEL: verbose
