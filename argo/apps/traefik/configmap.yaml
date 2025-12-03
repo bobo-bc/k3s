@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: traefik-dynamic-config
+  namespace: traefik
+data:
+  dynamic.yaml: |
+    http:
+      routers:
+        plex:
+          rule: "Host(`plex.smeyer.ca`)"
+          entryPoints:
+            - websecure
+          tls: {}
+          service: plex-svc
+
+      services:
+        plex-svc:
+          loadBalancer:
+            servers:
+              - url: "http://10.0.2.10:32400"
