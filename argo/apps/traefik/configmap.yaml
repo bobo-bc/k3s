@@ -7,80 +7,75 @@ data:
   dynamic.yaml: |
     http:
       routers:
-
         pve:
           rule: "Host(`pve.smeyer.ca`)"
           entryPoints:
             - websecure
+          service: pve
           tls: {}
-          service: pve-svc
-
+          
         plex:
           rule: "Host(`plex.smeyer.ca`)"
           entryPoints:
             - websecure
+          service: plex
           tls: {}
-          service: plex-svc
 
         pbs:
           rule: "Host(`pbs.smeyer.ca`)"
           entryPoints:
             - websecure
+          service: pbs
           tls: {}
-          service: pbs-svc
 
         pihole:
           rule: "Host(`pihole.smeyer.ca`)"
           entryPoints:
             - web
-          service: pihole-svc
+          service: pihole
 
         monitor:
           rule: "Host(`monitor.smeyer.ca`)"
           entryPoints:
             - web
-          service: monitor-svc
+          service: monitor
 
         db:
           rule: "Host(`db.smeyer.ca`)"
           entryPoints:
             - websecure
+          service: db
           tls: {}
-          service: db-svc
 
       services:
 
-        pve-svc:
+        pve:
           loadBalancer:
             servers:
               - url: "https://10.0.0.5:8006"
-          passHostHeader: true
 
-
-        plex-svc:
+        plex:
           loadBalancer:
             servers:
               - url: "https://10.0.2.10:32400"
-          # plex often works without skip-verify; add serversTransport if needed
 
-        pbs-svc:
+        pbs:
           loadBalancer:
             servers:
               - url: "https://10.0.0.10:8007"
 
 
-        pihole-svc:
+        pihole:
           loadBalancer:
             servers:
               - url: "http://10.0.0.4/admin"
-          # note: forwarding to a path is allowed; if pihole redirects you may need to set Host header
 
-        monitor-svc:
+        monitor:
           loadBalancer:
             servers:
               - url: "http://10.0.0.9:7655"
 
-        db-svc:
+        db:
           loadBalancer:
             servers:
               - url: "http://10.0.0.8:8080"
