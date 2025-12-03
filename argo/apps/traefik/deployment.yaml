@@ -118,10 +118,15 @@ spec:
           - name: traefik-config
             mountPath: /etc/traefik/traefik.yml
             subPath: traefik.yml
+          - name: traefik-dynamic
+            mountPath: /etc/traefik/dynamic  
       volumes:
         - name: traefik-config
           configMap:
             name: traefik-config
+        - name: traefik-dynamic
+          persistentVolumeClaim:
+            claimName: traefik-dynamic-pvc
 ---
 # =========================
 # MetalLB LoadBalancer Service
