@@ -44,7 +44,7 @@ data:
         db:
           rule: "Host(`db.smeyer.ca`)"
           entryPoints:
-            - websecure
+            - web
           tls: {}
           service: db-svc
 
