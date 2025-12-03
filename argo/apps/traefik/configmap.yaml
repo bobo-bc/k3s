@@ -44,7 +44,7 @@ data:
         db:
           rule: "Host(`db.smeyer.ca`)"
           entryPoints:
-            - web
+            - websecure
           tls: {}
           service: db-svc
 
@@ -55,21 +55,25 @@ data:
             servers:
               - url: "https://10.0.0.5:8006"
           passHostHeader: true
+          serversTransport: internal-insecure
 
         plex-svc:
           loadBalancer:
             servers:
               - url: "https://10.0.2.10:32400"
+          # plex often works without skip-verify; add serversTransport if needed
 
         pbs-svc:
           loadBalancer:
             servers:
               - url: "https://10.0.0.10:8007"
+          serversTransport: internal-insecure
 
         pihole-svc:
           loadBalancer:
             servers:
               - url: "http://10.0.0.4/admin"
+          # note: forwarding to a path is allowed; if pihole redirects you may need to set Host header
 
         monitor-svc:
           loadBalancer:
@@ -80,3 +84,8 @@ data:
           loadBalancer:
             servers:
               - url: "http://10.0.0.8:8080"
+
+    # serversTransports can be declared in the same dynamic file
+    serversTransports:
+      internal-insecure:
+        insecureSkipVerify: true
