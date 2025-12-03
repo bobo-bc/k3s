@@ -85,7 +85,4 @@ data:
             servers:
               - url: "http://10.0.0.8:8080"
 
-    # serversTransports can be declared in the same dynamic file
-    serversTransports:
-      internal-insecure:
-        insecureSkipVerify: true
+
