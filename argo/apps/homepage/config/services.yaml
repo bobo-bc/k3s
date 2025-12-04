@@ -3,14 +3,19 @@
 # https://gethomepage.dev/latest/configs/services
       
 - Apps:
+    - HomeAssistant:
+        icon: home-assistant.png
+        href: http://10.0.2.4:8123/
+        description: home automation   
+    
     - GitHub Blog:
         icon: github-light.png
         href: https://smeyer.ca/
         description: my blog
-    - Wikijs:
-        icon: wikijs.png
-        href: https://wiki.smeyer.ca/
-        description: my wiki
+    - Ghost:
+        icon: ghost.png
+        href: https://ghost.smeyer.ca/
+        description: my nicer, newer blog
     - Immich:
         icon: immich.png
         href: https://pics.smeyer.ca/
@@ -32,6 +37,12 @@
         icon: pdfding-light.png
         href: https://pdf.smeyer.ca
         description: pdf editing tool 
+
+    - Adminer:
+       icon: adminer.png
+       href: http://db.smeyer.ca
+       description: database management interface
+       
     - Giftful:
         icon: https://dyr69yan0mo6n.cloudfront.net/giftful/images/logo_giftful.png?v=1
         href: https://giftful.com/stevenmeyer2
@@ -40,63 +51,53 @@
 
         
 - Host:
-    - ZimaOS:
-        icon: zima-os.png
-        href: http://10.0.0.10
-        description: Nas host with docker store
-    - PiHole:
-        icon: pi-hole.png
-        href: http://10.0.0.10:8080/admin/
-        description: dns management
+    - Monitor:
+        icon: pulse.png
+        href: http://monitor.smeyer.ca
+        description: Monitoring plex
+
         
-    - Nginx Proxy Manager:
-        icon: npm.png
-        href: http://proxy.smeyer.ca/
-        description: proxy management 
-  
+    - Traefik Dashboard:
+        icon: traefik.png
+        href: https://traefik.smeyer.ca/dashboard/#/
+        description: k3s reverse proxy
+    - Argo-CD:
+        icon: argo-cd.png
+        href: https://argo.smeyer.ca/
+        description: dns management 
+    - Longhorn:
+       icon: longhorn.png
+       href: http://longhorn.smeyer.ca
+       description: storage
+
     - Portainer:
         icon: portainer-alt.png
         href: https://portainer.smeyer.ca/
         description: k3s/docker management
-
-
 - Infra:
     - Unifi Gateway:
        icon: ubiquiti-unifi.png
        href: https://unifi.smeyer.ca
        description: unifi
        
-    - Traefik Dashboard:
-        icon: traefik.png
-        href: https://traefik.smeyer.ca/dashboard/#/
-        description: k3s reverse proxy 
+    - PiHole:
+        icon: pi-hole.png
+        href: http://pihole.smeyer.ca/
+        description: dns management
         
-    - HomeAssistant:
-        icon: home-assistant.png
-        href: http://10.0.0.10:8123/
-        description: home automation
-    - Argo-CD:
-        icon: argo-cd.png
-        href: https://argo.smeyer.ca/
-        description: dns management 
+    - Nginx Proxy Manager:
+        icon: npm.png
+        href: https://proxy.smeyer.ca/
+        description: proxy management      
+
     - Proxmox:
         icon: proxmox.png
-        href: https://pve2.smeyer.ca/
+        href: https://pve.smeyer.ca/
         description: proxmox host
-
-    - Longhorn:
-       icon: longhorn.png
-       href: https://longhorn.smeyer.ca
-       description: storage
-
-    - Adminer:
-       icon: adminer.png
-       href: http://10.0.0.10:8082
-       description: database management interface
-       
-       
-
-
+    - Proxmox Backup Server:
+        icon: pbs.png
+        href: https://pbs.smeyer.ca/
+        description: proxmox backup host
 
 - Media: 
     - Plex:
@@ -138,8 +139,3 @@
         icon: prowlarr.png
         href: https://index.smeyer.ca/
         description: index management
-
-
-
-
-   
