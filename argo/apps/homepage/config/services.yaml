@@ -25,11 +25,6 @@
         href: https://drawio.smeyer.ca/
         description: Drawing tool
         
-    - IT-Tools:
-        icon: it-tools.png
-        href: https://tools.smeyer.ca/
-        description: Handy IT tools
-
     - Compose Tool Box:
         icon: docker-moby.png
         href: https://compose.smeyer.ca
