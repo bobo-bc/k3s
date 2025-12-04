@@ -70,12 +70,12 @@
 
     - Unifi Gateway:
        icon: ubiquiti-unifi.png
-       href: https://unifi.smeyer.ca
+       href: https://10.0.0.1
        description: unifi
        
     - PiHole:
         icon: pi-hole.png
-        href: http://pihole.smeyer.ca/
+        href: http://10.0.0.4/admin
         description: dns management
         
     - Nginx Proxy Manager:
@@ -89,7 +89,7 @@
         description: proxmox host
     - Proxmox Backup Server:
         icon: proxmox-light.png
-        href: https://pbs.smeyer.ca/
+        href: https://10.0.0.10:8007
         description: proxmox backup host
 
 - Media: 
