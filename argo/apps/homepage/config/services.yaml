@@ -13,7 +13,7 @@
         href: https://smeyer.ca/
         description: my blog
     - Ghost:
-        icon: ghost.png
+        icon: ghost-light.png
         href: https://ghost.smeyer.ca/
         description: my nicer, newer blog
     - Immich:
@@ -39,7 +39,7 @@
         description: pdf editing tool 
 
     - Adminer:
-       icon: adminer.png
+       icon: adminer-light.png
        href: http://db.smeyer.ca
        description: database management interface
        
@@ -95,7 +95,7 @@
         href: https://pve.smeyer.ca/
         description: proxmox host
     - Proxmox Backup Server:
-        icon: pbs.png
+        icon: proxmox-light.png
         href: https://pbs.smeyer.ca/
         description: proxmox backup host
 
