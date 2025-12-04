@@ -27,16 +27,16 @@
         
     - Compose Tool Box:
         icon: docker-moby.png
-        href: https://compose.smeyer.ca
+        href: https://compose.smeyer.ca/
         description: compose file review tool
     - PDFding:
         icon: pdfding-light.png
-        href: https://pdf.smeyer.ca
+        href: https://pdf.smeyer.ca/
         description: pdf editing tool 
 
     - Adminer:
        icon: adminer.png
-       href: http://db.smeyer.ca
+       href: http://db.smeyer.ca/
        description: database management interface
        
     - Giftful:
@@ -46,13 +46,13 @@
 - Infra:
     - Monitor:
         icon: pulse.png
-        href: http://monitor.smeyer.ca
+        href: http://monitor.smeyer.ca/
         description: Monitoring plex
 
         
     - Traefik Dashboard:
         icon: traefik.png
-        href: https://traefik.smeyer.ca/dashboard/#/
+        href: https://traefik.smeyer.ca/dashboard/
         description: k3s reverse proxy
     - Argo-CD:
         icon: argo-cd.png
@@ -60,7 +60,7 @@
         description: dns management 
     - Longhorn:
        icon: longhorn.png
-       href: http://longhorn.smeyer.ca
+       href: http://longhorn.smeyer.ca/
        description: storage
 
     - Portainer:
@@ -70,12 +70,12 @@
 
     - Unifi Gateway:
        icon: ubiquiti-unifi.png
-       href: https://10.0.0.1
+       href: https://10.0.0.1/
        description: unifi
        
     - PiHole:
         icon: pi-hole.png
-        href: http://10.0.0.4/admin
+        href: http://10.0.0.4/admin/
         description: dns management
         
     - Nginx Proxy Manager:
@@ -89,7 +89,7 @@
         description: proxmox host
     - Proxmox Backup Server:
         icon: proxmox-light.png
-        href: https://10.0.0.10:8007
+        href: https://10.0.0.10:8007/
         description: proxmox backup host
 
 - Media: 
@@ -120,7 +120,7 @@
 
     - LazyLibrarian:
         icon: lazylibrarian.png
-        href: https://library.smeyer.ca
+        href: https://library.smeyer.ca/
         description: books management
         
     - Transmission-vpn:
