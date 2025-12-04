@@ -97,18 +97,6 @@ spec:
         app: traefik
     spec:
       serviceAccountName: traefik
-
-      # =============================
-      # Init containers (runs BEFORE Traefik starts)
-      # =============================
-      initContainers:
-        - name: copy-dynamic-config
-          image: alpine
-          command: ["/bin/sh", "-c"]
-          args:
-            - |
-              mkdir -p /dynamic;
-              cp /cm/dynamic.yaml /dynamic/dynamic.yaml;
           volumeMounts:
             - name: traefik-dynamic
               mountPath: /dynamic
@@ -130,8 +118,6 @@ spec:
           - name: traefik-config
             mountPath: /etc/traefik/traefik.yml
             subPath: traefik.yml
-          - name: traefik-dynamic
-            mountPath: /etc/traefik/dynamic
 
       # =============================
       # Volumes
@@ -140,16 +126,6 @@ spec:
         - name: traefik-config
           configMap:
             name: traefik-config
-
-        # PVC for dynamic config
-        - name: traefik-dynamic
-          persistentVolumeClaim:
-            claimName: traefik-dynamic-pvc
-
-        # ConfigMap containing dynamic.yaml
-        - name: traefik-dynamic-config
-          configMap:
-            name: traefik-dynamic-config
 ---
 # =========================
 # MetalLB LoadBalancer Service
