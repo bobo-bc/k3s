@@ -12,31 +12,26 @@ kind: ClusterRole
 metadata:
   name: traefik
 rules:
-  # Core Kubernetes resources
   - apiGroups: [""]
     resources: ["services", "endpoints", "secrets", "configmaps", "pods", "nodes"]
     verbs: ["get", "list", "watch"]
 
-  # Discovery API (for EndpointSlice)
   - apiGroups: ["discovery.k8s.io"]
     resources: ["endpointslices"]
     verbs: ["get", "list", "watch"]
 
-  # Traefik CRDs
   - apiGroups: ["traefik.io"]
     resources:
-      [
-        "ingressroutes",
-        "ingressroutetcps",
-        "ingressrouteudps",
-        "middlewares",
-        "middlewaretcps",
-        "tlsoptions",
-        "tlsstores",
-        "traefikservices",
-        "serverstransports",
-        "serverstransporttcps"
-      ]
+      - ingressroutes
+      - ingressroutetcps
+      - ingressrouteudps
+      - middlewares
+      - middlewaretcps
+      - tlsoptions
+      - tlsstores
+      - traefikservices
+      - serverstransports
+      - serverstransporttcps
     verbs: ["get", "list", "watch"]
 ---
 apiVersion: rbac.authorization.k8s.io/v1
@@ -66,7 +61,6 @@ data:
     entryPoints:
       web:
         address: ":80"
-
       websecure:
         address: ":443"
 
@@ -97,31 +91,22 @@ spec:
         app: traefik
     spec:
       serviceAccountName: traefik
-          volumeMounts:
-            - name: traefik-dynamic
-              mountPath: /dynamic
-            - name: traefik-dynamic-config
-              mountPath: /cm
 
       containers:
-      - name: traefik
-        image: traefik:v3.1
-        args:
-          - "--configFile=/etc/traefik/traefik.yml"
-        ports:
-          - name: web
-            containerPort: 80
-          - name: websecure
-            containerPort: 443
+        - name: traefik
+          image: traefik:v3.1
+          args:
+            - "--configFile=/etc/traefik/traefik.yml"
+          ports:
+            - name: web
+              containerPort: 80
+            - name: websecure
+              containerPort: 443
+          volumeMounts:
+            - name: traefik-config
+              mountPath: /etc/traefik/traefik.yml
+              subPath: traefik.yml
 
-        volumeMounts:
-          - name: traefik-config
-            mountPath: /etc/traefik/traefik.yml
-            subPath: traefik.yml
-
-      # =============================
-      # Volumes
-      # =============================
       volumes:
         - name: traefik-config
           configMap:
