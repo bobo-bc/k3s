@@ -24,6 +24,7 @@
         icon: draw-io.png
         href: https://drawio.smeyer.ca/
         description: Drawing tool
+        
     - IT-Tools:
         icon: it-tools.png
         href: https://tools.smeyer.ca/
@@ -39,7 +40,7 @@
         description: pdf editing tool 
 
     - Adminer:
-       icon: adminer-light.png
+       icon: adminer.png
        href: http://db.smeyer.ca
        description: database management interface
        
@@ -47,10 +48,7 @@
         icon: https://dyr69yan0mo6n.cloudfront.net/giftful/images/logo_giftful.png?v=1
         href: https://giftful.com/stevenmeyer2
         description: gift registry of things that I covet
-
-
-        
-- Host:
+- Infra:
     - Monitor:
         icon: pulse.png
         href: http://monitor.smeyer.ca
@@ -74,7 +72,7 @@
         icon: portainer-alt.png
         href: https://portainer.smeyer.ca/
         description: k3s/docker management
-- Infra:
+
     - Unifi Gateway:
        icon: ubiquiti-unifi.png
        href: https://unifi.smeyer.ca
