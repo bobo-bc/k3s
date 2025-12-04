@@ -46,7 +46,7 @@
 - Infra:
     - Monitor:
         icon: pulse.png
-        href: http://monitor.smeyer.ca/
+        href: https://monitor.smeyer.ca/
         description: Monitoring plex
 
         
