@@ -20,11 +20,11 @@ layout:
     columns: 5
     style: row
     icon: mdi-folder-multiple-image
-  Host:
+  Infra:
     columns: 5
     style: row
     icon: mdi-folder-multiple-image
-  Infra: 
+  Host: 
     column: 5
     style: row
     icon: mdi-folder-multiple-image
