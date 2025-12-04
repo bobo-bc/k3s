@@ -73,9 +73,6 @@ data:
     providers:
       kubernetesCRD: {}
       kubernetesIngress: {}
-      file:
-        directory: /etc/traefik/dynamic
-        watch: true
 
     api:
       dashboard: true
