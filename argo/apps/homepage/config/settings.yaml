@@ -14,18 +14,17 @@ layout:
 
   Apps:
     columns: 5
-    style: column
+    style: row
     icon: mdi-folder-multiple-image
   Media:
     columns: 5
-    style: column
-    icon: mdi-folder-multiple-image
-  Infra: 
-    column: 5
-    style: column
+    style: row
     icon: mdi-folder-multiple-image
   Host:
     columns: 5
-    style: column
+    style: row
     icon: mdi-folder-multiple-image
-
+  Infra: 
+    column: 5
+    style: row
+    icon: mdi-folder-multiple-image
