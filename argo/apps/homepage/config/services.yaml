@@ -70,7 +70,7 @@
 
     - Unifi Gateway:
        icon: ubiquiti-unifi.png
-       href: https://10.0.0.1/
+       href: https://unifi.smeyer.ca/
        description: unifi
        
     - PiHole:
@@ -85,11 +85,11 @@
 
     - Proxmox:
         icon: proxmox.png
-        href: https://pve.smeyer.ca/
+        href: https://pve.smeyer.ca:8006/
         description: proxmox host
     - Proxmox Backup Server:
         icon: proxmox-light.png
-        href: https://10.0.0.10:8007/
+        href: https://pbs.smeyer.ca:8007/
         description: proxmox backup host
 
 - Media: 
