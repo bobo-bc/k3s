@@ -29,6 +29,12 @@
         icon: docker-moby.png
         href: https://compose.smeyer.ca/
         description: compose file review tool
+    - IT-Tool:
+        icon: it-tools.png
+        href: http://tools.smeyer.ca/
+        description: toolbox of goodness
+
+        
     - PDFding:
         icon: pdfding-light.png
         href: https://pdf.smeyer.ca/
@@ -47,7 +53,7 @@
     - Monitor:
         icon: pulse.png
         href: https://monitor.smeyer.ca/
-        description: Monitoring plex
+        description: Monitoring 
 
         
     - Traefik Dashboard:
