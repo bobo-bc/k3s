@@ -24,10 +24,10 @@ spec:
           env:
             - name: VPN_SERVICE_PROVIDER
               value: "nordvpn"
-            - name: VPN_COUNTRY
-              value: Canada
-            - name: VPN_CITY
-              value: Vancouver
+            - name: SERVER_REGIONS
+              value: "ca"
+            - name: SERVER-CITIES
+              value: "vancouver"
             - name: OPENVPN_USER
               valueFrom:
                 secretKeyRef:
