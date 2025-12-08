@@ -12,3 +12,4 @@ spec:
       services:
         - name: skooner
           port: 80
+          scheme: http
