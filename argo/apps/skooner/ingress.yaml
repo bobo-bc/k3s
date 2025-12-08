@@ -1,16 +1,14 @@
-kind: Ingress
 apiVersion: networking.k8s.io/v1
+kind: Ingress
 metadata:
   name: skooner
   namespace: skooner
 spec:
   rules:
-  -
-    host: skooner.smeyer.ca
+  - host: skooner.smeyer.ca
     http:
       paths:
-      -
-        path: /
+      - path: /
         backend:
           serviceName: skooner
           servicePort: 80
