@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: booklore
-          image: ghcr.io/booklore/booklore:latest
+          image: ghcr.io/booklore-app/booklore:latest
           ports:
             - containerPort: 8080
           env:
