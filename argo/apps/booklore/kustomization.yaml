@@ -4,8 +4,8 @@ namespace: booklore
 resources:
   - namespace.yaml
   - mariadb-pvc.yaml
-  - maria-deployment.yaml
-  - maria-service.yaml
+  - mariadb-deployment.yaml
+  - mariadb-service.yaml
   - books-pv.yaml
   - books-pvc.yaml
   - deployment.yaml
