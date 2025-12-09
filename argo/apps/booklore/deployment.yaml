@@ -20,30 +20,18 @@ spec:
             - containerPort: 8080
           env:
             - name: DB_HOST
-              valueFrom:
-                secretKeyRef:
-                  name: booklore-db-credentials
-                  key: DB_HOST
+              value: 10.0.0.8
             - name: DB_PORT
-              valueFrom:
-                secretKeyRef:
-                  name: booklore-db-credentials
-                  key: DB_PORT
+              value: 3306
             - name: DB_USER
-              valueFrom:
-                secretKeyRef:
-                  name: booklore-db-credentials
-                  key: DB_USER
+              value: booklore_user
             - name: DB_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: booklore-db-credentials
                   key: DB_PASSWORD
             - name: DB_NAME
-              valueFrom:
-                secretKeyRef:
-                  name: booklore-db-credentials
-                  key: DB_NAME
+              value: booklore_db
           volumeMounts:
             - name: booklore-data
               mountPath: /app/data
