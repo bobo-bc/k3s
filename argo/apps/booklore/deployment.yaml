@@ -20,9 +20,9 @@ spec:
             - containerPort: 8080
           env:
             - name: DB_HOST
-              value: 10.0.0.8
+              value: "10.0.0.8"
             - name: DB_PORT
-              value: 3306
+              value: "3306"
             - name: DB_USER
               value: booklore_user
             - name: DB_PASSWORD
