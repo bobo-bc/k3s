@@ -51,3 +51,9 @@ spec:
         - name: booklore-data
           persistentVolumeClaim:
             claimName: booklore-pvc
+        - name: books
+          persistentVolumeClaim:
+            claimName: nfs-books
+        - name: data
+          persistentVolumeClaim:
+            claimName: nfs-downloads
