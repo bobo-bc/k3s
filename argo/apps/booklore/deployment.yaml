@@ -47,6 +47,10 @@ spec:
           volumeMounts:
             - name: booklore-data
               mountPath: /app/data
+            - name: books
+              mountPath: /books
+            - name: data
+              mountPath: /downloads
       volumes:
         - name: booklore-data
           persistentVolumeClaim:
