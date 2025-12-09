@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: booklore
-  namespace: media
+  namespace: booklore
 spec:
   replicas: 1
   selector:
@@ -15,29 +15,25 @@ spec:
     spec:
       containers:
         - name: booklore
-          image: booklore/booklore:latest
+          image: ghcr.io/julian-klode/booklore:latest
+          env:
+            - name: BOOKLORE_DB_HOST
+              value: mariadb
+            - name: BOOKLORE_DB_USER
+              value: booklore
+            - name: BOOKLORE_DB_PASS
+              valueFrom:
+                secretKeyRef:
+                  name: mariadb-secret
+                  key: user_password
+            - name: BOOKLORE_DB_NAME
+              value: booklore
           ports:
             - containerPort: 8080
-          env:
-            - name: DB_HOST
-              value: "10.0.0.8"
-            - name: DB_PORT
-              value: "3306"
-            - name: DB_USER
-              value: "booklore_user"
-            - name: DB_PASSWORD
-              value: "Hurts2p33"
-  #            valueFrom:
-  #             secretKeyRef:
-  #                name: booklore-db-credentials
-  #                key: DB_PASSWORD
-            - name: DB_NAME
-              value: "booklore_db"
           volumeMounts:
-            - name: booklore-data
-              mountPath: /app/data
+            - name: books
+              mountPath: /books
       volumes:
-        - name: booklore-data
+        - name: books
           persistentVolumeClaim:
-            claimName: booklore-pvc
-
+            claimName: booklore-books-pvc
