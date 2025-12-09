@@ -32,7 +32,7 @@ spec:
   #                name: booklore-db-credentials
   #                key: DB_PASSWORD
             - name: DB_NAME
-              value: booklore_db
+              value: "booklore_db"
           volumeMounts:
             - name: booklore-data
               mountPath: /app/data
