@@ -24,12 +24,13 @@ spec:
             - name: DB_PORT
               value: "3306"
             - name: DB_USER
-              value: booklore_user
+              value: "booklore_user"
             - name: DB_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: booklore-db-credentials
-                  key: DB_PASSWORD
+              value: "Hurts2p33"
+  #            valueFrom:
+  #             secretKeyRef:
+  #                name: booklore-db-credentials
+  #                key: DB_PASSWORD
             - name: DB_NAME
               value: booklore_db
           volumeMounts:
