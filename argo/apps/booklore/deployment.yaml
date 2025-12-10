@@ -32,7 +32,7 @@ spec:
               value: "6060"
 
             - name: DATABASE_URL
-              value: "jdbc:mariadb://10.0.0.31:3306/booklore"
+              value: "jdbc:mysql://10.0.0.31:3306/booklore_db?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC"
 
             - name: DB_USER
               valueFrom:
