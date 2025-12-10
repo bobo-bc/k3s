@@ -14,34 +14,34 @@ spec:
         app: booklore
     spec:
       containers:
-      - name: booklore
-        image: booklore/booklore:latest
-        imagePullPolicy: Always
-        ports:
-        - containerPort: 8080
-env:
-  - name: APP_USER_ID
-    value: "0"
-  - name: APP_GROUP_ID
-    value: "0"
+        - name: booklore
+          image: booklore/booklore:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          env:
+            - name: APP_USER_ID
+              value: "0"
+            - name: APP_GROUP_ID
+              value: "0"
 
-  - name: TZ
-    value: "Etc/UTC"
+            - name: TZ
+              value: "Etc/UTC"
 
-  - name: BOOKLORE_PORT
-    value: "6060"
+            - name: BOOKLORE_PORT
+              value: "6060"
 
-  - name: DATABASE_URL
-    value: "jdbc:mariadb://mariadb.booklore.svc.cluster.local:3306/booklore"
+            - name: DATABASE_URL
+              value: "jdbc:mariadb://mariadb.booklore.svc.cluster.local:3306/booklore"
 
-  - name: DB_USER
-    valueFrom:
-      secretKeyRef:
-        name: mariadb-secret
-        key: username
+            - name: DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: mariadb-secret
+                  key: username
 
-  - name: DB_PASSWORD
-    valueFrom:
-      secretKeyRef:
-        name: mariadb-secret
-        key: password
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mariadb-secret
+                  key: password
