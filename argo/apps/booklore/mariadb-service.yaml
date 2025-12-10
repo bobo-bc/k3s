@@ -4,9 +4,8 @@ metadata:
   name: mariadb
   namespace: booklore
 spec:
+  ports:
+    - port: 3306
+  clusterIP: None
   selector:
     app: mariadb
-  ports:
-    - name: mysql
-      port: 3306
-      targetPort: 3306
