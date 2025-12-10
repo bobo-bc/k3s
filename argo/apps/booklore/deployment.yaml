@@ -29,7 +29,7 @@ spec:
             - name: MYSQL_DATABASE
               value: booklore
           ports:
-            - containerPort: 8080
+            - containerPort: 6060
           volumeMounts:
             - name: books
               mountPath: /books
