@@ -6,6 +6,6 @@ metadata:
 spec:
   type: ClusterIP
   ports:
-    - port: 8080
+    - port: 6060
   selector:
     app: booklore
