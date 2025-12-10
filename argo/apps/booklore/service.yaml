@@ -5,7 +5,9 @@ metadata:
   namespace: booklore
 spec:
   type: ClusterIP
-  ports:
-    - port: 8080
   selector:
     app: booklore
+  ports:
+    - name: http
+      port: 80          # Service port (what Traefik talks to)
+      targetPort: 8080  # Container port (Booklore's internal port)
