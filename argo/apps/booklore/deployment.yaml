@@ -18,7 +18,7 @@ spec:
           image: booklore/booklore:latest
           env:
             - name: DATABASE_URL
-              value: mysql://booklore:booklorepass@10.0.0.31:3306/booklore
+              value: jdbc:mysql://10.0.0.31:3306/booklore
             - name: DB_USER
               value: booklore
             - name: DB_PASSWORD
