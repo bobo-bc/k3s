@@ -19,21 +19,29 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
-        env:
-        - name: SPRING_DATASOURCE_URL
-          value: jdbc:mariadb://10.0.0.31:3306/booklore
-        - name: SPRING_DATASOURCE_USERNAME
-          valueFrom:
-            secretKeyRef:
-              name: mariadb-secret
-              key: DB_USERNAME
-        - name: SPRING_DATASOURCE_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: mariadb-secret
-              key: DB_PASSWORD
-        - name: SPRING_JPA_HIBERNATE_DDL_AUTO
-          value: update
-        - name: SPRING_JPA_SHOW_SQL
-          value: "true"
- 
+env:
+  - name: APP_USER_ID
+    value: "0"
+  - name: APP_GROUP_ID
+    value: "0"
+
+  - name: TZ
+    value: "Etc/UTC"
+
+  - name: BOOKLORE_PORT
+    value: "6060"
+
+  - name: DATABASE_URL
+    value: "jdbc:mariadb://mariadb.booklore.svc.cluster.local:3306/booklore"
+
+  - name: DB_USER
+    valueFrom:
+      secretKeyRef:
+        name: mariadb-secret
+        key: username
+
+  - name: DB_PASSWORD
+    valueFrom:
+      secretKeyRef:
+        name: mariadb-secret
+        key: password
