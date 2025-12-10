@@ -18,7 +18,7 @@ spec:
           image: booklore/booklore:latest
           env:
             - name: BOOKLORE_DB_HOST
-              value: mariadb
+              value: 10.0.0.31
             - name: BOOKLORE_DB_USER
               value: booklore
             - name: BOOKLORE_DB_PASS
