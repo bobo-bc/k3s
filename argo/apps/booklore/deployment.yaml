@@ -25,12 +25,12 @@ spec:
         - name: SPRING_DATASOURCE_USERNAME
           valueFrom:
             secretKeyRef:
-              name: booklore-db-secret
+              name: mariadb-secret
               key: DB_USERNAME
         - name: SPRING_DATASOURCE_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: booklore-db-secret
+              name: mariadb-secret
               key: DB_PASSWORD
         - name: SPRING_JPA_HIBERNATE_DDL_AUTO
           value: update
