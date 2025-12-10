@@ -6,8 +6,6 @@ resources:
   - mariadb-pvc.yaml
   - mariadb-deployment.yaml
   - mariadb-service.yaml
-  - books-pv.yaml
-  - books-pvc.yaml
   - deployment.yaml
   - ingress.yaml
   - service.yaml
