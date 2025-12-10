@@ -3,9 +3,6 @@ kind: Kustomization
 namespace: booklore
 resources:
   - namespace.yaml
-  - mariadb-pvc.yaml
-  - mariadb-deployment.yaml
-  - mariadb-service.yaml
   - deployment.yaml
   - ingress.yaml
   - service.yaml
