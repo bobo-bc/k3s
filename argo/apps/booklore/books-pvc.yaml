@@ -8,5 +8,5 @@ spec:
     - ReadWriteMany
   resources:
     requests:
-      storage: 200Gi
-  volumeName: booklore-books-pv
+      storage: 10Gi
+  storageClassName: longhorn
