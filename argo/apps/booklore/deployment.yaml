@@ -17,16 +17,16 @@ spec:
         - name: booklore
           image: booklore/booklore:latest
           env:
-            - name: BOOKLORE_DB_HOST
-              value: 10.0.0.31
-            - name: BOOKLORE_DB_USER
+            - name: DATABASE_URL
+              value: mysql://booklore:booklorepass@10.0.0.31:3306/booklore
+            - name: DB_USER
               value: booklore
-            - name: BOOKLORE_DB_PASS
+            - name: DB_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: mariadb-secret
                   key: user_password
-            - name: BOOKLORE_DB_NAME
+            - name: MYSQL_DATABASE
               value: booklore
           ports:
             - containerPort: 8080
