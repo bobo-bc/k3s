@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: booklore
-  namespace: booklore
+  namespace: media
 spec:
   replicas: 1
   selector:
@@ -14,26 +14,37 @@ spec:
         app: booklore
     spec:
       containers:
-        - name: booklore
-          image: booklore/booklore:latest
-          env:
-            - name: DATABASE_URL
-              value: jdbc:mysql://10.0.0.31:3306/booklore
-            - name: DB_USER
-              value: booklore
-            - name: DB_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: mariadb-secret
-                  key: DB_PASSWORD
-            - name: MYSQL_DATABASE
-              value: booklore
-          ports:
-            - containerPort: 6060
-          volumeMounts:
-            - name: books
-              mountPath: /books
-      volumes:
-        - name: books
-          persistentVolumeClaim:
-            claimName: booklore-books-pvc
+      - name: booklore
+        image: your-dockerhub-user/booklore:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+        env:
+        - name: SPRING_DATASOURCE_URL
+          value: jdbc:mysql://booklore-mariadb:3306/booklore_db?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+        - name: SPRING_DATASOURCE_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: booklore-db-secret
+              key: DB_USERNAME
+        - name: SPRING_DATASOURCE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: booklore-db-secret
+              key: DB_PASSWORD
+        - name: SPRING_JPA_HIBERNATE_DDL_AUTO
+          value: update
+        - name: SPRING_JPA_SHOW_SQL
+          value: "true"
+        readinessProbe:
+          httpGet:
+            path: /actuator/health
+            port: 8080
+          initialDelaySeconds: 15
+          periodSeconds: 10
+        livenessProbe:
+          httpGet:
+            path: /actuator/health
+            port: 8080
+          initialDelaySeconds: 30
+          periodSeconds: 20
