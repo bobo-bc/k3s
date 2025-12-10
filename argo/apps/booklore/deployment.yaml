@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: booklore
-          image: ghcr.io/booklore-app/booklore:latest
+          image: booklore/booklore:latest
           env:
             - name: BOOKLORE_DB_HOST
               value: mariadb
