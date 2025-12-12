@@ -12,11 +12,12 @@ disableUpdateCheck: false
 useEqualHeights: true
 layout:
 
-  Apps:
+
+  Media:
     columns: 5
     style: row
     icon: mdi-folder-multiple-image
-  Media:
+  Apps:
     columns: 5
     style: row
     icon: mdi-folder-multiple-image
