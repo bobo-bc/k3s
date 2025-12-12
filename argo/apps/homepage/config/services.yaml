@@ -55,6 +55,11 @@
         href: https://monitor.smeyer.ca/
         description: Monitoring 
 
+    - Kubernetes Monitoring-Skooner:
+        icon: skooner.png
+        href: http://skooner.smeyer.ca/
+        description: Monitoring      
+
         
     - Traefik Dashboard:
         icon: traefik.png
@@ -120,7 +125,7 @@
         description: Music management
 
     - Booklore:
-        icon: booklore.png
+        icon: book-lore.png
         href: http://read.smeyer.ca/
         description: Book reader
         
