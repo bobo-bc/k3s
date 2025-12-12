@@ -12,14 +12,17 @@
         icon: github-light.png
         href: https://smeyer.ca/
         description: my blog
+        
     - Ghost:
         icon: ghost-light.png
         href: https://ghost.smeyer.ca/
         description: my nicer, newer blog
+        
     - Immich:
         icon: immich.png
         href: https://pics.smeyer.ca/
         description: photo curation
+        
     - Drawio:
         icon: draw-io.png
         href: https://drawio.smeyer.ca/
@@ -29,12 +32,12 @@
         icon: docker-moby.png
         href: https://compose.smeyer.ca/
         description: compose file review tool
+        
     - IT-Tool:
         icon: it-tools.png
         href: http://tools.smeyer.ca/
         description: toolbox of goodness
-
-        
+     
     - PDFding:
         icon: pdfding-light.png
         href: https://pdf.smeyer.ca/
@@ -49,8 +52,40 @@
         icon: https://dyr69yan0mo6n.cloudfront.net/giftful/images/logo_giftful.png?v=1
         href: https://giftful.com/stevenmeyer2
         description: gift registry of things that I covet
+        
 - Infra:
-    - Monitor:
+
+    - Unifi Gateway:
+       icon: ubiquiti-unifi.png
+       href: https://unifi.smeyer.ca/
+       description: network router and DNS
+
+    - Proxmox:
+        icon: proxmox.png
+        href: https://pve.smeyer.ca:8006/
+        description: proxmox host
+
+    - Argo-CD:
+        icon: argo-cd.png
+        href: https://argo.smeyer.ca/
+        description: App deployment
+
+    - Portainer:
+        icon: portainer-alt.png
+        href: https://portainer.smeyer.ca/
+        description: k3s/docker management
+
+    - Traefik Dashboard:
+        icon: traefik.png
+        href: https://traefik.smeyer.ca/dashboard/
+        description: k3s reverse proxy
+
+    - Nginx Proxy Manager:
+        icon: npm.png
+        href: https://proxy.smeyer.ca/
+        description: proxy management 
+       
+    - Pulse Monitoring:
         icon: pulse.png
         href: https://monitor.smeyer.ca/
         description: Monitoring 
@@ -58,46 +93,18 @@
     - Skooner:
         icon: kubernetes.png
         href: http://skooner.smeyer.ca/
-        description: Kubernetes Monitoring     
-
+        description: Kubernetes Monitoring      
         
-    - Traefik Dashboard:
-        icon: traefik.png
-        href: https://traefik.smeyer.ca/dashboard/
-        description: k3s reverse proxy
-    - Argo-CD:
-        icon: argo-cd.png
-        href: https://argo.smeyer.ca/
-        description: dns management 
     - Longhorn:
        icon: longhorn.png
        href: http://longhorn.smeyer.ca/
        description: storage
-
-    - Portainer:
-        icon: portainer-alt.png
-        href: https://portainer.smeyer.ca/
-        description: k3s/docker management
-
-    - Unifi Gateway:
-       icon: ubiquiti-unifi.png
-       href: https://unifi.smeyer.ca/
-       description: unifi
        
-    - PiHole:
-        icon: pi-hole.png
-        href: http://10.0.0.4/admin/
-        description: dns management
-        
-    - Nginx Proxy Manager:
-        icon: npm.png
-        href: https://proxy.smeyer.ca/
-        description: proxy management      
-
-    - Proxmox:
-        icon: proxmox.png
-        href: https://pve.smeyer.ca:8006/
-        description: proxmox host
+    - Uptime Kuma:
+        icon: uptime-kuma.png
+        href: http://uptime.smeyer.ca
+        description: uptime tracking
+               
     - Proxmox Backup Server:
         icon: proxmox-light.png
         href: https://pbs.smeyer.ca:8007/
