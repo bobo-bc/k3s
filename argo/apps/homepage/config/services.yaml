@@ -119,15 +119,10 @@
         href: https://music.smeyer.ca/
         description: Music management
 
-    - Kavita:
-        icon: kavita.png
-        href: https://books.smeyer.ca/
+    - Booklore:
+        icon: booklore.png
+        href: http://read.smeyer.ca/
         description: Book reader
-
-    - LazyLibrarian:
-        icon: lazylibrarian.png
-        href: https://library.smeyer.ca/
-        description: books management
         
     - Transmission-vpn:
         icon: transmission.png
