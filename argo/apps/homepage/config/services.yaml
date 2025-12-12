@@ -55,10 +55,10 @@
         href: https://monitor.smeyer.ca/
         description: Monitoring 
 
-    - Kubernetes Monitoring-Skooner:
-        icon: skooner.png
+    - Skooner:
+        icon: kubernetes.png
         href: http://skooner.smeyer.ca/
-        description: Monitoring      
+        description: Kubernetes Monitoring     
 
         
     - Traefik Dashboard:
