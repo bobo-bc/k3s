@@ -62,7 +62,7 @@
 
     - Proxmox:
         icon: proxmox.png
-        href: https://pve.smeyer.ca:8006/
+        href: https://pve.smeyer.ca/
         description: proxmox host
 
     - Argo-CD:
@@ -107,7 +107,7 @@
                
     - Proxmox Backup Server:
         icon: proxmox-light.png
-        href: https://pbs.smeyer.ca:8007/
+        href: https://pbs.smeyer.ca/
         description: proxmox backup host
 
 - Media: 
