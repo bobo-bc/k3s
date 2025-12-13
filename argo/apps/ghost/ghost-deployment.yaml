@@ -23,7 +23,6 @@ spec:
           env:
             - name: url
               value: https://ghost.smeyer.ca
-            env:
             - name: mail__transport
               value: SMTP
             - name: mail__options__service
