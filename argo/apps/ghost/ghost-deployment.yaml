@@ -23,6 +23,24 @@ spec:
           env:
             - name: url
               value: https://ghost.smeyer.ca
+            env:
+            - name: mail__transport
+              value: SMTP
+            - name: mail__options__service
+              value: Mailgun
+            - name: mail__options__host
+              value: smtp.mailgun.org
+            - name: mail__options__port
+              value: "587"
+            - name: mail__options__auth__user
+              value: postmaster@mg.smeyer.ca
+            - name: mail__options__auth__pass
+              valueFrom:
+                secretKeyRef:
+                  name: ghost-mailgun           
+                  key: mailgun-password
+            - name: mail__from
+              value: "no-reply@smeyer.ca"
             - name: database__client
               value: mysql
           envFrom:
