@@ -32,7 +32,7 @@ spec:
             - name: mail__options__port
               value: "587"
             - name: mail--options--secure
-              value: false
+              value: "false"
             - name: mail__options__auth__user
               value: postmaster@mg.smeyer.ca
             - name: mail__options__auth__pass
