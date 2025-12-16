@@ -3,7 +3,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: wikijs-data
-  namespace: wiki
+  namespace: wikijs
 spec:
   accessModes:
     - ReadWriteOnce
