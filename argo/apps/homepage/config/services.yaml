@@ -18,10 +18,10 @@
         href: https://ghost.smeyer.ca/
         description: my nicer, newer blog
         
-    - Immich:
-        icon: immich.png
-        href: https://pics.smeyer.ca/
-        description: photo curation
+    - Wikijs:
+        icon: wikijs.png
+        href: https://wiki.smeyer.ca/
+        description: notes curation
         
     - Drawio:
         icon: draw-io.png
@@ -145,3 +145,8 @@
         icon: prowlarr.png
         href: https://index.smeyer.ca/
         description: index management
+
+    - Immich:
+        icon: immich.png
+        href: https://pics.smeyer.ca/
+        description: photo curation
