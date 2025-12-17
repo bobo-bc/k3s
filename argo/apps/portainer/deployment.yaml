@@ -28,7 +28,7 @@ spec:
     spec:
       containers:
         - name: portainer
-          image: portainer/portainer-ee:latest
+          image: portainer/portainer-ce:latest
           ports:
             - containerPort: 9000
               name: http
