@@ -26,20 +26,20 @@ spec:
             - name: mail__transport
               value: SMTP
             - name: mail__options__host
-              value: smtp.gmail.com
+              value: smtp.mailgun.org
             - name: mail__options__port
-              value: "465"
+              value: "587"
             - name: mail__options__secure
-              value: "true"
+              value: "false"
             - name: mail__options__auth__user
-              value: sm8895840@gmail.com
+              value: postmaster@mg.smeyer.ca
             - name: mail__options__auth__pass
               valueFrom:
                 secretKeyRef:
                   name: ghost-mailgun           
                   key: mailgun-password
             - name: mail__from
-              value: "no-reply@smeyer.ca"
+              value: "Ghost <no-reply@smeyer.ca>"
             - name: database__client
               value: mysql
           envFrom:
