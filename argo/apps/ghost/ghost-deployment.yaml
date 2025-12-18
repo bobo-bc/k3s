@@ -29,7 +29,7 @@ spec:
               value: smtp.gmail.com
             - name: mail__options__port
               value: "465"
-            - name: mail--options--secure
+            - name: mail__options__secure
               value: "true"
             - name: mail__options__auth__user
               value: sm8895840@gmail.com
